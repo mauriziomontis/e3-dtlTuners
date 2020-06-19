@@ -1,7 +1,7 @@
 #General
 epicsEnvSet("ECMC_MOTOR_NAME",            "AxisT0M0")
 epicsEnvSet("ECMC_R",                     "AxisT0M0-")
-epicsEnvSet("ECMC_AXIS_NO",               "0")
+epicsEnvSet("ECMC_AXIS_NO",               "1")
 epicsEnvSet("ECMC_DESC",                  "Axis T0 M0")
 epicsEnvSet("ECMC_EGU",                   "mm")                        # Motor Record Unit
 epicsEnvSet("ECMC_PREC",                  "3")                         # Motor Record Precision

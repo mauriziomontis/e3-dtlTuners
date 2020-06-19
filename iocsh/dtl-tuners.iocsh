@@ -76,12 +76,16 @@ ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL7047, SLAVE_ID=1"
 ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}applySlaveConfig.cmd",   "CONFIG=-Motor-Leadshine-57HS09"    # TBC
 
 # - Module EL3255
-#${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL3255, SLAVE_ID=2"
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL3255, SLAVE_ID=2"
 
 # - Module EL2124
-#${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL2124, SLAVE_ID=3"
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL2124, SLAVE_ID=3"
 
 
+##############################################################################
+############# Apply Configuration
+
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}applyConfig.cmd"
 
 
 ##############################################################################
@@ -91,9 +95,13 @@ ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}applySlaveConfig.cmd",   "CONFIG=-Motor-Leadsh
 epicsEnvSet("DEV",      "AXIS-MYDEVICE")
 ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}configureAxis.cmd", "CONFIG=${DTL_AXIS_PATH}/axis_T0M0"
 
+# Apply Axes Configuration - REQUIRED
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}applyConfig.cmd"
+
+
 
 ##############################################################################
 ############ Go Active
 
-${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}setAppMode.cmd
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}setAppMode.cmd"
 
