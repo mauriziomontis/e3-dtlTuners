@@ -88,8 +88,8 @@ ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}applySlaveConfig.cmd",   "CONFIG=-Motor-Leadsh
 ############ Axis Configuration
 
 # - Axis T1M1
-epicsEnvSet("DEV",      "STEST-MYDEVICE")
-${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}configureAxis.cmd", "CONFIG=${DTL_AXIS_PATH}/axis_T3M1"
+epicsEnvSet("DEV",      "AXIS-MYDEVICE")
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}configureAxis.cmd", "CONFIG=${DTL_AXIS_PATH}/axis_T0M0"
 
 
 ##############################################################################
