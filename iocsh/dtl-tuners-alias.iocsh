@@ -73,7 +73,7 @@ ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EK1100, SLAVE_ID=0"
 
 # - Module EL7047
 ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL7047, SLAVE_ID=4"
-${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}applySlaveConfig.cmd",   "CONFIG=-Motor-Leadshine-57HS09"    # TBC
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}applySlaveConfig.cmd",   "CONFIG=-Motor-Leadshine-57HS09" 
 
 # - Module EL3255
 ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL3255, SLAVE_ID=3"
@@ -105,3 +105,13 @@ ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}applyConfig.cmd"
 
 ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}setAppMode.cmd"
 
+
+
+
+##############################################################################
+############ Post Configuration
+
+ecmcConfig "ReadEcEntryIDStringi(4,ID)"
+epicsEnvShow(ECMC_CONFIG_RETURN_VAL)
+
+dbLoadRecords(./ecmcGenericAlias.db,"NAME=IOC_TEST:ec0-s0-EK1101-ID, ALIAS=IOC_TEST:ec0-s0-Crate_$(ECMC_CONFIG_RETURN_VAL)-EK1101-ID")

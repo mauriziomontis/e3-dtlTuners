@@ -24,7 +24,7 @@ epicsEnvSet("MASTER_ID", "0")
 # IOC application name 
 epicsEnvSet("IOC", "DTL-000")
 # Modules version
-epicsEnvSet("ECMCCFG_VERSION", "0.9.2")
+epicsEnvSet("ECMCCFG_VERSION", "6.2.0")
 epicsEnvSet("ECMC_VERSION", "6.1.0")
 epicsEnvSet("STREAM_VERSION", "2.8.10")
 # Axis configuration
@@ -73,7 +73,7 @@ ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EK1100, SLAVE_ID=0"
 
 # - Module EL7047
 ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL7047, SLAVE_ID=4"
-${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}applySlaveConfig.cmd",   "CONFIG=-Motor-Leadshine-57HS09"    # TBC
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}applySlaveConfig.cmd",   "CONFIG=-Motor-Leadshine-57HS09" 
 
 # - Module EL3255
 ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL3255, SLAVE_ID=3"

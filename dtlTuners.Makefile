@@ -49,9 +49,9 @@ include $(E3_REQUIRE_CONFIG)/DECOUPLE_FLAGS
 ##EXCLUDE_ARCHS += linux-ppc64e6500
 ##EXCLUDE_ARCHS += linux-corei7-poky
 
-# APP:=calcApp
-# APPDB:=$(APP)/Db
-# APPSRC:=$(APP)/src
+APP:=dtlTunersApp
+APPDB:=$(APP)/Db
+APPSRC:=$(APP)/src
 
 
 # USR_INCLUDES += -I$(where_am_I)$(APPSRC)
