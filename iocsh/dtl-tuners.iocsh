@@ -25,7 +25,7 @@ epicsEnvSet("MASTER_ID", "0")
 epicsEnvSet("IOC", "DTL-000")
 # Modules version
 epicsEnvSet("ECMCCFG_VERSION", "6.2.0")
-epicsEnvSet("ECMC_VERSION", "6.1.0")
+epicsEnvSet("ECMC_VERSION", "6.2.1")
 epicsEnvSet("STREAM_VERSION", "2.8.10")
 # Axis configuration
 epicsEnvSet("DTL_AXIS_PATH", "/home/iocuser/e3/e3-dtlTuners/cfg")
