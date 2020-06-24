@@ -49,9 +49,9 @@ include $(E3_REQUIRE_CONFIG)/DECOUPLE_FLAGS
 ##EXCLUDE_ARCHS += linux-ppc64e6500
 ##EXCLUDE_ARCHS += linux-corei7-poky
 
-APP:=dtlTunersApp
-APPDB:=$(APP)/Db
-APPSRC:=$(APP)/src
+ APP:=dtlTunersApp
+ APPDB:=$(APP)/Db
+ APPSRC:=$(APP)/src
 
 
 # USR_INCLUDES += -I$(where_am_I)$(APPSRC)
@@ -63,7 +63,7 @@ APPSRC:=$(APP)/src
 # USR_CPPFLAGS += -Wno-unused-function
 # USR_CPPFLAGS += -Wno-unused-but-set-variable
 
-# TEMPLATES += $(wildcard $(APPDB)/*.db)
+ TEMPLATES += $(wildcard $(APPDB)/*.db)
 # TEMPLATES += $(wildcard $(APPDB)/*.db)
 # TEMPLATES += $(wildcard $(APPDB)/*.proto)
 # TEMPLATES += $(wildcard $(APPDB)/*.template)
