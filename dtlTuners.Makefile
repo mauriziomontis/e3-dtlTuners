@@ -66,7 +66,8 @@ include $(E3_REQUIRE_CONFIG)/DECOUPLE_FLAGS
  TEMPLATES += $(wildcard $(APPDB)/*.db)
 # TEMPLATES += $(wildcard $(APPDB)/*.db)
 # TEMPLATES += $(wildcard $(APPDB)/*.proto)
-# TEMPLATES += $(wildcard $(APPDB)/*.template)
+ TEMPLATES += $(wildcard $(APPDB)/*.template)
+ TEMPLATES += $(wildcard $(APPDB)/*.substitutions)
 
 
 # DBDINC_SRCS += $(APPSRC)/swaitRecord.c
@@ -185,7 +186,9 @@ include $(E3_REQUIRE_CONFIG)/DECOUPLE_FLAGS
 # VENDOR_LIBS += $(SUPPORT)/os/linux-x86_64/libflycapture.so
 
 
+DTLTUNERS_SUBDIRS = scripts
 
+SCRIPTS += $(foreach path, $(DTLTUNERS_SUBDIRS), $(wildcard $(APP)/$(path)/*.cmd) $(wildcard $(APP)/$(path)/*/*.cmd))
 SCRIPTS += $(wildcard ../iocsh/*.iocsh)
 
 

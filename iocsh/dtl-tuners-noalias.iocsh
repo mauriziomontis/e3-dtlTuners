@@ -24,8 +24,8 @@ epicsEnvSet("MASTER_ID", "0")
 # IOC application name 
 epicsEnvSet("IOC", "DTL-000")
 # Modules version
-epicsEnvSet("ECMCCFG_VERSION", "0.9.2")
-epicsEnvSet("ECMC_VERSION", "6.1.0")
+epicsEnvSet("ECMCCFG_VERSION", "6.2.0")
+epicsEnvSet("ECMC_VERSION", "6.2.1")
 epicsEnvSet("STREAM_VERSION", "2.8.10")
 # Axis configuration
 epicsEnvSet("DTL_AXIS_PATH", "/home/iocuser/e3/e3-dtlTuners/cfg")
@@ -105,13 +105,3 @@ ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}applyConfig.cmd"
 
 ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}setAppMode.cmd"
 
-
-
-
-##############################################################################
-############ Post Configuration
-
-ecmcConfig "ReadEcEntryIDStringi(4,ID)"
-epicsEnvShow(ECMC_CONFIG_RETURN_VAL)
-
-dbLoadRecords(./ecmcGenericAlias.db,"NAME=IOC_TEST:ec0-s0-EK1101-ID, ALIAS=IOC_TEST:ec0-s0-Crate_$(ECMC_CONFIG_RETURN_VAL)-EK1101-ID")

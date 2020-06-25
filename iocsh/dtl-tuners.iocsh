@@ -27,6 +27,7 @@ epicsEnvSet("IOC", "DTL-000")
 epicsEnvSet("ECMCCFG_VERSION", "6.2.0")
 epicsEnvSet("ECMC_VERSION", "6.2.1")
 epicsEnvSet("STREAM_VERSION", "2.8.10")
+epicsEnvSet("DTLTUNERS_VERSION", "master")
 # Axis configuration
 epicsEnvSet("DTL_AXIS_PATH", "/home/iocuser/e3/e3-dtlTuners/cfg")
 
@@ -41,6 +42,7 @@ epicsEnvSet("DTL_AXIS_PATH", "/home/iocuser/e3/e3-dtlTuners/cfg")
 #
 epicsEnvSet("ECMC_CONFIG_ROOT",     "${E3_SITEMODS_PATH}/ecmccfg/${ECMCCFG_VERSION}/")
 epicsEnvSet("ECMC_CONFIG_DB",       "${ECMC_CONFIG_ROOT}db/")
+epicsEnvSet("DTL_TUNERS_ROOT",     "${E3_SITEMODS_PATH}/dtlTuners/${DTLTUNERS_VERSION}/")
 epicsEnvSet("SCRIPTEXEC",           "${SCRIPTEXEC=iocshLoad}")
 epicsEnvSet("STREAM_PROTOCOL_PATH", "${STREAM_PROTOCOL_PATH=""}:${ECMC_CONFIG_ROOT}:${ECMC_CONFIG_DB}")
 epicsEnvSet("SM_PREFIX",            "${IOC}:")
@@ -105,3 +107,10 @@ ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}applyConfig.cmd"
 
 ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}setAppMode.cmd"
 
+
+
+##############################################################################
+############# Post Configuration - Aliases Definition
+
+
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}aliasMotorDriver.cmd", "MASTER_ID=0, SLAVE_ID=4, HW_DESC=EL7047, SECTION_NAME=DTL-010, DEVICE_POS=001"

@@ -1,0 +1,67 @@
+# DTL Tuner Alias Names Definition
+# substitution file for template ecmcGenericAlias.db
+#
+# Developed by Maurizio Montis | INFN-LNL
+# mail: maurizio.montis@lnl.infn.it
+#
+# Macros:
+#	- NAME: epics record name (provided by other databases)
+#	- ALIAS: new alias name associated to NAME
+#
+# Changelog:
+# V1.0:
+#      - initial setup
+#  
+
+# Note - Naming Convention:
+# DTL-0X0:EMR-GS-00{1,2,3}: Tuner IN Limit Switch  --> ${AXIS_NAME}.HLS
+# DTL-0X0:EMR-GS-01{1,2,3}: Tuner OUT Limit Switch --> ${AXIS_NAME}.LLS
+# DTL-0X0:MC-MCU-00{1,2,3}: Stepper Motor Driver (Movable Tuner) -->  ecY-sZ-EL7047
+# DTL-0X0:EMR-SM-00{1,2,3}: Stepper Motor --> ${AXIS_NAME}
+# DTL-0X0:EMR-GT-00{1,2,3}: Linear Encoder -->  ecY-sZ-EL3255
+#
+
+
+file ecmcGenericAlias.db
+{
+	pattern	{NAME,	ALIAS}
+		# Controller
+		{"DTL-000:ec0-s4-EL7047-Enc-Latch-AutoRst",	""}
+		{"DTL-000:ec0-s4-EL7047-Enc-Latch-Rst",     ""}
+		{"DTL-000:ec0-s4-EL7047-Enc-Latch-AutoRst_SP",     ""}
+		{"DTL-000:ec0-s4-EL7047-Enc-Latch-Cmd",     ""}
+		{"DTL-000:ec0-s4-EL7047-Drv-Cmd",     ""}
+		{"DTL-000:ec0-s4-EL7047-Drv-Spd",     ""}
+		{"DTL-000:ec0-s4-EL7047-Enc-Cmd",     ""}
+		{"DTL-000:ec0-s4-EL7047-Enc-PosCmd",     ""}
+		{"DTL-000:ec0-s4-EL7047-Stat_",     ""}
+		{"DTL-000:ec0-s4-EL7047-Drv-Stat",     ""}
+		{"DTL-000:ec0-s4-EL7047-Enc-Stat",     ""}
+		{"DTL-000:ec0-s4-EL7047-Stat",     ""}
+		{"DTL-000:ec0-s4-EL7047-online",     ""}
+		{"DTL-000:ec0-s4-EL7047-operational",     ""}
+		{"DTL-000:ec0-s4-EL7047-alstate-init",     ""}
+		{"DTL-000:ec0-s4-EL7047-alstate-preop",     ""}
+		{"DTL-000:ec0-s4-EL7047-alstate-safeop",     ""}
+		{"DTL-000:ec0-s4-EL7047-alstate-op",     ""}
+		{"DTL-000:ec0-s4-EL7047-Drv-Wrn-Alrm",     ""}
+		{"DTL-000:ec0-s4-EL7047-Drv-Err-Alrm",     ""}
+		{"DTL-000:ec0-s4-EL7047-Drv-Stl-Alrm",     ""}
+		{"DTL-000:ec0-s4-EL7047-Drv-SyncErr-Alrm",     ""}
+		{"DTL-000:ec0-s4-EL7047-Enc-ExtLatch-OK",     ""}
+		{"DTL-000:ec0-s4-EL7047-Enc-OpnCrct-Alrm",     ""}
+		{"DTL-000:ec0-s4-EL7047-Enc-Wrn-Alrm",     ""}
+		{"DTL-000:ec0-s4-EL7047-Enc-SyncErr-Alrm",     ""}
+		{"DTL-000:ec0-s4-EL7047-entrycounter",     ""}
+		{"DTL-000:ec0-s4-EL7047-One",     ""}
+		{"DTL-000:ec0-s4-EL7047-Zero",     ""}
+		{"DTL-000:ec0-s4-EL7047-HWType",     ""}
+		{"DTL-000:ec0-s4-EL7047-Drv-Cmd-RB",     ""}
+		{"DTL-000:ec0-s4-EL7047-Drv-Spd-RB",     ""}
+		{"DTL-000:ec0-s4-EL7047-Enc-PosAct",     ""}
+		{"DTL-000:ec0-s4-EL7047-Enc-Latch-PosAct",     ""}
+		{"DTL-000:ec0-s4-EL7047-Enc-Cmd-RB",     ""}
+		{"DTL-000:ec0-s4-EL7047-Enc-PosCmd-RB",     ""}
+
+
+}
