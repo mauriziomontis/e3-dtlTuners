@@ -83,6 +83,13 @@ ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL3255, SLAVE_ID=3"
 # - Module EL2124
 #${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL2124, SLAVE_ID=3"
 
+# - Module EL1008
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL1008, SLAVE_ID=10"
+
+# - Module EL2819
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL2819, SLAVE_ID=11"
+
+
 
 ##############################################################################
 ############# Apply Configuration
@@ -94,8 +101,11 @@ ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}applyConfig.cmd"
 ############ Axis Configuration
 
 # - Axis T1M1
-epicsEnvSet("DEV",      "AXIS")
+epicsEnvSet("DEV",      "DTL-010")
 ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}configureAxis.cmd", "CONFIG=${DTL_AXIS_PATH}/axis_T0M0"
+
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}aliasMotorAxis.cmd", "ECMC_MOTOR_NAME=EMR-SM-001, ECMC_IN_SWITCH=EMR-GS-001, ECMC_OUT_SWITCH=EMR-GS-011"
+
 
 # Apply Axes Configuration - REQUIRED
 ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}applyConfig.cmd"
@@ -113,4 +123,4 @@ ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}setAppMode.cmd"
 ############# Post Configuration - Aliases Definition
 
 
-${SCRIPTEXEC} "${DTL_TUNERS_ROOT}aliasMotorDriver.cmd", "MASTER_ID=0, SLAVE_ID=4, HW_DESC=EL7047, SECTION_NAME=DTL-010, DEVICE_POS=001"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}aliasMotorDriver.cmd", "SLAVE_ID=4, HW_DESC=EL7047, SECTION_NAME=DTL-010, DEVICE_POS=001"
