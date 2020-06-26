@@ -13,7 +13,7 @@
 #-d   \param DEVICE_POS Device position (accordig to ESS Naming Convetion indexing)
 #-d   \note Example call:
 #-d   \code
-#-d    ${SCRIPTEXEC} "${ecmccfg_DIR}aliasMotorDriver.cmd", "SLAVE_ID=1, HW_DESC=EL7037, SECTION_NAME=DTL-010, DEVICE_POS=001"
+#-d    ${SCRIPTEXEC} "${dtlTuner_DIR}aliasMotorDriver.cmd", "SLAVE_ID=1, HW_DESC=EL7037, SECTION_NAME=DTL-010, DEVICE_POS=001"
 #-d   \endcode
 #-d */
 

@@ -13,7 +13,7 @@
 #-d   \param ECMC_OUT_SWITCH Limit switch name - Tuner extracted, i.e. EMR-GS-011"
 #-d   \note Example call:
 #-d   \code
-#-d    ${SCRIPTEXEC} "${ecmccfg_DIR}aliasMotorAxis.cmd", "ECMC_MOTOR_NAME=EMR-SM-001"
+#-d    ${SCRIPTEXEC} "${dtlTuner_DIR}aliasMotorAxis.cmd", "ECMC_MOTOR_NAME=EMR-SM-001"
 #-d   \endcode
 #-d */
 
