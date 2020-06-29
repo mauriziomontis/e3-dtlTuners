@@ -18,9 +18,9 @@
 #-d   \endcode
 #-d */
 
-dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-AI${BIT_POS}, ALIAS=${SECTION_NAME}:EMR-LP-00${DEVICE_POS}:Pos") 
-dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-AI${BIT_POS}-Stat, ALIAS=${SECTION_NAME}:EMR-LP-00${DEVICE_POS}:Stat") 
-dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-AI${BIT_POS}-Err-Alrm, ALIAS=${SECTION_NAME}:EMR-LP-00${DEVICE_POS}:Err-Alrm") 
-dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-AI${BIT_POS}-UnderLim-Alrm, ALIAS=${SECTION_NAME}:EMR-LP-00${DEVICE_POS}:LLim-Alrm") 
-dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-AI${BIT_POS}-OverLim-Alrm, ALIAS=${SECTION_NAME}:EMR-LP-00${DEVICE_POS}:HLim-Alrm") 
+dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-AI${BIT_POS}, ALIAS=${SECTION_NAME}:EMR-GT-00${DEVICE_POS}:Pos") 
+dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-AI${BIT_POS}-Stat, ALIAS=${SECTION_NAME}:EMR-GT-00${DEVICE_POS}:Stat") 
+dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-AI${BIT_POS}-Err-Alrm, ALIAS=${SECTION_NAME}:EMR-GT-00${DEVICE_POS}:Err-Alrm") 
+dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-AI${BIT_POS}-UnderLim-Alrm, ALIAS=${SECTION_NAME}:EMR-GT-00${DEVICE_POS}:LLim-Alrm") 
+dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-AI${BIT_POS}-OverLim-Alrm, ALIAS=${SECTION_NAME}:EMR-GT-00${DEVICE_POS}:HLim-Alrm") 
 
