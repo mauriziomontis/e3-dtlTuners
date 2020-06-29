@@ -142,3 +142,9 @@ ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}aliasMotorAxis.cmd", "DEV=DTL-010, ECMC_AXIS_NA
 #dbpf "DTL-010:EMR-LP-001:Pos.EOFF" "105"
 #dbpf "DTL-010:EMR-LP-001:Pos.ESLO" "-0.0032145"
 #dbpf "DTL-010:EMR-LP-001:Pos.LINR" "SLOPE"
+#
+
+
+## SQL State Machine
+## 
+afterInit(seq tuners_statemachine)

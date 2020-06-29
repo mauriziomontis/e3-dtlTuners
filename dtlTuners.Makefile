@@ -15,8 +15,8 @@
 #  this program. If not, see https://www.gnu.org/licenses/gpl-2.0.txt
 #
 # 
-# Author  : iocuser
-# email   : iocuser@esss.se
+# Author  : Maurizio Montis
+# email   : maurizio.montis@lnl.infn.it
 # Date    : 2020Jun17-1742-43CEST
 # version : 0.0.0 
 #
@@ -39,9 +39,9 @@ include $(E3_REQUIRE_CONFIG)/DECOUPLE_FLAGS
 #asyn_VERSION=$(ASYN_DEP_VERSION)
 #endif
 
-#ifneq ($(strip $(SEQUENCER_DEP_VERSION)),)
-#sequencer_VERSION=$(SEQUENCER_DEP_VERSION)
-#endif
+ifneq ($(strip $(SEQUENCER_DEP_VERSION)),)
+sequencer_VERSION=$(SEQUENCER_DEP_VERSION)
+endif
 
 
 
@@ -91,6 +91,8 @@ include $(E3_REQUIRE_CONFIG)/DECOUPLE_FLAGS
 # SOURCES += $(APPSRC)/aCalcPostfix.c
 # SOURCES += $(APPSRC)/aCalcPerform.c
 
+
+SOURCES += $(APPSRC)/functional_statemachine.st
 # SOURCES += $(APPSRC)/calcUtil.c
 # SOURCES += $(APPSRC)/myFreeListLib.c
 # SOURCES += $(APPSRC)/devsCalcoutSoft.c
