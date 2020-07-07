@@ -17,19 +17,9 @@
 #-d   \endcode
 #-d */
 
-# List of PV
-# DTL-010:EMR-SM-001-PosAct
-# 
-# DTL-010:AxisT0M0-Err
-#
-#
-#
-
 dbLoadRecords(ecmcGenericAlias.db,"NAME=${DEV}:${ECMC_AXIS_NAME}-Err, ALIAS=${SECTION_NAME}:${ECMC_AXIS_EPICS_NAME}:Err") 
 dbLoadRecords(ecmcGenericAlias.db,"NAME=${DEV}:${ECMC_AXIS_NAME}-ErrId, ALIAS=${SECTION_NAME}:${ECMC_AXIS_EPICS_NAME}:Err-Id") 
 dbLoadRecords(ecmcGenericAlias.db,"NAME=${DEV}:${ECMC_AXIS_NAME}-ErrRst, ALIAS=${SECTION_NAME}:${ECMC_AXIS_EPICS_NAME}:Err-Rst") 
-
-
 dbLoadRecords(ecmcGenericAlias.db,"NAME=${DEV}:${ECMC_AXIS_NAME}-Acc-RB, ALIAS=${SECTION_NAME}:${ECMC_AXIS_EPICS_NAME}:Acc-RB") 
 dbLoadRecords(ecmcGenericAlias.db,"NAME=${DEV}:${ECMC_AXIS_NAME}-AccHom, ALIAS=${SECTION_NAME}:${ECMC_AXIS_EPICS_NAME}:AccHom")
 dbLoadRecords(ecmcGenericAlias.db,"NAME=${DEV}:${ECMC_AXIS_NAME}-AllowCmdFromPLC-CmdEn, ALIAS=${SECTION_NAME}:${ECMC_AXIS_EPICS_NAME}:AllowCmdFromPLC-CmdEn")
@@ -96,4 +86,5 @@ dbLoadRecords(ecmcGenericAlias.db,"NAME=${DEV}:${ECMC_AXIS_NAME}-Vel-RB, ALIAS=$
 dbLoadRecords(ecmcGenericAlias.db,"NAME=${DEV}:${ECMC_AXIS_NAME}-VelAct, ALIAS=${SECTION_NAME}:${ECMC_AXIS_EPICS_NAME}:VelAct")
 dbLoadRecords(ecmcGenericAlias.db,"NAME=${DEV}:${ECMC_AXIS_NAME}-VelFrmHom, ALIAS=${SECTION_NAME}:${ECMC_AXIS_EPICS_NAME}:VelFrmHom")
 dbLoadRecords(ecmcGenericAlias.db,"NAME=${DEV}:${ECMC_AXIS_NAME}-VelToHom, ALIAS=${SECTION_NAME}:${ECMC_AXIS_EPICS_NAME}:VelToHom")
+dbLoadRecords(ecmcGenericAlias.db,"NAME=${DEV}:${ECMC_AXIS_NAME}, ALIAS=${SECTION_NAME}:${ECMC_AXIS_EPICS_NAME}")
 

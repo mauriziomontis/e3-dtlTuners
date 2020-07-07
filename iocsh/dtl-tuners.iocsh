@@ -135,15 +135,16 @@ ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}aliasMotorLinearEnc.cmd", "SLAVE_ID=3, HW_DESC=
 
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}aliasMotorAxis.cmd", "DEV=DTL-010, ECMC_AXIS_NAME=AxisT0M0, SECTION_NAME=DTL-010, ECMC_AXIS_EPICS_NAME=EMR-SM-001"
 
-#
-# TBD
-#
-#iocInit()
-#dbpf "DTL-010:EMR-LP-001:Pos.EOFF" "105"
-#dbpf "DTL-010:EMR-LP-001:Pos.ESLO" "-0.0032145"
-#dbpf "DTL-010:EMR-LP-001:Pos.LINR" "SLOPE"
-#
 
+##############################################################################
+############## Post Configuration - Record Fields Config
+
+#
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitLinearEncConfig.cmd", "SECTION_NAME=DTL-010, DEVICE_POS=1"
+
+#afterInit(dbpf "DTL-010:EMR-GT-001:Pos.EOFF" "105")
+#afterInit(dbpf "DTL-010:EMR-GT-001:Pos.ESLO" "-0.0032145")
+#afterInit(dbpf "DTL-010:EMR-GT-001:Pos.LINR" "SLOPE")
 
 ## SQL State Machine
 ## 
