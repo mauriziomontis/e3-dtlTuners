@@ -1,0 +1,153 @@
+##############################################################################
+############ Startup File for DTL Tuners System 
+############ 
+############ Author: Maurizio Montis || INFN-LNL
+############ Mail:   maurizio.montis@lnl.infn.it
+############
+##############################################################################
+
+
+##############################################################################
+############ Environment 
+
+###
+############ Configuration
+############ Set the values in order to proper configure the application
+############
+###
+#
+### Communication 
+# Ethercat Master Index
+epicsEnvSet("MASTER_ID", "0")
+
+### Application
+# IOC application name 
+epicsEnvSet("IOC", "DTL-000")
+# Modules version
+epicsEnvSet("ECMCCFG_VERSION", "6.2.0")
+epicsEnvSet("ECMC_VERSION", "6.2.1")
+epicsEnvSet("STREAM_VERSION", "2.8.10")
+epicsEnvSet("DTLTUNERS_VERSION", "master")
+# Axis configuration
+epicsEnvSet("DTL_AXIS_PATH", "/home/iocuser/e3/e3-dtlTuners/cfg")
+
+
+#
+############ End of Configuration part
+#
+
+
+
+### Standard Configuration - DO NOT MODIFY
+#
+epicsEnvSet("ECMC_CONFIG_ROOT",     "${E3_SITEMODS_PATH}/ecmccfg/${ECMCCFG_VERSION}/")
+epicsEnvSet("ECMC_CONFIG_DB",       "${ECMC_CONFIG_ROOT}db/")
+epicsEnvSet("DTL_TUNERS_ROOT",     "${E3_SITEMODS_PATH}/dtlTuners/${DTLTUNERS_VERSION}/")
+epicsEnvSet("SCRIPTEXEC",           "${SCRIPTEXEC=iocshLoad}")
+epicsEnvSet("STREAM_PROTOCOL_PATH", "${STREAM_PROTOCOL_PATH=""}:${ECMC_CONFIG_ROOT}:${ECMC_CONFIG_DB}")
+epicsEnvSet("SM_PREFIX",            "${IOC}:")
+
+##############################################################################
+############ Modules Required
+
+require ecmccfg, ${ECMCCFG_VERSION}
+require ecmc, ${ECMC_VERSION}
+require stream, ${STREAM_VERSION}
+
+
+##############################################################################
+############ Application Initialization
+
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}${INIT=initAll}.cmd"
+
+
+##############################################################################
+############ EtherCAT Master Configuration
+
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addMaster.cmd", "MASTER_ID=${MASTER_ID}"
+
+
+##############################################################################
+############ EtherCAT Slaves Configuration
+
+# - Module EK1100
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EK1100, SLAVE_ID=0"
+
+# - Module EL7047
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL7047, SLAVE_ID=4"
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}applySlaveConfig.cmd",   "CONFIG=-Motor-Leadshine-57HS09" 
+
+# - Module EL3255
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL3255, SLAVE_ID=3"
+
+# - Module EL2124
+#${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL2124, SLAVE_ID=3"
+
+# - Module EL1008
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL1008, SLAVE_ID=10"
+
+# - Module EL2819
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL2819, SLAVE_ID=11"
+
+
+
+##############################################################################
+############# Apply Configuration
+
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}applyConfig.cmd"
+
+
+##############################################################################
+############ Axis Configuration
+
+# - Axis T1M1
+epicsEnvSet("DEV",      "DTL-010")
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}configureAxis.cmd", "CONFIG=${DTL_AXIS_PATH}/axis_T0M0"
+
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}aliasMotorAxis.cmd", "ECMC_MOTOR_NAME=EMR-SM-001, ECMC_IN_SWITCH=EMR-GS-001, ECMC_OUT_SWITCH=EMR-GS-011"
+
+
+# Apply Axes Configuration - REQUIRED
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}applyConfig.cmd"
+
+
+
+##############################################################################
+############ Go Active
+
+${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}setAppMode.cmd"
+
+
+
+##############################################################################
+############# Post Configuration - Aliases Definition
+
+# Motor Driver
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}aliasMotorDriver.cmd", "SLAVE_ID=4, HW_DESC=EL7047, SECTION_NAME=DTL-010, DEVICE_POS=001"
+# Limit Switch (DI)
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}aliasMotorSwitchInput.cmd", "SLAVE_ID=10, HW_DESC=EL1008, BIT_IN=2, BIT_OUT=1, SECTION_NAME=DTL-010, DEVICE_POS=1"
+# Limit Switch (DO)
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}aliasMotorSwitchOutput.cmd", "SLAVE_ID=11, HW_DESC=EL2819, BIT_IN=2, BIT_OUT=1, SECTION_NAME=DTL-010, DEVICE_POS=1"
+# Linear Encoder
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}aliasMotorLinearEnc.cmd", "SLAVE_ID=3, HW_DESC=EL3255, BIT_POS=1, SECTION_NAME=DTL-010, DEVICE_POS=1"
+# Axis
+#${SCRIPTEXEC} "${DTL_TUNERS_ROOT}aliasMotorAxis.cmd", "ECMC_AXIS_NAME=AxisT0M0, ECMC_AXIS_EPICS_NAME=EMR-SM-001"
+
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}aliasMotorAxis.cmd", "DEV=DTL-010, ECMC_AXIS_NAME=AxisT0M0, SECTION_NAME=DTL-010, ECMC_AXIS_EPICS_NAME=EMR-SM-001"
+
+
+##############################################################################
+############## Post Configuration - Record Fields Config
+
+#
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitLinearEncConfig.cmd", "SECTION_NAME=DTL-010, DEVICE_POS=1"
+
+#afterInit(dbpf "DTL-010:EMR-GT-001:Pos.EOFF" "105")
+#afterInit(dbpf "DTL-010:EMR-GT-001:Pos.ESLO" "-0.0032145")
+#afterInit(dbpf "DTL-010:EMR-GT-001:Pos.LINR" "SLOPE")
+
+## SQL State Machine
+## 
+
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitStateMachine.cmd", "SECTION_NAME=DTL-010"
+#afterInit(seq tuners_statemachine)
