@@ -40,51 +40,51 @@ program tuners_statemachine
 /* Driver */ 
 /* Switches */ 
 int HIGH_LIM_SW_CMD;
-assign HIGH_LIM_SW_CMD to "DTL-010:EMR-GS-001:En";
+assign HIGH_LIM_SW_CMD to "{SECTION_NAME}:EMR-GS-001:En";
 monitor HIGH_LIM_SW_CMD;
 int LOW_LIM_SW_CMD;
-assign LOW_LIM_SW_CMD to "DTL-010:EMR-GS-011:En";
+assign LOW_LIM_SW_CMD to "{SECTION_NAME}:EMR-GS-011:En";
 monitor LOW_LIM_SW_CMD;
 
 int HIGH_LIM_SW_RB;
-assign HIGH_LIM_SW_RB to "DTL-010:EMR-GS-001:En-RB";
+assign HIGH_LIM_SW_RB to "{SECTION_NAME}:EMR-GS-001:En-RB";
 monitor HIGH_LIM_SW_RB;
 int LOW_LIM_SW_RB;
-assign LOW_LIM_SW_RB to "DTL-010:EMR-GS-011:En-RB";
+assign LOW_LIM_SW_RB to "{SECTION_NAME}:EMR-GS-011:En-RB";
 monitor LOW_LIM_SW_RB;
 
 int HIGH_LIM_SW_TMP_ALRM;
-assign HIGH_LIM_SW_TMP_ALRM to "DTL-010:EMR-GS-001:Tmp-Alrm";
+assign HIGH_LIM_SW_TMP_ALRM to "{SECTION_NAME}:EMR-GS-001:Tmp-Alrm";
 monitor HIGH_LIM_SW_TMP_ALRM;
 
 int HIGH_LIM_SW_LOAD_ALRM;
-assign HIGH_LIM_SW_LOAD_ALRM to "DTL-010:EMR-GS-001:Load-Alrm";
+assign HIGH_LIM_SW_LOAD_ALRM to "{SECTION_NAME}:EMR-GS-001:Load-Alrm";
 monitor HIGH_LIM_SW_LOAD_ALRM;
 
 int HIGH_LIM_SW_OVRI_ALRM;
-assign HIGH_LIM_SW_OVRI_ALRM to "DTL-010:EMR-GS-001:OvrI-Alrm";
+assign HIGH_LIM_SW_OVRI_ALRM to "{SECTION_NAME}:EMR-GS-001:OvrI-Alrm";
 monitor HIGH_LIM_SW_OVRI_ALRM;
 
 int LOW_LIM_SW_TMP_ALRM;
-assign LOW_LIM_SW_TMP_ALRM to "DTL-010:EMR-GS-011:Tmp-Alrm";
+assign LOW_LIM_SW_TMP_ALRM to "{SECTION_NAME}:EMR-GS-011:Tmp-Alrm";
 monitor LOW_LIM_SW_TMP_ALRM;
 
 int LOW_LIM_SW_LOAD_ALRM;
-assign LOW_LIM_SW_LOAD_ALRM to "DTL-010:EMR-GS-011:Load-Alrm";
+assign LOW_LIM_SW_LOAD_ALRM to "{SECTION_NAME}:EMR-GS-011:Load-Alrm";
 monitor LOW_LIM_SW_LOAD_ALRM;
 
 int LOW_LIM_SW_OVRI_ALRM;
-assign LOW_LIM_SW_OVRI_ALRM to "DTL-010:EMR-GS-011:OvrI-Alrm";
+assign LOW_LIM_SW_OVRI_ALRM to "{SECTION_NAME}:EMR-GS-011:OvrI-Alrm";
 monitor LOW_LIM_SW_OVRI_ALRM;
 
 /* Linear Encoder */
 
 /* Axis */ 
 int AXIS_T1M1_ERR;
-assign AXIS_T1M1_ERR to "DTL-010:EMR-SM-001:Err";
+assign AXIS_T1M1_ERR to "{SECTION_NAME}:EMR-SM-001:Err";
 monitor AXIS_T1M1_ERR;
 int AXIS_T1M1_ERR_RESET;
-assign AXIS_T1M1_ERR_RESET to "DTL-010:EMR-SM-001:Err-Rst";
+assign AXIS_T1M1_ERR_RESET to "{SECTION_NAME}:EMR-SM-001:Err-Rst";
 
 
 /* Debug Mode: */

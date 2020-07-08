@@ -148,4 +148,6 @@ ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitLinearEncConfig.cmd", "SECTION_NAME=DTL
 
 ## SQL State Machine
 ## 
-afterInit(seq tuners_statemachine)
+
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitStateMachine.cmd", "SECTION_NAME=DTL-010"
+#afterInit(seq tuners_statemachine)
