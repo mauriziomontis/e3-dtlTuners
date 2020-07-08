@@ -16,6 +16,7 @@
 #-d */
 
 
+afterInit(dbpf "${SECTION_NAME}:EMR-GT-00${DEVICE_POS}:Pos.EGU" "mm")
 afterInit(dbpf "${SECTION_NAME}:EMR-GT-00${DEVICE_POS}:Pos.EOFF" "105")
 afterInit(dbpf "${SECTION_NAME}:EMR-GT-00${DEVICE_POS}:Pos.ESLO" "-0.0032145")
 afterInit(dbpf "${SECTION_NAME}:EMR-GT-00${DEVICE_POS}:Pos.LINR" "SLOPE")

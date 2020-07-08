@@ -1,6 +1,6 @@
 #==============================================================================
 # aliasMotorAxis.cmd
-#- Arguments: [DEV], ECMC_AXIS_NAME, ECMC_AXIS_EPICS_NAME
+#- Arguments: [DEV], ECMC_AXIS_NAME, SECTION_NAME, ECMC_AXIS_EPICS_NAME 
 
 #-d /**
 #-d   \brief Alias Names for DTL motor axis.
