@@ -101,16 +101,17 @@ ${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EK1122, SLAVE_ID=69"
 
 # - Module EL9110
 #   Position indexes: 7,17,28,38,49
+#   NOTE: cmd file is part of dtlTuners Application
 epicsEnvSet("IOC", "DTL-010") 
-${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL9110, SLAVE_ID=7"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}addSlave.cmd", "HW_DESC=EL9110, SLAVE_ID=7"
 epicsEnvSet("IOC", "DTL-020") 
-${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL9110, SLAVE_ID=17"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}addSlave.cmd", "HW_DESC=EL9110, SLAVE_ID=17"
 epicsEnvSet("IOC", "DTL-030") 
-${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL9110, SLAVE_ID=28"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}addSlave.cmd", "HW_DESC=EL9110, SLAVE_ID=28"
 epicsEnvSet("IOC", "DTL-040") 
-${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL9110, SLAVE_ID=38"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}addSlave.cmd", "HW_DESC=EL9110, SLAVE_ID=38"
 epicsEnvSet("IOC", "DTL-050") 
-${SCRIPTEXEC} "${ECMC_CONFIG_ROOT}addSlave.cmd", "HW_DESC=EL9110, SLAVE_ID=49"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}addSlave.cmd", "HW_DESC=EL9110, SLAVE_ID=49"
 
 # - Module EL1008
 #   Position indexes: 4,5,14,15,25,26,35,36,46,47

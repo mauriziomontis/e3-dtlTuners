@@ -57,8 +57,8 @@ epicsEnvSet("ECMC_CNTRL_KFF",             "1.0")
 # Switches
 #epicsEnvSet("ECMC_EC_MON_LOWLIM",         "ec3.s-1.ONE.0")           #  Ethercat entry for low limit switch input
 #epicsEnvSet("ECMC_EC_MON_HIGHLIM",        "ec3.s-1.ONE.0")           #  Ethercat entry for high limit switch inpuit
-epicsEnvSet("ECMC_EC_MON_LOWLIM",         "ec3.s25.INPIN_6.0")           #  Ethercat entry for low limit switch input
-epicsEnvSet("ECMC_EC_MON_HIGHLIM",        "ec3.s25.INPIN_5.0")           #  Ethercat entry for high limit switch inpuit
+epicsEnvSet("ECMC_EC_MON_LOWLIM",         "ec3.s25.BI_6.0")           #  Ethercat entry for low limit switch input
+epicsEnvSet("ECMC_EC_MON_HIGHLIM",        "ec3.s25.BI_5.0")           #  Ethercat entry for high limit switch inpuit
 epicsEnvSet("ECMC_EC_MON_HOME_SWITCH",    "ec3.s-1.ONE.0")           #  Ethercat entry for home switch input
 epicsEnvSet("ECMC_EC_MON_EXT_INTERLOCK",  "ec3.s-1.ONE.0")           #  Ethercat entry for external interlock input
 
