@@ -40,17 +40,17 @@ program tuners_statemachine
 /* Driver */ 
 /* Switches */ 
 int HIGH_LIM_SW_CMD;
-assign HIGH_LIM_SW_CMD to "{SECTION_NAME}:EMR-GS-001:En";
+assign HIGH_LIM_SW_CMD to "{SECTION_NAME}:EMR-GS-001:24VPS_OnCmd";
 monitor HIGH_LIM_SW_CMD;
 int LOW_LIM_SW_CMD;
-assign LOW_LIM_SW_CMD to "{SECTION_NAME}:EMR-GS-011:En";
+assign LOW_LIM_SW_CMD to "{SECTION_NAME}:EMR-GS-011:24VPS_OnCmd";
 monitor LOW_LIM_SW_CMD;
 
 int HIGH_LIM_SW_RB;
-assign HIGH_LIM_SW_RB to "{SECTION_NAME}:EMR-GS-001:En-RB";
+assign HIGH_LIM_SW_RB to "{SECTION_NAME}:EMR-GS-001:24VPS_OnCmd-RB";
 monitor HIGH_LIM_SW_RB;
 int LOW_LIM_SW_RB;
-assign LOW_LIM_SW_RB to "{SECTION_NAME}:EMR-GS-011:En-RB";
+assign LOW_LIM_SW_RB to "{SECTION_NAME}:EMR-GS-011:24VPS_OnCmd-RB";
 monitor LOW_LIM_SW_RB;
 
 int HIGH_LIM_SW_TMP_ALRM;
