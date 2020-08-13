@@ -22,4 +22,3 @@ record(bo, "DTL:EMR-SM:EnCmd") {
 	field(ONAM, "ENABLE")
 }
 
-}

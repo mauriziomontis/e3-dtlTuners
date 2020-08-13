@@ -1,0 +1,16 @@
+# Control Records for Tuner System
+# set of records required to evaluate frequency detuning in DTL cavity
+#
+# developed by Maurizio Montis | INFN-LNL
+
+
+record(calc, "DTL:RFS:FreqErr") {
+	field(DESC, "Frequency error in DTL Cavity ")
+	field(SCAN, "1 second")
+	field(PINI, "YES")
+	field(VAL, 0)
+	field(INPA, "iocuser:calc1")
+	field(INPB, "calc-ilk")
+	field(CALC, "A-B")
+}
+
