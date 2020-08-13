@@ -1,0 +1,96 @@
+# PID records for Tuner System
+# set of Records user to define PID controller. Used to control frequency feedback
+#
+# Based on the epid database structure provided by STD Module made by Mark Rivers
+#
+# modifications made by Maurizio Montis | INFN-LNL
+
+# Main PID records
+record(epid, "$(PREFIX):EMR-SM-$(INDEX):CtrlPID") {
+  field(INP, "$(INP)")
+  field(OUTL, "$(OUT) PP NMS")
+  field(SCAN, "$(SCAN)")
+  field(KP, "$(KP)")
+  field(KI, "$(KI)")
+  field(KD, "$(KD)")
+  field(LOPR, "$(LOPR)")
+  field(HOPR, "$(HOPR)")
+  field(DRVL, "$(DRVL)")
+  field(DRVH, "$(DRVH)")
+  field(PREC, "$(PREC)")
+  field(STPL, "0")
+  field(FLNK, "$(PREFIX):EMR-SM-$(INDEX):CtrlPIDLim.VAL PP NMS")
+}
+
+record(transform, "$(PREFIX):EMR-SM-$(INDEX):CtrlPIDLim") {
+  field(DESC, "PID limits")
+  field(CMTA, "Low input")
+  field(INPA, "$(DRVL)")
+  field(CMTB, "High limit")
+  field(INPB, "$(DRVH)")
+  field(CMTO, "Low output")
+  field(CLCO, "a")
+  field(OUTO, "$(PREFIX):EMR-SM-$(INDEX):CtrlPID.DRVL NPP NMS")
+  field(CMTP, "High output")
+  field(CLCP, "b")
+  field(OUTP, "$(PREFIX):EMR-SM-$(INDEX):CtrlPID.DRVH NPP NMS")
+  field(PREC, "$(PREC)")
+}
+
+record(transform, "$(PREFIX):EMR-SM-$(INDEX):#CtrlPID_InpCalc") {
+  field(DESC, "PID input calc")
+  field(PREC, "$(PREC)")
+}
+
+# These records are for tweaking the output (if the feedback is off)
+record(ao, "$(PREFIX):EMR-SM-$(INDEX):CtrlPID-OutVal") {
+   field(PREC, "3")
+}
+
+record(calcout, "$(PREFIX):EMR-SM-$(INDEX):CtrlPID-LoOutVal") {
+   field(INPA, "$(PREFIX):EMR-SM-$(INDEX):CtrlPID-OutVal.VAL NPP NMS")
+   field(INPB, "$(OUT) NPP NMS")
+   field(CALC, "B-A")
+   field(OUT, "$(OUT) PP NMS")
+}
+
+record(calcout, "$(PREFIX):EMR-SM-$(INDEX):HiCtrlPID-OutVal") {
+   field(INPA, "$(PREFIX):EMR-SM-$(INDEX):CtrlPID-OutVal.VAL NPP NMS")
+   field(INPB, "$(OUT) NPP NMS")
+   field(CALC, "B+A")
+   field(OUT, "$(OUT) PP NMS")
+}
+
+# These records are for tweaking the setpoint
+record(ao, "$(PREFIX):EMR-SM-$(INDEX):CtrlPID-SPVal") {
+  field(PREC, "3")
+}
+
+record(calcout, "$(PREFIX):EMR-SM-$(INDEX):LoCtrlPID-SPVal") {
+  field(INPA, "$(PREFIX):EMR-SM-$(INDEX):CtrlPID-SPVal.VAL NPP NMS")
+  field(INPB, "$(PREFIX):EMR-SM-$(INDEX):CtrlPID.VAL NPP NMS")
+  field(CALC, "B-A")
+  field(OUT, "$(PREFIX):EMR-SM-$(INDEX):CtrlPID.VAL PP NMS")
+}
+
+record(calcout, "$(PREFIX):EMR-SM-$(INDEX):HiCtrlPID-SPVal") {
+  field(INPA, "$(PREFIX):EMR-SM-$(INDEX):CtrlPID-SPVal.VAL NPP NMS")
+  field(INPB, "$(PREFIX):EMR-SM-$(INDEX):CtrlPID.VAL NPP NMS")
+  field(CALC, "B+A")
+  field(OUT, "$(PREFIX):EMR-SM-$(INDEX):CtrlPID.VAL PP NMS")
+}
+
+# STOP logic
+# # This record turns off feedback
+record(ao, "$(PREFIX):EMR-SM-$(INDEX):CtrlPID-En") {
+  field(VAL, "0")
+  field(OUT, "$(PREFIX):EMR-SM-$(INDEX):CtrlPID.FBON PP NMS")
+  field(FLNK, "$(PREFIX):EMR-SM-$(INDEX):CtrlPID-RstOut")
+}
+
+# This record turns off the output
+record(ao, "$(PREFIX):EMR-SM-$(INDEX):CtrlPID-RstOut") {
+  field(VAL, "0.0")
+  field(OUT, "$(OUT) PP NMS")
+}
+

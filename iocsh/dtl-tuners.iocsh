@@ -43,7 +43,8 @@ epicsEnvSet("DTL_AXIS_PATH", "/home/iocuser/e3/e3-dtlTuners/cfg")
 #
 epicsEnvSet("ECMC_CONFIG_ROOT",     "${E3_SITEMODS_PATH}/ecmccfg/${ECMCCFG_VERSION}/")
 epicsEnvSet("ECMC_CONFIG_DB",       "${ECMC_CONFIG_ROOT}db/")
-epicsEnvSet("DTL_TUNERS_ROOT",     "${E3_SITEMODS_PATH}/dtlTuners/${DTLTUNERS_VERSION}/")
+epicsEnvSet("DTL_TUNERS_ROOT",      "${E3_SITEMODS_PATH}/dtlTuners/${DTLTUNERS_VERSION}/")
+epicsEnvSet("DTL_TUNERS_DB",        "${DTL_TUNERS_ROOT}db/")
 epicsEnvSet("SCRIPTEXEC",           "${SCRIPTEXEC=iocshLoad}")
 epicsEnvSet("STREAM_PROTOCOL_PATH", "${STREAM_PROTOCOL_PATH=""}:${ECMC_CONFIG_ROOT}:${ECMC_CONFIG_DB}")
 epicsEnvSet("SM_PREFIX",            "${IOC}:")
@@ -424,6 +425,13 @@ ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}aliasArcDetectorTest.cmd", "SLAVE_ID=71, HW_DES
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}aliasArcDetectorTest.cmd", "SLAVE_ID=71, HW_DESC=EL2124, BIT_IN=4, SECTION_NAME=DTL-050, DEVICE_POS=012"
 
 
+
+
+##############################################################################
+################ Post Configuration - Load Additional Databases
+
+# General controls
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbLoadDatabase.cmd", "DB_NAME=dtlTunerControl.db"
 
 ##############################################################################
 ############## Post Configuration - Record Fields Config

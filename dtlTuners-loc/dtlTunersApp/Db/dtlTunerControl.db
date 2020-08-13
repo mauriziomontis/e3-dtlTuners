@@ -1,0 +1,25 @@
+# Control Records for Tuner System
+# set of records required to control DTL tuner system in different configuartions [man|auto]
+#
+# developed by Maurizio Montis | INFN-LNL
+
+
+record(mbbo, "DTL:EMR-SM:AutoCmd") {
+	field(DESC, "Steerer System automatic control ")
+	field(OMSL, "supervisory")
+	field(PINI, "YES")
+	field(VAL, 0)
+	field(ZRST, "MANUAL")
+	field(ONST, "AUTO")
+	field(TWST, "TEST")
+}
+
+record(bo, "DTL:EMR-SM:EnCmd") {
+	field(DESC, "Tuner System enable control ")
+	field(PINI, "YES")
+	field(VAL, 1)
+	field(ZNAM, "DISABLE")
+	field(ONAM, "ENABLE")
+}
+
+}
