@@ -28,6 +28,7 @@ epicsEnvSet("IOC", "DTL-000")
 epicsEnvSet("ECMCCFG_VERSION", "6.2.0")
 epicsEnvSet("ECMC_VERSION", "6.2.1")
 epicsEnvSet("STREAM_VERSION", "2.8.10")
+epicsEnvSet("STD_VERSION", "3.6.1")
 epicsEnvSet("DTLTUNERS_VERSION", "master")
 # Axis configuration
 epicsEnvSet("DTL_AXIS_PATH", "/home/iocuser/e3/e3-dtlTuners/cfg")
@@ -55,6 +56,7 @@ epicsEnvSet("SM_PREFIX",            "${IOC}:")
 require ecmccfg, ${ECMCCFG_VERSION}
 require ecmc, ${ECMC_VERSION}
 require stream, ${STREAM_VERSION}
+require std, ${STD_VERSION}
 
 
 ##############################################################################
@@ -432,6 +434,12 @@ ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}aliasArcDetectorTest.cmd", "SLAVE_ID=71, HW_DES
 
 # General controls
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbLoadDatabase.cmd", "DB_NAME=dtlTunerControl.db"
+
+
+# PID Tuner Controls
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbLoadTunerPidControl.cmd", "SECTION_NAME=DTL-010, POS_INDEX=001, INPUT=iocuser:calc1, OUTPUT=calc-ilk, LOW_OP_RANGE=0, HIGH_OP_RANGE=20, LOW_DRIVER=-20, HIGH_DRIVER=20, PRECISION=3, PROP_FACTOR=1, INT_FACTOR=0.1, DER_FACTOR=0, SCAN_TIME=.1 second"
+
+
 
 ##############################################################################
 ############## Post Configuration - Record Fields Config
