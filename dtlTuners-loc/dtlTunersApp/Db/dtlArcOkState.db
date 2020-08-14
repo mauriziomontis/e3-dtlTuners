@@ -1,0 +1,17 @@
+# Control Records for Arc Detector System
+# set of records required to provide "OK status" information related to arc detection system
+#
+# developed by Maurizio Montis | INFN-LNL
+
+
+record(calcout, "$(PREFIX):RFS:OkStat-RB") {
+	field(DESC, "$(PREFIX) arc system ok state ")
+	field(SCAN, ".1 second")
+	field(PINI, "YES")
+	field(VAL, 0)
+	field(INPA, "$(INPUT)")
+	field(INPB, "$(LIMIT)")
+	field(CALC, "A>$(LIMIT)?1:0")
+	field(OUT, "$(OUTPUT)")
+}
+
