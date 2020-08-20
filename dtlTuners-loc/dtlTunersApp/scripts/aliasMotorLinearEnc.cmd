@@ -23,4 +23,6 @@ dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-
 dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-AI${BIT_POS}-Err-Alrm, ALIAS=${SECTION_NAME}:EMR-GT-00${DEVICE_POS}:Err-Alrm") 
 dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-AI${BIT_POS}-UnderLim-Alrm, ALIAS=${SECTION_NAME}:EMR-GT-00${DEVICE_POS}:LLim-Alrm") 
 dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-AI${BIT_POS}-OverLim-Alrm, ALIAS=${SECTION_NAME}:EMR-GT-00${DEVICE_POS}:HLim-Alrm") 
+dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-operational, ALIAS=${SECTION_NAME}:EMR-GT-00${DEVICE_POS}:HwOp") 
+dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-online, ALIAS=${SECTION_NAME}:EMR-GT-00${DEVICE_POS}:ConnStat") 
 
