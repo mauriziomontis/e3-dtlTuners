@@ -5,7 +5,7 @@
 
 
 record(mbbo, "DTL:EMR-SM:AutoCmd") {
-	field(DESC, "Steerer System automatic control ")
+	field(DESC, "Tuner System automatic control ")
 	field(OMSL, "supervisory")
 	field(PINI, "YES")
 	field(VAL, 0)
