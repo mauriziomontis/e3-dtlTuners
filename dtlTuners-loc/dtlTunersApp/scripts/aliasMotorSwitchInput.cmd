@@ -1,6 +1,6 @@
 #==============================================================================
 # aliasMotorSwitchInput.cmd
-#- Arguments: SLAVE_ID, HW_DESC, BIT_IN, BIT_OUT, SECTION_NAME, DEVICE_POS
+#- Arguments: SLAVE_ID, HW_DESC, BIT_IN, BIT_OUT, SECTION_NAME, DEVICE_POS, CONTACT
 
 #-d /**
 #-d   \brief Alias Names for DTL motor limit switches (Inputs).
@@ -13,13 +13,14 @@
 #-d   \param BIT_OUT Bit number associated to the full extracted tuner's limit switch, i.e. 1
 #-d   \param SECTION_NAME Section name, i.e. DTL-010
 #-d   \param DEVICE_POS Device position (accordig to ESS Naming Convetion indexing)
+#-d   \param CONTACT Type of contact (NC or NO), i.e. NC
 #-d   \note Example call:
 #-d   \code
-#-d    ${SCRIPTEXEC} "${dtlTuner_DIR}aliasMotorSwitchInput.cmd", "SLAVE_ID=1, HW_DESC=EL7037, BIT_IN=0, BIT_OUT=1, SECTION_NAME=DTL-010, DEVICE_POS=001"
+#-d    ${SCRIPTEXEC} "${dtlTuner_DIR}aliasMotorSwitchInput.cmd", "SLAVE_ID=1, HW_DESC=EL7037, BIT_IN=0, BIT_OUT=1, SECTION_NAME=DTL-010, DEVICE_POS=001, CONTACT=NC"
 #-d   \endcode
 #-d */
 
 
-dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-BI${BIT_IN}, ALIAS=${SECTION_NAME}:EMR-GS-00${DEVICE_POS}:LimStat")
-dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-BI${BIT_OUT}, ALIAS=${SECTION_NAME}:EMR-GS-01${DEVICE_POS}:LimStat")
+dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-BI${BIT_IN}, ALIAS=${SECTION_NAME}:EMR-GS-00${DEVICE_POS}:${CONTACT}LimStat")
+dbLoadRecords(ecmcGenericAlias.db,"NAME=${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-BI${BIT_OUT}, ALIAS=${SECTION_NAME}:EMR-GS-01${DEVICE_POS}:${CONTACT}LimStat")
 
