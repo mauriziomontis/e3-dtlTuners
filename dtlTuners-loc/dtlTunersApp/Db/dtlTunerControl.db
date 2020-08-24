@@ -22,3 +22,10 @@ record(bo, "DTL:EMR-SM:EnCmd") {
 	field(ONAM, "ENABLE")
 }
 
+record(bi, "DTL:MC-MCU:OkStat") {
+	field(DESC, "Tuner System Ok Status")
+	field(PINI, "YES")
+	field(VAL, 0)
+	field(ZNAM, "NOT OK")
+	field(ONAM, "OK")
+}
