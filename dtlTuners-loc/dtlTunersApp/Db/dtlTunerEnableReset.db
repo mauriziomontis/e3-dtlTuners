@@ -1,0 +1,12 @@
+
+record(seq, "${PREFIX}:EMR-SM-${INDEX}:EnRst") {
+	field(DESC, "Reset to Zero Enable Tuner")
+	field(SCAN, "1 second")
+	field(SDIS, "DTL:EMR-SM:EnCmd")
+	field(DISV, "1")
+	field(DO1, "0")
+	field(LNK1, "${PREFIX}:EMR-SM-${INDEX}.CNEN")
+	field(DO2, "1")
+	field(LNK2, "${PREFIX}:EMR-SM-${INDEX}.PROC")
+	field(DLY, "1")
+}
