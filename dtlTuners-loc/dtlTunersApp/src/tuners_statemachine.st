@@ -1575,7 +1575,7 @@ ss tuners_statemachine {
 
     } state failure
 
-    /* Error in limit switches: NC and NO line closed */
+    /* Error in limit switches: NC or NO line closed for each tuner system */
 		when ( ( (T1_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T1_M2_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M2_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T1_M3_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M3_LimSwitch_IN_NO_LimStat == 1 ) ) && (T2_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T2_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T2_M2_LimSwitch_IN_NC_LimStat == 1 ) || (T2_M2_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T2_M3_LimSwitch_IN_NC_LimStat == 1 ) || (T2_M3_LimSwitch_IN_NO_LimStat == 1 ) ) && (T3_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T3_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T3_M2_LimSwitch_IN_NC_LimStat == 1 ) || (T3_M2_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T3_M3_LimSwitch_IN_NC_LimStat == 1 ) || (T3_M3_LimSwitch_IN_NO_LimStat == 1 ) ) && (T4_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T4_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T4_M2_LimSwitch_IN_NC_LimStat == 1 ) || (T4_M2_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T4_M3_LimSwitch_IN_NC_LimStat == 1 ) || (T4_M3_LimSwitch_IN_NO_LimStat == 1 ) ) && (T5_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T5_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T5_M2_LimSwitch_IN_NC_LimStat == 1 ) || (T5_M2_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T5_M3_LimSwitch_IN_NC_LimStat == 1 ) || (T5_M3_LimSwitch_IN_NO_LimStat == 1 ) ) ) {
       printf("[SEQ TUNERS] Error in limit switches: one or more lines not proper connected (NC or NO) \n");
       printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
