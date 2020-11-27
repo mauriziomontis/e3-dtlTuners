@@ -29,6 +29,7 @@ program tuners_statemachine
 */
 
 %%#include <stdio.h>
+%%#include <stdlib.h>
 %%#include <string.h>
 %%#include <unistd.h>
 
@@ -949,49 +950,51 @@ assign T5_M3_LimSwitch_OUT_NO_LimStat to "DTL-050:EMR-GS-013:NOLimStat";
 monitor T5_M3_LimSwitch_OUT_NO_LimStat;
 
 /* Linear Encoders - Position*/
-int T1_M1_LinEnc_Position;
+double Lin_Enc_Position_Res = 1;  // [millimiters]
+
+double T1_M1_LinEnc_Position;
 assign T1_M1_LinEnc_Position to "DTL-010:EMR-GT-001:Pos";
 monitor T1_M1_LinEnc_Position;
-int T1_M2_LinEnc_Position;
+double T1_M2_LinEnc_Position;
 assign T1_M2_LinEnc_Position to "DTL-010:EMR-GT-002:Pos";
 monitor T1_M2_LinEnc_Position;
-int T1_M3_LinEnc_Position;
+double T1_M3_LinEnc_Position;
 assign T1_M3_LinEnc_Position to "DTL-010:EMR-GT-003:Pos";
 monitor T1_M3_LinEnc_Position;
-int T2_M1_LinEnc_Position;
+double T2_M1_LinEnc_Position;
 assign T2_M1_LinEnc_Position to "DTL-020:EMR-GT-001:Pos";
 monitor T2_M1_LinEnc_Position;
-int T2_M2_LinEnc_Position;
+double T2_M2_LinEnc_Position;
 assign T2_M2_LinEnc_Position to "DTL-020:EMR-GT-002:Pos";
 monitor T2_M2_LinEnc_Position;
-int T2_M3_LinEnc_Position;
+double T2_M3_LinEnc_Position;
 assign T2_M3_LinEnc_Position to "DTL-020:EMR-GT-003:Pos";
 monitor T2_M3_LinEnc_Position;
-int T3_M1_LinEnc_Position;
+double T3_M1_LinEnc_Position;
 assign T3_M1_LinEnc_Position to "DTL-030:EMR-GT-001:Pos";
 monitor T3_M1_LinEnc_Position;
-int T3_M2_LinEnc_Position;
+double T3_M2_LinEnc_Position;
 assign T3_M2_LinEnc_Position to "DTL-030:EMR-GT-002:Pos";
 monitor T3_M2_LinEnc_Position;
-int T3_M3_LinEnc_Position;
+double T3_M3_LinEnc_Position;
 assign T3_M3_LinEnc_Position to "DTL-030:EMR-GT-003:Pos";
 monitor T3_M3_LinEnc_Position;
-int T4_M1_LinEnc_Position;
+double T4_M1_LinEnc_Position;
 assign T4_M1_LinEnc_Position to "DTL-040:EMR-GT-001:Pos";
 monitor T4_M1_LinEnc_Position;
-int T4_M2_LinEnc_Position;
+double T4_M2_LinEnc_Position;
 assign T4_M2_LinEnc_Position to "DTL-040:EMR-GT-002:Pos";
 monitor T4_M2_LinEnc_Position;
-int T4_M3_LinEnc_Position;
+double T4_M3_LinEnc_Position;
 assign T4_M3_LinEnc_Position to "DTL-040:EMR-GT-003:Pos";
 monitor T4_M3_LinEnc_Position;
-int T5_M1_LinEnc_Position;
+double T5_M1_LinEnc_Position;
 assign T5_M1_LinEnc_Position to "DTL-050:EMR-GT-001:Pos";
 monitor T5_M1_LinEnc_Position;
-int T5_M2_LinEnc_Position;
+double T5_M2_LinEnc_Position;
 assign T5_M2_LinEnc_Position to "DTL-050:EMR-GT-002:Pos";
 monitor T5_M2_LinEnc_Position;
-int T5_M3_LinEnc_Position;
+double T5_M3_LinEnc_Position;
 assign T5_M3_LinEnc_Position to "DTL-050:EMR-GT-003:Pos";
 monitor T5_M3_LinEnc_Position;
 
@@ -1370,6 +1373,103 @@ monitor T5_M2_Axis_Direction;
 int T5_M3_Axis_Direction;
 assign T5_M3_Axis_Direction to "DTL-050:EMR-SM-003.DIR";
 monitor T5_M3_Axis_Direction;
+
+/* Motor - Miss position */
+int Error_Missing_Counter = 0;
+int Max_Missing_Counter = 10;
+
+int T1_M1_Axis_Missing;
+assign T1_M1_Axis_Missing to "DTL-010:EMR-SM-001.MISS";
+monitor T1_M1_Axis_Missing;
+int T1_M2_Axis_Missing;
+assign T1_M2_Axis_Missing to "DTL-010:EMR-SM-002.MISS";
+monitor T1_M2_Axis_Missing;
+int T1_M3_Axis_Missing;
+assign T1_M3_Axis_Missing to "DTL-010:EMR-SM-003.MISS";
+monitor T1_M3_Axis_Missing;
+int T2_M1_Axis_Missing;
+assign T2_M1_Axis_Missing to "DTL-020:EMR-SM-001.MISS";
+monitor T2_M1_Axis_Missing;
+int T2_M2_Axis_Missing;
+assign T2_M2_Axis_Missing to "DTL-020:EMR-SM-002.MISS";
+monitor T2_M2_Axis_Missing;
+int T2_M3_Axis_Missing;
+assign T2_M3_Axis_Missing to "DTL-020:EMR-SM-003.MISS";
+monitor T2_M3_Axis_Missing;
+int T3_M1_Axis_Missing;
+assign T3_M1_Axis_Missing to "DTL-030:EMR-SM-001.MISS";
+monitor T3_M1_Axis_Missing;
+int T3_M2_Axis_Missing;
+assign T3_M2_Axis_Missing to "DTL-030:EMR-SM-002.MISS";
+monitor T3_M2_Axis_Missing;
+int T3_M3_Axis_Missing;
+assign T3_M3_Axis_Missing to "DTL-030:EMR-SM-003.MISS";
+monitor T3_M3_Axis_Missing;
+int T4_M1_Axis_Missing;
+assign T4_M1_Axis_Missing to "DTL-040:EMR-SM-001.MISS";
+monitor T4_M1_Axis_Missing;
+int T4_M2_Axis_Missing;
+assign T4_M2_Axis_Missing to "DTL-040:EMR-SM-002.MISS";
+monitor T4_M2_Axis_Missing;
+int T4_M3_Axis_Missing;
+assign T4_M3_Axis_Missing to "DTL-040:EMR-SM-003.MISS";
+monitor T4_M3_Axis_Missing;
+int T5_M1_Axis_Missing;
+assign T5_M1_Axis_Missing to "DTL-050:EMR-SM-001.MISS";
+monitor T5_M1_Axis_Missing;
+int T5_M2_Axis_Missing;
+assign T5_M2_Axis_Missing to "DTL-050:EMR-SM-002.MISS";
+monitor T5_M2_Axis_Missing;
+int T5_M3_Axis_Missing;
+assign T5_M3_Axis_Missing to "DTL-050:EMR-SM-003.MISS";
+monitor T5_M3_Axis_Missing;
+
+/* Motor - Stop */
+int T1_M1_Axis_Stop;
+assign T1_M1_Axis_Stop to "DTL-010:EMR-SM-001.STOP";
+monitor T1_M1_Axis_Stop;
+int T1_M2_Axis_Stop;
+assign T1_M2_Axis_Stop to "DTL-010:EMR-SM-002.STOP";
+monitor T1_M2_Axis_Stop;
+int T1_M3_Axis_Stop;
+assign T1_M3_Axis_Stop to "DTL-010:EMR-SM-003.STOP";
+monitor T1_M3_Axis_Stop;
+int T2_M1_Axis_Stop;
+assign T2_M1_Axis_Stop to "DTL-020:EMR-SM-001.STOP";
+monitor T2_M1_Axis_Stop;
+int T2_M2_Axis_Stop;
+assign T2_M2_Axis_Stop to "DTL-020:EMR-SM-002.STOP";
+monitor T2_M2_Axis_Stop;
+int T2_M3_Axis_Stop;
+assign T2_M3_Axis_Stop to "DTL-020:EMR-SM-003.STOP";
+monitor T2_M3_Axis_Stop;
+int T3_M1_Axis_Stop;
+assign T3_M1_Axis_Stop to "DTL-030:EMR-SM-001.STOP";
+monitor T3_M1_Axis_Stop;
+int T3_M2_Axis_Stop;
+assign T3_M2_Axis_Stop to "DTL-030:EMR-SM-002.STOP";
+monitor T3_M2_Axis_Stop;
+int T3_M3_Axis_Stop;
+assign T3_M3_Axis_Stop to "DTL-030:EMR-SM-003.STOP";
+monitor T3_M3_Axis_Stop;
+int T4_M1_Axis_Stop;
+assign T4_M1_Axis_Stop to "DTL-040:EMR-SM-001.STOP";
+monitor T4_M1_Axis_Stop;
+int T4_M2_Axis_Stop;
+assign T4_M2_Axis_Stop to "DTL-040:EMR-SM-002.STOP";
+monitor T4_M2_Axis_Stop;
+int T4_M3_Axis_Stop;
+assign T4_M3_Axis_Stop to "DTL-040:EMR-SM-003.STOP";
+monitor T4_M3_Axis_Stop;
+int T5_M1_Axis_Stop;
+assign T5_M1_Axis_Stop to "DTL-050:EMR-SM-001.STOP";
+monitor T5_M1_Axis_Stop;
+int T5_M2_Axis_Stop;
+assign T5_M2_Axis_Stop to "DTL-050:EMR-SM-002.STOP";
+monitor T5_M2_Axis_Stop;
+int T5_M3_Axis_Stop;
+assign T5_M3_Axis_Stop to "DTL-050:EMR-SM-003.STOP";
+monitor T5_M3_Axis_Stop;
 
 /* Motor - Reset Error */
 int T1_M1_Axis_ErrorReset;
@@ -2033,35 +2133,35 @@ ss tuners_statemachine {
       printf("[SEQ TUNERS] Self Check Passed. \n");
       printf("[SEQ TUNERS] System set homing position (tuners extracted) \n");
       /* Enable tuners drivers */
-			T1_M1_Axis_Enable=0;
+			T1_M1_Axis_Enable=1;
 			pvPut(T1_M1_Axis_Enable);
-			T1_M2_Axis_Enable=0;
+			T1_M2_Axis_Enable=1;
 			pvPut(T1_M2_Axis_Enable);
-			T1_M3_Axis_Enable=0;
+			T1_M3_Axis_Enable=1;
 			pvPut(T1_M3_Axis_Enable);
-			T2_M1_Axis_Enable=0;
+			T2_M1_Axis_Enable=1;
 			pvPut(T2_M1_Axis_Enable);
-			T2_M2_Axis_Enable=0;
+			T2_M2_Axis_Enable=1;
 			pvPut(T2_M2_Axis_Enable);
-			T2_M3_Axis_Enable=0;
+			T2_M3_Axis_Enable=1;
 			pvPut(T2_M3_Axis_Enable);
-			T3_M1_Axis_Enable=0;
+			T3_M1_Axis_Enable=1;
 			pvPut(T3_M1_Axis_Enable);
-			T3_M2_Axis_Enable=0;
+			T3_M2_Axis_Enable=1;
 			pvPut(T3_M2_Axis_Enable);
-			T3_M3_Axis_Enable=0;
+			T3_M3_Axis_Enable=1;
 			pvPut(T3_M3_Axis_Enable);
-			T4_M1_Axis_Enable=0;
+			T4_M1_Axis_Enable=1;
 			pvPut(T4_M1_Axis_Enable);
-			T4_M2_Axis_Enable=0;
+			T4_M2_Axis_Enable=1;
 			pvPut(T4_M2_Axis_Enable);
-			T4_M3_Axis_Enable=0;
+			T4_M3_Axis_Enable=1;
 			pvPut(T4_M3_Axis_Enable);
-			T5_M1_Axis_Enable=0;
+			T5_M1_Axis_Enable=1;
 			pvPut(T5_M1_Axis_Enable);
-			T5_M2_Axis_Enable=0;
+			T5_M2_Axis_Enable=1;
 			pvPut(T5_M2_Axis_Enable);
-			T5_M3_Axis_Enable=0;
+			T5_M3_Axis_Enable=1;
 			pvPut(T5_M3_Axis_Enable);
 
     } state start_up
@@ -2112,28 +2212,28 @@ state start_up {
   /* Error in limit switches: Temperature */
   when ( (T1_M1_LimSwitch_IN_TemperatureAlarm == 1 ) || (T1_M2_LimSwitch_IN_TemperatureAlarm == 1 ) || (T1_M3_LimSwitch_IN_TemperatureAlarm == 1 ) || (T2_M1_LimSwitch_IN_TemperatureAlarm == 1 ) || (T2_M2_LimSwitch_IN_TemperatureAlarm == 1 ) || (T2_M3_LimSwitch_IN_TemperatureAlarm == 1 ) || (T3_M1_LimSwitch_IN_TemperatureAlarm == 1 ) || (T3_M2_LimSwitch_IN_TemperatureAlarm == 1 ) || (T3_M3_LimSwitch_IN_TemperatureAlarm == 1 ) || (T4_M1_LimSwitch_IN_TemperatureAlarm == 1 ) || (T4_M2_LimSwitch_IN_TemperatureAlarm == 1 ) || (T4_M3_LimSwitch_IN_TemperatureAlarm == 1 ) || (T5_M1_LimSwitch_IN_TemperatureAlarm == 1 ) || (T5_M2_LimSwitch_IN_TemperatureAlarm == 1 ) || (T5_M3_LimSwitch_IN_TemperatureAlarm == 1 ) || (T1_M1_LimSwitch_OUT_TemperatureAlarm == 1 ) || (T1_M2_LimSwitch_OUT_TemperatureAlarm == 1 ) || (T1_M3_LimSwitch_OUT_TemperatureAlarm == 1 ) || (T2_M1_LimSwitch_OUT_TemperatureAlarm == 1 ) || (T2_M2_LimSwitch_OUT_TemperatureAlarm == 1 ) || (T2_M3_LimSwitch_OUT_TemperatureAlarm == 1 ) || (T3_M1_LimSwitch_OUT_TemperatureAlarm == 1 ) || (T3_M2_LimSwitch_OUT_TemperatureAlarm == 1 ) || (T3_M3_LimSwitch_OUT_TemperatureAlarm == 1 ) || (T4_M1_LimSwitch_OUT_TemperatureAlarm == 1 ) || (T4_M2_LimSwitch_OUT_TemperatureAlarm == 1 ) || (T4_M3_LimSwitch_OUT_TemperatureAlarm == 1 ) || (T5_M1_LimSwitch_OUT_TemperatureAlarm == 1 ) || (T5_M2_LimSwitch_OUT_TemperatureAlarm == 1 ) || (T5_M3_LimSwitch_OUT_TemperatureAlarm == 1 ) ) {
     printf("[SEQ TUNERS] Error in limit switches: temperature module problem in one or more lines \n");
-    printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
+    printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
 
   /* Error in limit switches: Load */
   when ( (T1_M1_LimSwitch_IN_LoadAlarm == 1 ) || (T1_M2_LimSwitch_IN_LoadAlarm == 1 ) || (T1_M3_LimSwitch_IN_LoadAlarm == 1 ) || (T2_M1_LimSwitch_IN_LoadAlarm == 1 ) || (T2_M2_LimSwitch_IN_LoadAlarm == 1 ) || (T2_M3_LimSwitch_IN_LoadAlarm == 1 ) || (T3_M1_LimSwitch_IN_LoadAlarm == 1 ) || (T3_M2_LimSwitch_IN_LoadAlarm == 1 ) || (T3_M3_LimSwitch_IN_LoadAlarm == 1 ) || (T4_M1_LimSwitch_IN_LoadAlarm == 1 ) || (T4_M2_LimSwitch_IN_LoadAlarm == 1 ) || (T4_M3_LimSwitch_IN_LoadAlarm == 1 ) || (T5_M1_LimSwitch_IN_LoadAlarm == 1 ) || (T5_M2_LimSwitch_IN_LoadAlarm == 1 ) || (T5_M3_LimSwitch_IN_LoadAlarm == 1 ) || (T1_M1_LimSwitch_OUT_LoadAlarm == 1 ) || (T1_M2_LimSwitch_OUT_LoadAlarm == 1 ) || (T1_M3_LimSwitch_OUT_LoadAlarm == 1 ) || (T2_M1_LimSwitch_OUT_LoadAlarm == 1 ) || (T2_M2_LimSwitch_OUT_LoadAlarm == 1 ) || (T2_M3_LimSwitch_OUT_LoadAlarm == 1 ) || (T3_M1_LimSwitch_OUT_LoadAlarm == 1 ) || (T3_M2_LimSwitch_OUT_LoadAlarm == 1 ) || (T3_M3_LimSwitch_OUT_LoadAlarm == 1 ) || (T4_M1_LimSwitch_OUT_LoadAlarm == 1 ) || (T4_M2_LimSwitch_OUT_LoadAlarm == 1 ) || (T4_M3_LimSwitch_OUT_LoadAlarm == 1 ) || (T5_M1_LimSwitch_OUT_LoadAlarm == 1 ) || (T5_M2_LimSwitch_OUT_LoadAlarm == 1 ) || (T5_M3_LimSwitch_OUT_LoadAlarm == 1 ) ) {
     printf("[SEQ TUNERS] Error in limit switches: load problem in one or more lines \n");
-    printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
+    printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
 
   /* Error in limit switches: Over Current */
   when ( (T1_M1_LimSwitch_IN_OverCurrentAlarm == 1 ) || (T1_M2_LimSwitch_IN_OverCurrentAlarm == 1 ) || (T1_M3_LimSwitch_IN_OverCurrentAlarm == 1 ) || (T2_M1_LimSwitch_IN_OverCurrentAlarm == 1 ) || (T2_M2_LimSwitch_IN_OverCurrentAlarm == 1 ) || (T2_M3_LimSwitch_IN_OverCurrentAlarm == 1 ) || (T3_M1_LimSwitch_IN_OverCurrentAlarm == 1 ) || (T3_M2_LimSwitch_IN_OverCurrentAlarm == 1 ) || (T3_M3_LimSwitch_IN_OverCurrentAlarm == 1 ) || (T4_M1_LimSwitch_IN_OverCurrentAlarm == 1 ) || (T4_M2_LimSwitch_IN_OverCurrentAlarm == 1 ) || (T4_M3_LimSwitch_IN_OverCurrentAlarm == 1 ) || (T5_M1_LimSwitch_IN_OverCurrentAlarm == 1 ) || (T5_M2_LimSwitch_IN_OverCurrentAlarm == 1 ) || (T5_M3_LimSwitch_IN_OverCurrentAlarm == 1 ) || (T1_M1_LimSwitch_OUT_OverCurrentAlarm == 1 ) || (T1_M2_LimSwitch_OUT_OverCurrentAlarm == 1 ) || (T1_M3_LimSwitch_OUT_OverCurrentAlarm == 1 ) || (T2_M1_LimSwitch_OUT_OverCurrentAlarm == 1 ) || (T2_M2_LimSwitch_OUT_OverCurrentAlarm == 1 ) || (T2_M3_LimSwitch_OUT_OverCurrentAlarm == 1 ) || (T3_M1_LimSwitch_OUT_OverCurrentAlarm == 1 ) || (T3_M2_LimSwitch_OUT_OverCurrentAlarm == 1 ) || (T3_M3_LimSwitch_OUT_OverCurrentAlarm == 1 ) || (T4_M1_LimSwitch_OUT_OverCurrentAlarm == 1 ) || (T4_M2_LimSwitch_OUT_OverCurrentAlarm == 1 ) || (T4_M3_LimSwitch_OUT_OverCurrentAlarm == 1 ) || (T5_M1_LimSwitch_OUT_OverCurrentAlarm == 1 ) || (T5_M2_LimSwitch_OUT_OverCurrentAlarm == 1 ) || (T5_M3_LimSwitch_OUT_OverCurrentAlarm == 1 ) ) {
     printf("[SEQ TUNERS] Error in limit switches: over current problem in one or more lines \n");
-    printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
+    printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
 
   /* Error in limit switches: Short Circuit */
   when ( (T1_M1_LimSwitch_IN_ShortCircAlarm == 1 ) || (T1_M2_LimSwitch_IN_ShortCircAlarm == 1 ) || (T1_M3_LimSwitch_IN_ShortCircAlarm == 1 ) || (T2_M1_LimSwitch_IN_ShortCircAlarm == 1 ) || (T2_M2_LimSwitch_IN_ShortCircAlarm == 1 ) || (T2_M3_LimSwitch_IN_ShortCircAlarm == 1 ) || (T3_M1_LimSwitch_IN_ShortCircAlarm == 1 ) || (T3_M2_LimSwitch_IN_ShortCircAlarm == 1 ) || (T3_M3_LimSwitch_IN_ShortCircAlarm == 1 ) || (T4_M1_LimSwitch_IN_ShortCircAlarm == 1 ) || (T4_M2_LimSwitch_IN_ShortCircAlarm == 1 ) || (T4_M3_LimSwitch_IN_ShortCircAlarm == 1 ) || (T5_M1_LimSwitch_IN_ShortCircAlarm == 1 ) || (T5_M2_LimSwitch_IN_ShortCircAlarm == 1 ) || (T5_M3_LimSwitch_IN_ShortCircAlarm == 1 ) || (T1_M1_LimSwitch_OUT_ShortCircAlarm == 1 ) || (T1_M2_LimSwitch_OUT_ShortCircAlarm == 1 ) || (T1_M3_LimSwitch_OUT_ShortCircAlarm == 1 ) || (T2_M1_LimSwitch_OUT_ShortCircAlarm == 1 ) || (T2_M2_LimSwitch_OUT_ShortCircAlarm == 1 ) || (T2_M3_LimSwitch_OUT_ShortCircAlarm == 1 ) || (T3_M1_LimSwitch_OUT_ShortCircAlarm == 1 ) || (T3_M2_LimSwitch_OUT_ShortCircAlarm == 1 ) || (T3_M3_LimSwitch_OUT_ShortCircAlarm == 1 ) || (T4_M1_LimSwitch_OUT_ShortCircAlarm == 1 ) || (T4_M2_LimSwitch_OUT_ShortCircAlarm == 1 ) || (T4_M3_LimSwitch_OUT_ShortCircAlarm == 1 ) || (T5_M1_LimSwitch_OUT_ShortCircAlarm == 1 ) || (T5_M2_LimSwitch_OUT_ShortCircAlarm == 1 ) || (T5_M3_LimSwitch_OUT_ShortCircAlarm == 1 ) ) {
     printf("[SEQ TUNERS] Error in limit switches: short circuit problem in one or more lines \n");
-    printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
+    printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
 
@@ -2142,7 +2242,7 @@ state start_up {
   ( (T5_M1_LimSwitch_IN_NC_LimStat == 0 ) && (T5_M1_LimSwitch_IN_NO_LimStat == 0 ) ) || ( (T5_M2_LimSwitch_IN_NC_LimStat == 0 ) && (T5_M2_LimSwitch_IN_NO_LimStat == 0 ) ) || ( (T5_M3_LimSwitch_IN_NC_LimStat == 0 ) && (T5_M3_LimSwitch_IN_NO_LimStat == 0 ) ) || ( (T1_M1_LimSwitch_IN_NC_LimStat == 1 ) && (T1_M1_LimSwitch_IN_NO_LimStat == 1 ) ) || ( (T1_M2_LimSwitch_IN_NC_LimStat == 1 ) && (T1_M2_LimSwitch_IN_NO_LimStat == 1 ) ) || ( (T1_M3_LimSwitch_IN_NC_LimStat == 1 ) && (T1_M3_LimSwitch_IN_NO_LimStat == 1 ) ) || ( (T2_M1_LimSwitch_IN_NC_LimStat == 1 ) && (T2_M1_LimSwitch_IN_NO_LimStat == 1 ) ) || ( (T2_M2_LimSwitch_IN_NC_LimStat == 1 ) && (T2_M2_LimSwitch_IN_NO_LimStat == 1 ) ) || ( (T2_M3_LimSwitch_IN_NC_LimStat == 1 ) && (T2_M3_LimSwitch_IN_NO_LimStat == 1 ) ) || ( (T3_M1_LimSwitch_IN_NC_LimStat == 1 ) && (T3_M1_LimSwitch_IN_NO_LimStat == 1 ) ) || ( (T3_M2_LimSwitch_IN_NC_LimStat == 1 ) && (T3_M2_LimSwitch_IN_NO_LimStat == 1 ) ) || ( (T3_M3_LimSwitch_IN_NC_LimStat == 1 ) && (T3_M3_LimSwitch_IN_NO_LimStat == 1 ) ) || ( (T4_M1_LimSwitch_IN_NC_LimStat == 1 ) && (T4_M1_LimSwitch_IN_NO_LimStat == 1 ) ) || ( (T4_M2_LimSwitch_IN_NC_LimStat == 1 ) && (T4_M2_LimSwitch_IN_NO_LimStat == 1 ) ) || ( (T4_M3_LimSwitch_IN_NC_LimStat == 1 ) && (T4_M3_LimSwitch_IN_NO_LimStat == 1 ) ) ||
   ( (T5_M1_LimSwitch_IN_NC_LimStat == 1 ) && (T5_M1_LimSwitch_IN_NO_LimStat == 1 ) ) || ( (T5_M2_LimSwitch_IN_NC_LimStat == 1 ) && (T5_M2_LimSwitch_IN_NO_LimStat == 1 ) ) || ( (T5_M3_LimSwitch_IN_NC_LimStat == 1 ) && (T5_M3_LimSwitch_IN_NO_LimStat == 1 ) )  ) {
     printf("[SEQ TUNERS] Error in limit switches: one or more lines not proper connected (NC or NO) \n");
-    printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
+    printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
 
@@ -2156,65 +2256,186 @@ state start_up {
   /* Error in linear encoders: error alarm */
   when ( (T1_M1_LinEnc_ErrorAlrm == 1) || (T1_M2_LinEnc_ErrorAlrm == 1) || (T1_M3_LinEnc_ErrorAlrm == 1) || (T2_M1_LinEnc_ErrorAlrm == 1) || (T2_M2_LinEnc_ErrorAlrm == 1) || (T2_M3_LinEnc_ErrorAlrm == 1) || (T3_M1_LinEnc_ErrorAlrm == 1) || (T3_M2_LinEnc_ErrorAlrm == 1) || (T3_M3_LinEnc_ErrorAlrm == 1) || (T4_M1_LinEnc_ErrorAlrm == 1) || (T4_M2_LinEnc_ErrorAlrm == 1) || (T4_M3_LinEnc_ErrorAlrm == 1) || (T5_M1_LinEnc_ErrorAlrm == 1) || (T5_M2_LinEnc_ErrorAlrm == 1) || (T5_M3_LinEnc_ErrorAlrm == 1) ) {
     printf("[SEQ TUNERS] Error in linear encoders: one or more modules are in error \n");
-    printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
+    printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
 
   /* Error in linear encoders: low limit alarm */
   when ( (T1_M1_LinEnc_LLim-Alrm == 1) || (T1_M2_LinEnc_LLim-Alrm == 1) || (T1_M3_LinEnc_LLim-Alrm == 1) || (T2_M1_LinEnc_LLim-Alrm == 1) || (T2_M2_LinEnc_LLim-Alrm == 1) || (T2_M3_LinEnc_LLim-Alrm == 1) || (T3_M1_LinEnc_LLim-Alrm == 1) || (T3_M2_LinEnc_LLim-Alrm == 1) || (T3_M3_LinEnc_LLim-Alrm == 1) || (T4_M1_LinEnc_LLim-Alrm == 1) || (T4_M2_LinEnc_LLim-Alrm == 1) || (T4_M3_LinEnc_LLim-Alrm == 1) || (T5_M1_LinEnc_LLim-Alrm == 1) || (T5_M2_LinEnc_LLim-Alrm == 1) || (T5_M3_LinEnc_LLim-Alrm == 1) ) {
     printf("[SEQ TUNERS] Error in linear encoders: one or more lines are below HW low limit \n");
-    printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
+    printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
 
   /* Error in linear encoders: high limit alarm */
   when ( (T1_M1_LinEnc_HLim-Alrm == 1) || (T1_M2_LinEnc_HLim-Alrm == 1) || (T1_M3_LinEnc_HLim-Alrm == 1) || (T2_M1_LinEnc_HLim-Alrm == 1) || (T2_M2_LinEnc_HLim-Alrm == 1) || (T2_M3_LinEnc_HLim-Alrm == 1) || (T3_M1_LinEnc_HLim-Alrm == 1) || (T3_M2_LinEnc_HLim-Alrm == 1) || (T3_M3_LinEnc_HLim-Alrm == 1) || (T4_M1_LinEnc_HLim-Alrm == 1) || (T4_M2_LinEnc_HLim-Alrm == 1) || (T4_M3_LinEnc_HLim-Alrm == 1) || (T5_M1_LinEnc_HLim-Alrm == 1) || (T5_M2_LinEnc_HLim-Alrm == 1) || (T5_M3_LinEnc_HLim-Alrm == 1) ) {
     printf("[SEQ TUNERS] Error in linear encoders: one or more lines are above HW high limit \n");
-    printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
+    printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
 
   /* Error in motors */
   when ( (T1_M1_Axis_Error == 1) || (T1_M2_Axis_Error == 1) || (T1_M3_Axis_Error == 1) || (T2_M1_Axis_Error == 1) || (T2_M2_Axis_Error == 1) || (T2_M3_Axis_Error == 1) || (T3_M1_Axis_Error == 1) || (T3_M2_Axis_Error == 1) || (T3_M3_Axis_Error == 1) || (T4_M1_Axis_Error == 1) || (T4_M2_Axis_Error == 1) || (T4_M3_Axis_Error == 1) || (T5_M1_Axis_Error == 1) || (T5_M2_Axis_Error == 1) || (T5_M3_Axis_Error == 1) ) {
     printf("[SEQ TUNERS] Error in tuners axes: one or more motors are in error \n");
-    printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
+    printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
 
   /* Error in motor driver: module not online */
   when ( (T1_M1_Driver_Online == 0) || (T1_M2_Driver_Online == 0) || (T1_M3_Driver_Online == 0) || (T2_M1_Driver_Online == 0) || (T2_M2_Driver_Online == 0) || (T2_M3_Driver_Online == 0) || (T3_M1_Driver_Online == 0) || (T3_M2_Driver_Online == 0) || (T3_M3_Driver_Online == 0) || (T4_M1_Driver_Online == 0) || (T4_M2_Driver_Online == 0) || (T4_M3_Driver_Online == 0) || (T5_M1_Driver_Online == 0) || (T5_M2_Driver_Online == 0) || (T5_M3_Driver_Online == 0) ) {
     printf("[SEQ TUNERS] Error in motor drives: one or more drivers are not online \n");
-    printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
+    printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
 
   /* Error in motor driver: module warning alarm */
   when ( (T1_M1_Driver_WarningAlrm == 1) || (T1_M2_Driver_WarningAlrm == 1) || (T1_M3_Driver_WarningAlrm == 1) || (T2_M1_Driver_WarningAlrm == 1) || (T2_M2_Driver_WarningAlrm == 1) || (T2_M3_Driver_WarningAlrm == 1) || (T3_M1_Driver_WarningAlrm == 1) || (T3_M2_Driver_WarningAlrm == 1) || (T3_M3_Driver_WarningAlrm == 1) || (T4_M1_Driver_WarningAlrm == 1) || (T4_M2_Driver_WarningAlrm == 1) || (T4_M3_Driver_WarningAlrm == 1) || (T5_M1_Driver_WarningAlrm == 1) || (T5_M2_Driver_WarningAlrm == 1) || (T5_M3_Driver_WarningAlrm == 1) ) {
     printf("[SEQ TUNERS] Error in motor drives: one or more drivers are in warning status \n");
-    printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
+    printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
 
   /* Error in motor driver: module error alarm */
   when ( (T1_M1_Driver_ErrorAlrm == 1) || (T1_M2_Driver_ErrorAlrm == 1) || (T1_M3_Driver_ErrorAlrm == 1) || (T2_M1_Driver_ErrorAlrm == 1) || (T2_M2_Driver_ErrorAlrm == 1) || (T2_M3_Driver_ErrorAlrm == 1) || (T3_M1_Driver_ErrorAlrm == 1) || (T3_M2_Driver_ErrorAlrm == 1) || (T3_M3_Driver_ErrorAlrm == 1) || (T4_M1_Driver_ErrorAlrm == 1) || (T4_M2_Driver_ErrorAlrm == 1) || (T4_M3_Driver_ErrorAlrm == 1) || (T5_M1_Driver_ErrorAlrm == 1) || (T5_M2_Driver_ErrorAlrm == 1) || (T5_M3_Driver_ErrorAlrm == 1) ) {
     printf("[SEQ TUNERS] Error in motor drives: one or more drivers are in error status \n");
-    printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
+    printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
 
   /* Error in motor driver: module stall alarm */
   when ( (T1_M1_Driver_StallAlrm == 1) || (T1_M2_Driver_StallAlrm == 1) || (T1_M3_Driver_StallAlrm == 1) || (T2_M1_Driver_StallAlrm == 1) || (T2_M2_Driver_StallAlrm == 1) || (T2_M3_Driver_StallAlrm == 1) || (T3_M1_Driver_StallAlrm == 1) || (T3_M2_Driver_StallAlrm == 1) || (T3_M3_Driver_StallAlrm == 1) || (T4_M1_Driver_StallAlrm == 1) || (T4_M2_Driver_StallAlrm == 1) || (T4_M3_Driver_StallAlrm == 1) || (T5_M1_Driver_StallAlrm == 1) || (T5_M2_Driver_StallAlrm == 1) || (T5_M3_Driver_StallAlrm == 1) ) {
     printf("[SEQ TUNERS] Error in motor drives: one or more drivers are in stall status \n");
-    printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
+    printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
 
   /* Error in motor driver: module synchronization alarm */
   when ( (T1_M1_Driver_SyncAlrm == 1) || (T1_M2_Driver_SyncAlrm == 1) || (T1_M3_Driver_SyncAlrm == 1) || (T2_M1_Driver_SyncAlrm == 1) || (T2_M2_Driver_SyncAlrm == 1) || (T2_M3_Driver_SyncAlrm == 1) || (T3_M1_Driver_SyncAlrm == 1) || (T3_M2_Driver_SyncAlrm == 1) || (T3_M3_Driver_SyncAlrm == 1) || (T4_M1_Driver_SyncAlrm == 1) || (T4_M2_Driver_SyncAlrm == 1) || (T4_M3_Driver_SyncAlrm == 1) || (T5_M1_Driver_SyncAlrm == 1) || (T5_M2_Driver_SyncAlrm == 1) || (T5_M3_Driver_SyncAlrm == 1) ) {
     printf("[SEQ TUNERS] Error in motor drives: one or more drivers are in synchronization error status \n");
-    printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
+    printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
+
+  /* Error in motor axis: devices have MISS error with number of times <= Max number accepted*/
+  when ( ( (T1_M1_Axis_Missing=1) || (T1_M2_Axis_Missing=1) || (T1_M3_Axis_Missing=1) || (T2_M1_Axis_Missing=1) || (T2_M2_Axis_Missing=1) || (T2_M3_Axis_Missing=1) || (T3_M1_Axis_Missing=1) || (T3_M2_Axis_Missing=1) || (T3_M3_Axis_Missing=1) || (T4_M1_Axis_Missing=1) || (T4_M2_Axis_Missing=1) || (T4_M3_Axis_Missing=1) || (T5_M1_Axis_Missing=1) || (T5_M2_Axis_Missing=1) || (T5_M3_Axis_Missing=1) ) && (Error_Missing_Counter>Max_Missing_Counter) ) {
+    printf("[SEQ TUNERS] Error in motor drives: one or more drivers are in missing error status \n");
+    printf("[SEQ TUNERS] System not ok for many times: go to FAILURE \n");
+
+  } state failure
+
+  /* Error in motor axis: devices have MISS error with number of times <= Max number accepted*/
+  when ( ( (T1_M1_Axis_Missing=1) || (T1_M2_Axis_Missing=1) || (T1_M3_Axis_Missing=1) || (T2_M1_Axis_Missing=1) || (T2_M2_Axis_Missing=1) || (T2_M3_Axis_Missing=1) || (T3_M1_Axis_Missing=1) || (T3_M2_Axis_Missing=1) || (T3_M3_Axis_Missing=1) || (T4_M1_Axis_Missing=1) || (T4_M2_Axis_Missing=1) || (T4_M3_Axis_Missing=1) || (T5_M1_Axis_Missing=1) || (T5_M2_Axis_Missing=1) || (T5_M3_Axis_Missing=1) ) && (Error_Missing_Counter<=Max_Missing_Counter) ) {
+    printf("[SEQ TUNERS] Error in motor drives: one or more drivers are in missing error status \n");
+    printf("[SEQ TUNERS] System not ok: Try to reset axis and restart procedure \n");
+    /* Reset Error Motors */
+    printf("[SEQ TUNERS] - Reset Errors \n");
+    T1_M1_Axis_ErrorReset=1;
+    pvPut(T1_M1_Axis_ErrorReset);
+    T1_M2_Axis_ErrorReset=1;
+    pvPut(T1_M2_Axis_ErrorReset);
+    T1_M3_Axis_ErrorReset=1;
+    pvPut(T1_M3_Axis_ErrorReset);
+    T2_M1_Axis_ErrorReset=1;
+    pvPut(T2_M1_Axis_ErrorReset);
+    T2_M2_Axis_ErrorReset=1;
+    pvPut(T2_M2_Axis_ErrorReset);
+    T2_M3_Axis_ErrorReset=1;
+    pvPut(T2_M3_Axis_ErrorReset);
+    T3_M1_Axis_ErrorReset=1;
+    pvPut(T3_M1_Axis_ErrorReset);
+    T3_M2_Axis_ErrorReset=1;
+    pvPut(T3_M2_Axis_ErrorReset);
+    T3_M3_Axis_ErrorReset=1;
+    pvPut(T3_M3_Axis_ErrorReset);
+    T4_M1_Axis_ErrorReset=1;
+    pvPut(T4_M1_Axis_ErrorReset);
+    T4_M2_Axis_ErrorReset=1;
+    pvPut(T4_M2_Axis_ErrorReset);
+    T4_M3_Axis_ErrorReset=1;
+    pvPut(T4_M3_Axis_ErrorReset);
+    T5_M1_Axis_ErrorReset=1;
+    pvPut(T5_M1_Axis_ErrorReset);
+    T5_M2_Axis_ErrorReset=1;
+    pvPut(T5_M2_Axis_ErrorReset);
+    T5_M3_Axis_ErrorReset=1;
+    pvPut(T5_M3_Axis_ErrorReset);
+    /* Stop Motors */
+    printf("[SEQ TUNERS] - Stop Motors \n");
+    T1_M1_Axis_Stop=1;
+    pvPut(T1_M1_Axis_Stop);
+    T1_M2_Axis_Stop=1;
+    pvPut(T1_M2_Axis_Stop);
+    T1_M3_Axis_Stop=1;
+    pvPut(T1_M3_Axis_Stop);
+    T2_M1_Axis_Stop=1;
+    pvPut(T2_M1_Axis_Stop);
+    T2_M2_Axis_Stop=1;
+    pvPut(T2_M2_Axis_Stop);
+    T2_M3_Axis_Stop=1;
+    pvPut(T2_M3_Axis_Stop);
+    T3_M1_Axis_Stop=1;
+    pvPut(T3_M1_Axis_Stop);
+    T3_M2_Axis_Stop=1;
+    pvPut(T3_M2_Axis_Stop);
+    T3_M3_Axis_Stop=1;
+    pvPut(T3_M3_Axis_Stop);
+    T4_M1_Axis_Stop=1;
+    pvPut(T4_M1_Axis_Stop);
+    T4_M2_Axis_Stop=1;
+    pvPut(T4_M2_Axis_Stop);
+    T4_M3_Axis_Stop=1;
+    pvPut(T4_M3_Axis_Stop);
+    T5_M1_Axis_Stop=1;
+    pvPut(T5_M1_Axis_Stop);
+    T5_M2_Axis_Stop=1;
+    pvPut(T5_M2_Axis_Stop);
+    T5_M3_Axis_Stop=1;
+    pvPut(T5_M3_Axis_Stop);
+    /* Wait 2 seconds before next operation */
+    delay(2);
+    /* Enable Axis */
+    printf("[SEQ TUNERS] - Re-enable Motors \n");
+    T1_M1_Axis_Enable=1;
+    pvPut(T1_M1_Axis_Enable);
+    T1_M2_Axis_Enable=1;
+    pvPut(T1_M2_Axis_Enable);
+    T1_M3_Axis_Enable=1;
+    pvPut(T1_M3_Axis_Enable);
+    T2_M1_Axis_Enable=1;
+    pvPut(T2_M1_Axis_Enable);
+    T2_M2_Axis_Enable=1;
+    pvPut(T2_M2_Axis_Enable);
+    T2_M3_Axis_Enable=1;
+    pvPut(T2_M3_Axis_Enable);
+    T3_M1_Axis_Enable=1;
+    pvPut(T3_M1_Axis_Enable);
+    T3_M2_Axis_Enable=1;
+    pvPut(T3_M2_Axis_Enable);
+    T3_M3_Axis_Enable=1;
+    pvPut(T3_M3_Axis_Enable);
+    T4_M1_Axis_Enable=1;
+    pvPut(T4_M1_Axis_Enable);
+    T4_M2_Axis_Enable=1;
+    pvPut(T4_M2_Axis_Enable);
+    T4_M3_Axis_Enable=1;
+    pvPut(T4_M3_Axis_Enable);
+    T5_M1_Axis_Enable=1;
+    pvPut(T5_M1_Axis_Enable);
+    T5_M2_Axis_Enable=1;
+    pvPut(T5_M2_Axis_Enable);
+    T5_M3_Axis_Enable=1;
+    pvPut(T5_M3_Axis_Enable);
+
+    ++Error_Missing_Counter;
+  } state start_up
+
+
+  /* Error in motor position: devices are not in home position */
+  when( ( (T1_M1_LinEnc_Position - T1_M1_Axis_Position) > Lin_Enc_Position_Res ) || ( (T1_M2_LinEnc_Position - T1_M2_Axis_Position) > Lin_Enc_Position_Res ) || ( (T1_M3_LinEnc_Position - T1_M3_Axis_Position) > Lin_Enc_Position_Res ) || (T2_M1_LinEnc_Position - T2_M1_Axis_Position) > Lin_Enc_Position_Res ) || ( (T2_M2_LinEnc_Position - T2_M2_Axis_Position) > Lin_Enc_Position_Res ) || ( (T2_M3_LinEnc_Position - T2_M3_Axis_Position) > Lin_Enc_Position_Res ) || (T3_M1_LinEnc_Position - T3_M1_Axis_Position) > Lin_Enc_Position_Res ) || ( (T3_M2_LinEnc_Position - T3_M2_Axis_Position) > Lin_Enc_Position_Res ) || ( (T3_M3_LinEnc_Position - T3_M3_Axis_Position) > Lin_Enc_Position_Res ) || (T4_M1_LinEnc_Position - T4_M1_Axis_Position) > Lin_Enc_Position_Res ) || ( (T4_M2_LinEnc_Position - T4_M2_Axis_Position) > Lin_Enc_Position_Res ) || ( (T4_M3_LinEnc_Position - T4_M3_Axis_Position) > Lin_Enc_Position_Res ) || (T5_M1_LinEnc_Position - T5_M1_Axis_Position) > Lin_Enc_Position_Res ) || ( (T5_M2_LinEnc_Position - T5_M2_Axis_Position) > Lin_Enc_Position_Res ) || ( (T5_M3_LinEnc_Position - T5_M3_Axis_Position) > Lin_Enc_Position_Res ) ) {
+    printf("[SEQ TUNERS] Error in motor axis: one or more axis are not in home position \n");
+    printf("[SEQ TUNERS] System not ok: retry to set home position\n");
+
+  } state start_up
 
 
   /* no error in any line */
@@ -2225,6 +2446,42 @@ state start_up {
   } state idle
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* state IDLE   	*/
@@ -2411,6 +2668,8 @@ state maintenance {
 			StateMachineCode=60;
 			pvPut(StateMachineCode);
 	}
+
+  /* ADD reset Error_Missing_Counter */ 
 
 }
 
