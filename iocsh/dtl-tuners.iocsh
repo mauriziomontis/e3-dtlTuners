@@ -550,10 +550,10 @@ ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitLinearEncConfig.cmd", "SECTION_NAME=DTL
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitLinearEncConfig.cmd", "SECTION_NAME=DTL-050, DEVICE_POS=3"
 
 
-## SQL State Machine
+## SQL State Machines
 ##
-${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitStateMachine.cmd", "SECTION_NAME=DTL-010"
-${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitStateMachine.cmd", "SECTION_NAME=DTL-020"
-${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitStateMachine.cmd", "SECTION_NAME=DTL-030"
-${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitStateMachine.cmd", "SECTION_NAME=DTL-040"
-${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitStateMachine.cmd", "SECTION_NAME=DTL-050"
+# Tuners
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunersStateMachine.cmd"
+
+# Arc Detection
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitArcDetectionStateMachine.cmd"
