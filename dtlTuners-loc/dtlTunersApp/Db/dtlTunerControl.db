@@ -15,7 +15,7 @@ record(mbbo, "DTL:MC-MCU:AutoCmd") {
 }
 
 record(bo, "DTL:MC-MCU:AutoCmd-RB") {
-	field(DESC, "Steerer System automatic control readback")
+	field(DESC, "Tuner System automatic control readback")
 	field(PINI, "YES")
 	field(VAL, 0)
 	field(ZNAM, "MANUAL")
@@ -23,7 +23,7 @@ record(bo, "DTL:MC-MCU:AutoCmd-RB") {
 }
 
 record(bo, "DTL:MC-MCU:OpRun") {
-	field(DESC, "Steerer Sys start operations")
+	field(DESC, "Tuner Sys start operations")
 	field(PINI, "YES")
 	field(VAL, 0)
 	field(ZNAM, "NOT START")
@@ -31,27 +31,9 @@ record(bo, "DTL:MC-MCU:OpRun") {
 }
 
 record(bo, "DTL:MC-MCU:OpStop") {
-	field(DESC, "Steerer Sys stop operations")
+	field(DESC, "Tuner Sys stop operations")
 	field(PINI, "YES")
 	field(VAL, 0)
 	field(ZNAM, "NOT STOP")
 	field(ONAM, "STOP")
 }
-
-
-# -- Backup --
-# record(bo, "DTL:EMR-SM:EnCmd") {
-# 	field(DESC, "Tuner System enable control ")
-# 	field(PINI, "YES")
-# 	field(VAL, 1)
-# 	field(ZNAM, "DISABLE")
-# 	field(ONAM, "ENABLE")
-# }
-#
-# record(bi, "DTL:MC-MCU:OkStat") {
-# 	field(DESC, "Tuner System Ok Status")
-# 	field(PINI, "YES")
-# 	field(VAL, 0)
-# 	field(ZNAM, "NOT OK")
-# 	field(ONAM, "OK")
-# }

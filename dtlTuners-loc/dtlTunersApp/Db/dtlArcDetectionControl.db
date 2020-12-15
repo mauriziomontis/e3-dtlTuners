@@ -1,0 +1,39 @@
+# Control Records for Arc Detection System
+# set of records required to control DTL arc detection system in different configuartions [man|auto]
+#
+# developed by Maurizio Montis | INFN-LNL
+
+
+record(mbbo, "DTL:RFS-AD:AutoCmd") {
+	field(DESC, "ArcDec Sys automatic control ")
+	field(OMSL, "supervisory")
+	field(PINI, "YES")
+	field(VAL, 0)
+	field(ZRST, "MANUAL")
+	field(ONST, "AUTO")
+	field(TWST, "TEST")
+}
+
+record(bo, "DTL:RFS-AD:AutoCmd-RB") {
+	field(DESC, "ArcDec Sys automatic control readback")
+	field(PINI, "YES")
+	field(VAL, 0)
+	field(ZNAM, "MANUAL")
+	field(ONAM, "AUTO")
+}
+
+record(bo, "DTL:RFS-AD:OpRun") {
+	field(DESC, "ArcDec Sys start operations")
+	field(PINI, "YES")
+	field(VAL, 0)
+	field(ZNAM, "NOT START")
+	field(ONAM, "START")
+}
+
+record(bo, "DTL:RFS-AD:TestDone") {
+	field(DESC, "ARcDet Sys test proc completed")
+	field(PINI, "YES")
+	field(VAL, 0)
+	field(ZNAM, "NOT OK")
+	field(ONAM, "OK")
+}

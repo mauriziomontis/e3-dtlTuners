@@ -4,7 +4,7 @@
 # developed by Maurizio Montis | INFN-LNL
 
 
-record(calcout, "$(PREFIX):RFS:OkStat-RB") {
+record(calcout, "$(PREFIX):RFS-AD:OkStat-RB") {
 	field(DESC, "$(PREFIX) arc system ok state ")
 	field(SCAN, ".1 second")
 	field(PINI, "YES")
@@ -14,4 +14,3 @@ record(calcout, "$(PREFIX):RFS:OkStat-RB") {
 	field(CALC, "A>$(LIMIT)?1:0")
 	field(OUT, "$(OUTPUT)")
 }
-

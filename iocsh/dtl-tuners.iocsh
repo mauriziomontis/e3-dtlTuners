@@ -450,6 +450,7 @@ ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}aliasArcDetectorTest.cmd", "SLAVE_ID=71, HW_DES
 
 # General controls
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbLoadDatabase.cmd", "DB_NAME=dtlTunerControl.db"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbLoadDatabase.cmd", "DB_NAME=dtlArcDetectionControl.db"
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbLoadDatabase.cmd", "DB_NAME=dtlTunerFreqError.db"
 
 
@@ -513,7 +514,7 @@ ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitEnableAxis.cmd", "SECTION_NAME=DTL-050,
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitEnableAxis.cmd", "SECTION_NAME=DTL-050, DEVICE_POS=3, ENABLE_COND=0"
 
 
-# Arc Detector Ok Status
+# Arc Detection Ok Status
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbLoadArcOkState.cmd", "SECTION_NAME=DTL-010, INPUT=iocuser:calc1, OUTPUT=, MAX_ARC_NUM=1"
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbLoadArcOkState.cmd", "SECTION_NAME=DTL-020, INPUT=iocuser:calc1, OUTPUT=, MAX_ARC_NUM=1"
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbLoadArcOkState.cmd", "SECTION_NAME=DTL-030, INPUT=iocuser:calc1, OUTPUT=, MAX_ARC_NUM=1"
@@ -526,6 +527,14 @@ ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadTunerResetMaintenance.cmd"
 
 # Tuner System - State Machine code
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadTunerStateMachineCode.cmd"
+
+
+# Arc Detection System - Maintenance Reset
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadArcDetectionResetMaintenance.cmd"
+
+# Arc Detection System - State Machine code
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadArcDetectionStateMachineCode.cmd"
+
 
 
 ##############################################################################

@@ -1,13 +1,13 @@
-record(bo, "DTL:MC-MCU:MaintenanceRst") {
-	field(DESC, "DTL Tuners Maintenance Reset")
+record(bo, "DTL:RFS-AD:MaintenanceRst") {
+	field(DESC, "DTL ArcDet Maintenance Reset")
 	field(PINI, "YES")
 	field(VAL, "0")
 	field(ONAM, "ENABLED")
 	field(ZNAM, "DISABLED")
 }
 
-record(bo, "DTL:MC-MCU:FaultRst") {
-	field(DESC, "DTL Tuners Failure Reset")
+record(bo, "DTL:RFS-AD:FaultRst") {
+	field(DESC, "DTL ArcDet Failure Reset")
 	field(PINI, "YES")
 	field(VAL, "0")
 	field(ONAM, "ENABLED")
