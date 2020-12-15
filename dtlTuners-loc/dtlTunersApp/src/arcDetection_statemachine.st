@@ -1252,6 +1252,7 @@ state failure {
 
 	} state maintenance
 
+}
 
 /* state MAINTENANCE	*/
 state maintenance {
@@ -1269,6 +1270,7 @@ state maintenance {
 
 	} state initialization
 
+}
 
 /* end statemachine */
 }
