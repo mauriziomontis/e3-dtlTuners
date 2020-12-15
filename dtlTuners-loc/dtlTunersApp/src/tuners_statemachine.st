@@ -104,36 +104,36 @@ monitor T5_OkStat;
 
 /* Ok Status - 24V */
 int T1_24V_OkStat;
-assing T1_24V_OkStat to "DTL-010:MC-MCU:GS24VPS_OKStat";
+assign T1_24V_OkStat to "DTL-010:MC-MCU:GS24VPS_OKStat";
 monitor T1_24V_OkStat;
 int T2_24V_OkStat;
-assing T2_24V_OkStat to "DTL-020:MC-MCU:GS24VPS_OKStat";
+assign T2_24V_OkStat to "DTL-020:MC-MCU:GS24VPS_OKStat";
 monitor T2_24V_OkStat;
 int T3_24V_OkStat;
-assing T3_24V_OkStat to "DTL-030:MC-MCU:GS24VPS_OKStat";
+assign T3_24V_OkStat to "DTL-030:MC-MCU:GS24VPS_OKStat";
 monitor T3_24V_OkStat;
 int T4_24V_OkStat;
-assing T4_24V_OkStat to "DTL-040:MC-MCU:GS24VPS_OKStat";
+assign T4_24V_OkStat to "DTL-040:MC-MCU:GS24VPS_OKStat";
 monitor T4_24V_OkStat;
 int T5_24V_OkStat;
-assing T5_24V_OkStat to "DTL-050:MC-MCU:GS24VPS_OKStat";
+assign T5_24V_OkStat to "DTL-050:MC-MCU:GS24VPS_OKStat";
 monitor T5_24V_OkStat;
 
 /* Ok Status - 48V */
 int T1_48V_OkStat;
-assing T1_48V_OkStat to "DTL-010:MC-MCU:48VPS_OKStat";
+assign T1_48V_OkStat to "DTL-010:MC-MCU:48VPS_OKStat";
 monitor T1_48V_OkStat;
 int T2_48V_OkStat;
-assing T2_48V_OkStat to "DTL-020:MC-MCU:48VPS_OKStat";
+assign T2_48V_OkStat to "DTL-020:MC-MCU:48VPS_OKStat";
 monitor T2_48V_OkStat;
 int T3_48V_OkStat;
-assing T3_48V_OkStat to "DTL-030:MC-MCU:48VPS_OKStat";
+assign T3_48V_OkStat to "DTL-030:MC-MCU:48VPS_OKStat";
 monitor T3_48V_OkStat;
 int T4_48V_OkStat;
-assing T4_48V_OkStat to "DTL-040:MC-MCU:48VPS_OKStat";
+assign T4_48V_OkStat to "DTL-040:MC-MCU:48VPS_OKStat";
 monitor T4_48V_OkStat;
 int T5_48V_OkStat;
-assing T5_48V_OkStat to "DTL-050:MC-MCU:48VPS_OKStat";
+assign T5_48V_OkStat to "DTL-050:MC-MCU:48VPS_OKStat";
 monitor T5_48V_OkStat;
 
 /* Switches */
