@@ -2908,8 +2908,9 @@ state maintenance {
     /* reset Error_Missing_Counter */
     Error_Missing_Counter=0;
 
-} state initialization
+  } state initialization
 
+}
 
 /* end statemachine */
 }
