@@ -2070,36 +2070,36 @@ ss tuners_statemachine {
 			pvPut(T5_M3_Axis_ErrorReset);
 
       /* Set Correct Motor Direction */
-      T1_M1_Axis__Direction=0;
-			pvPut(T1_M1_Axis__Direction);
-			T1_M2_Axis__Direction=0;
-			pvPut(T1_M2_Axis__Direction);
-			T1_M3_Axis__Direction=0;
-			pvPut(T1_M3_Axis__Direction);
-			T2_M1_Axis__Direction=0;
-			pvPut(T2_M1_Axis__Direction);
-			T2_M2_Axis__Direction=0;
-			pvPut(T2_M2_Axis__Direction);
-			T2_M3_Axis__Direction=0;
-			pvPut(T2_M3_Axis__Direction);
-			T3_M1_Axis__Direction=0;
-			pvPut(T3_M1_Axis__Direction);
-			T3_M2_Axis__Direction=0;
-			pvPut(T3_M2_Axis__Direction);
-			T3_M3_Axis__Direction=0;
-			pvPut(T3_M3_Axis__Direction);
-			T4_M1_Axis__Direction=0;
-			pvPut(T4_M1_Axis__Direction);
-			T4_M2_Axis__Direction=0;
-			pvPut(T4_M2_Axis__Direction);
-			T4_M3_Axis__Direction=0;
-			pvPut(T4_M3_Axis__Direction);
-			T5_M1_Axis__Direction=0;
-			pvPut(T5_M1_Axis__Direction);
-			T5_M2_Axis__Direction=0;
-			pvPut(T5_M2_Axis__Direction);
-			T5_M3_Axis__Direction=0;
-			pvPut(T5_M3_Axis__Direction);
+      T1_M1_Axis_Direction=0;
+			pvPut(T1_M1_Axis_Direction);
+			T1_M2_Axis_Direction=0;
+			pvPut(T1_M2_Axis_Direction);
+			T1_M3_Axis_Direction=0;
+			pvPut(T1_M3_Axis_Direction);
+			T2_M1_Axis_Direction=0;
+			pvPut(T2_M1_Axis_Direction);
+			T2_M2_Axis_Direction=0;
+			pvPut(T2_M2_Axis_Direction);
+			T2_M3_Axis_Direction=0;
+			pvPut(T2_M3_Axis_Direction);
+			T3_M1_Axis_Direction=0;
+			pvPut(T3_M1_Axis_Direction);
+			T3_M2_Axis_Direction=0;
+			pvPut(T3_M2_Axis_Direction);
+			T3_M3_Axis_Direction=0;
+			pvPut(T3_M3_Axis_Direction);
+			T4_M1_Axis_Direction=0;
+			pvPut(T4_M1_Axis_Direction);
+			T4_M2_Axis_Direction=0;
+			pvPut(T4_M2_Axis_Direction);
+			T4_M3_Axis_Direction=0;
+			pvPut(T4_M3_Axis_Direction);
+			T5_M1_Axis_Direction=0;
+			pvPut(T5_M1_Axis_Direction);
+			T5_M2_Axis_Direction=0;
+			pvPut(T5_M2_Axis_Direction);
+			T5_M3_Axis_Direction=0;
+			pvPut(T5_M3_Axis_Direction);
 
 		} state self_check
 
@@ -2545,7 +2545,7 @@ state start_up {
     T5_M3_Axis_Stop=1;
     pvPut(T5_M3_Axis_Stop);
     /* Wait 2 seconds before next operation */
-    delay(2);
+    sleep(2);
     /* Enable Axis */
     printf("[SEQ TUNERS] - Re-enable Motors \n");
     T1_M1_Axis_Enable=1;
