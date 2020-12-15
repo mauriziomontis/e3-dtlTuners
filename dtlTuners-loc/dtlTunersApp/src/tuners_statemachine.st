@@ -2887,8 +2887,9 @@ state failure {
     printf("[SEQ TUNERS] Failure Stage reset by Operator. \n");
     printf("[SEQ TUNERS]  Reset conditions satisfied.\n");
 
-} state maintenance
+  } state maintenance
 
+}
 
 /* state MAINTENANCE	*/
 state maintenance {
