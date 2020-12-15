@@ -1095,96 +1095,96 @@ assign T5_M3_LinEnc_ErrorAlrm to "DTL-050:EMR-GT-003:Err-Alrm";
 monitor T5_M3_LinEnc_ErrorAlrm;
 
 /* Linear Encoders - Limit Alarm*/
-int T1_M1_LinEnc_LlimAlrm;
-assign T1_M1_LinEnc_LlimAlrm to "DTL-010:EMR-GT-001:LLim-Alrm";
-monitor T1_M1_LinEnc_LlimAlrm;
-int T1_M2_LinEnc_LlimAlrm;
-assign T1_M2_LinEnc_LlimAlrm to "DTL-010:EMR-GT-002:LLim-Alrm";
-monitor T1_M2_LinEnc_LlimAlrm;
-int T1_M3_LinEnc_LlimAlrm;
-assign T1_M3_LinEnc_LlimAlrm to "DTL-010:EMR-GT-003:LLim-Alrm";
-monitor T1_M3_LinEnc_LlimAlrm;
-int T2_M1_LinEnc_LlimAlrm;
-assign T2_M1_LinEnc_LlimAlrm to "DTL-020:EMR-GT-001:LLim-Alrm";
-monitor T2_M1_LinEnc_LlimAlrm;
-int T2_M2_LinEnc_LlimAlrm;
-assign T2_M2_LinEnc_LlimAlrm to "DTL-020:EMR-GT-002:LLim-Alrm";
-monitor T2_M2_LinEnc_LlimAlrm;
-int T2_M3_LinEnc_LlimAlrm;
-assign T2_M3_LinEnc_LlimAlrm to "DTL-020:EMR-GT-003:LLim-Alrm";
-monitor T2_M3_LinEnc_LlimAlrm;
-int T3_M1_LinEnc_LlimAlrm;
-assign T3_M1_LinEnc_LlimAlrm to "DTL-030:EMR-GT-001:LLim-Alrm";
-monitor T3_M1_LinEnc_LlimAlrm;
-int T3_M2_LinEnc_LlimAlrm;
-assign T3_M2_LinEnc_LlimAlrm to "DTL-030:EMR-GT-002:LLim-Alrm";
-monitor T3_M2_LinEnc_LlimAlrm;
-int T3_M3_LinEnc_LlimAlrm;
-assign T3_M3_LinEnc_LlimAlrm to "DTL-030:EMR-GT-003:LLim-Alrm";
-monitor T3_M3_LinEnc_LlimAlrm;
-int T4_M1_LinEnc_LlimAlrm;
-assign T4_M1_LinEnc_LlimAlrm to "DTL-040:EMR-GT-001:LLim-Alrm";
-monitor T4_M1_LinEnc_LlimAlrm;
-int T4_M2_LinEnc_LlimAlrm;
-assign T4_M2_LinEnc_LlimAlrm to "DTL-040:EMR-GT-002:LLim-Alrm";
-monitor T4_M2_LinEnc_LlimAlrm;
-int T4_M3_LinEnc_LlimAlrm;
-assign T4_M3_LinEnc_LlimAlrm to "DTL-040:EMR-GT-003:LLim-Alrm";
-monitor T4_M3_LinEnc_LlimAlrm;
-int T5_M1_LinEnc_LlimAlrm;
-assign T5_M1_LinEnc_LlimAlrm to "DTL-050:EMR-GT-001:LLim-Alrm";
-monitor T5_M1_LinEnc_LlimAlrm;
-int T5_M2_LinEnc_LlimAlrm;
-assign T5_M2_LinEnc_LlimAlrm to "DTL-050:EMR-GT-002:LLim-Alrm";
-monitor T5_M2_LinEnc_LlimAlrm;
-int T5_M3_LinEnc_LlimAlrm;
-assign T5_M3_LinEnc_LlimAlrm to "DTL-050:EMR-GT-003:LLim-Alrm";
-monitor T5_M3_LinEnc_LlimAlrm;
-int T1_M1_LinEnc_HlimAlrm;
-assign T1_M1_LinEnc_HlimAlrm to "DTL-010:EMR-GT-001:HLim-Alrm";
-monitor T1_M1_LinEnc_HlimAlrm;
-int T1_M2_LinEnc_HlimAlrm;
-assign T1_M2_LinEnc_HlimAlrm to "DTL-010:EMR-GT-002:HLim-Alrm";
-monitor T1_M2_LinEnc_HlimAlrm;
-int T1_M3_LinEnc_HlimAlrm;
-assign T1_M3_LinEnc_HlimAlrm to "DTL-010:EMR-GT-003:HLim-Alrm";
-monitor T1_M3_LinEnc_HlimAlrm;
-int T2_M1_LinEnc_HlimAlrm;
-assign T2_M1_LinEnc_HlimAlrm to "DTL-020:EMR-GT-001:HLim-Alrm";
-monitor T2_M1_LinEnc_HlimAlrm;
-int T2_M2_LinEnc_HlimAlrm;
-assign T2_M2_LinEnc_HlimAlrm to "DTL-020:EMR-GT-002:HLim-Alrm";
-monitor T2_M2_LinEnc_HlimAlrm;
-int T2_M3_LinEnc_HlimAlrm;
-assign T2_M3_LinEnc_HlimAlrm to "DTL-020:EMR-GT-003:HLim-Alrm";
-monitor T2_M3_LinEnc_HlimAlrm;
-int T3_M1_LinEnc_HlimAlrm;
-assign T3_M1_LinEnc_HlimAlrm to "DTL-030:EMR-GT-001:HLim-Alrm";
-monitor T3_M1_LinEnc_HlimAlrm;
-int T3_M2_LinEnc_HlimAlrm;
-assign T3_M2_LinEnc_HlimAlrm to "DTL-030:EMR-GT-002:HLim-Alrm";
-monitor T3_M2_LinEnc_HlimAlrm;
-int T3_M3_LinEnc_HlimAlrm;
-assign T3_M3_LinEnc_HlimAlrm to "DTL-030:EMR-GT-003:HLim-Alrm";
-monitor T3_M3_LinEnc_HlimAlrm;
-int T4_M1_LinEnc_HlimAlrm;
-assign T4_M1_LinEnc_HlimAlrm to "DTL-040:EMR-GT-001:HLim-Alrm";
-monitor T4_M1_LinEnc_HlimAlrm;
-int T4_M2_LinEnc_HlimAlrm;
-assign T4_M2_LinEnc_HlimAlrm to "DTL-040:EMR-GT-002:HLim-Alrm";
-monitor T4_M2_LinEnc_HlimAlrm;
-int T4_M3_LinEnc_HlimAlrm;
-assign T4_M3_LinEnc_HlimAlrm to "DTL-040:EMR-GT-003:HLim-Alrm";
-monitor T4_M3_LinEnc_HlimAlrm;
-int T5_M1_LinEnc_HlimAlrm;
-assign T5_M1_LinEnc_HlimAlrm to "DTL-050:EMR-GT-001:HLim-Alrm";
-monitor T5_M1_LinEnc_HlimAlrm;
-int T5_M2_LinEnc_HlimAlrm;
-assign T5_M2_LinEnc_HlimAlrm to "DTL-050:EMR-GT-002:HLim-Alrm";
-monitor T5_M2_LinEnc_HlimAlrm;
-int T5_M3_LinEnc_HlimAlrm;
-assign T5_M3_LinEnc_HlimAlrm to "DTL-050:EMR-GT-003:HLim-Alrm";
-monitor T5_M3_LinEnc_HlimAlrm;
+int T1_M1_LinEnc_LLimAlrm;
+assign T1_M1_LinEnc_LLimAlrm to "DTL-010:EMR-GT-001:LLim-Alrm";
+monitor T1_M1_LinEnc_LLimAlrm;
+int T1_M2_LinEnc_LLimAlrm;
+assign T1_M2_LinEnc_LLimAlrm to "DTL-010:EMR-GT-002:LLim-Alrm";
+monitor T1_M2_LinEnc_LLimAlrm;
+int T1_M3_LinEnc_LLimAlrm;
+assign T1_M3_LinEnc_LLimAlrm to "DTL-010:EMR-GT-003:LLim-Alrm";
+monitor T1_M3_LinEnc_LLimAlrm;
+int T2_M1_LinEnc_LLimAlrm;
+assign T2_M1_LinEnc_LLimAlrm to "DTL-020:EMR-GT-001:LLim-Alrm";
+monitor T2_M1_LinEnc_LLimAlrm;
+int T2_M2_LinEnc_LLimAlrm;
+assign T2_M2_LinEnc_LLimAlrm to "DTL-020:EMR-GT-002:LLim-Alrm";
+monitor T2_M2_LinEnc_LLimAlrm;
+int T2_M3_LinEnc_LLimAlrm;
+assign T2_M3_LinEnc_LLimAlrm to "DTL-020:EMR-GT-003:LLim-Alrm";
+monitor T2_M3_LinEnc_LLimAlrm;
+int T3_M1_LinEnc_LLimAlrm;
+assign T3_M1_LinEnc_LLimAlrm to "DTL-030:EMR-GT-001:LLim-Alrm";
+monitor T3_M1_LinEnc_LLimAlrm;
+int T3_M2_LinEnc_LLimAlrm;
+assign T3_M2_LinEnc_LLimAlrm to "DTL-030:EMR-GT-002:LLim-Alrm";
+monitor T3_M2_LinEnc_LLimAlrm;
+int T3_M3_LinEnc_LLimAlrm;
+assign T3_M3_LinEnc_LLimAlrm to "DTL-030:EMR-GT-003:LLim-Alrm";
+monitor T3_M3_LinEnc_LLimAlrm;
+int T4_M1_LinEnc_LLimAlrm;
+assign T4_M1_LinEnc_LLimAlrm to "DTL-040:EMR-GT-001:LLim-Alrm";
+monitor T4_M1_LinEnc_LLimAlrm;
+int T4_M2_LinEnc_LLimAlrm;
+assign T4_M2_LinEnc_LLimAlrm to "DTL-040:EMR-GT-002:LLim-Alrm";
+monitor T4_M2_LinEnc_LLimAlrm;
+int T4_M3_LinEnc_LLimAlrm;
+assign T4_M3_LinEnc_LLimAlrm to "DTL-040:EMR-GT-003:LLim-Alrm";
+monitor T4_M3_LinEnc_LLimAlrm;
+int T5_M1_LinEnc_LLimAlrm;
+assign T5_M1_LinEnc_LLimAlrm to "DTL-050:EMR-GT-001:LLim-Alrm";
+monitor T5_M1_LinEnc_LLimAlrm;
+int T5_M2_LinEnc_LLimAlrm;
+assign T5_M2_LinEnc_LLimAlrm to "DTL-050:EMR-GT-002:LLim-Alrm";
+monitor T5_M2_LinEnc_LLimAlrm;
+int T5_M3_LinEnc_LLimAlrm;
+assign T5_M3_LinEnc_LLimAlrm to "DTL-050:EMR-GT-003:LLim-Alrm";
+monitor T5_M3_LinEnc_LLimAlrm;
+int T1_M1_LinEnc_HLimAlrm;
+assign T1_M1_LinEnc_HLimAlrm to "DTL-010:EMR-GT-001:HLim-Alrm";
+monitor T1_M1_LinEnc_HLimAlrm;
+int T1_M2_LinEnc_HLimAlrm;
+assign T1_M2_LinEnc_HLimAlrm to "DTL-010:EMR-GT-002:HLim-Alrm";
+monitor T1_M2_LinEnc_HLimAlrm;
+int T1_M3_LinEnc_HLimAlrm;
+assign T1_M3_LinEnc_HLimAlrm to "DTL-010:EMR-GT-003:HLim-Alrm";
+monitor T1_M3_LinEnc_HLimAlrm;
+int T2_M1_LinEnc_HLimAlrm;
+assign T2_M1_LinEnc_HLimAlrm to "DTL-020:EMR-GT-001:HLim-Alrm";
+monitor T2_M1_LinEnc_HLimAlrm;
+int T2_M2_LinEnc_HLimAlrm;
+assign T2_M2_LinEnc_HLimAlrm to "DTL-020:EMR-GT-002:HLim-Alrm";
+monitor T2_M2_LinEnc_HLimAlrm;
+int T2_M3_LinEnc_HLimAlrm;
+assign T2_M3_LinEnc_HLimAlrm to "DTL-020:EMR-GT-003:HLim-Alrm";
+monitor T2_M3_LinEnc_HLimAlrm;
+int T3_M1_LinEnc_HLimAlrm;
+assign T3_M1_LinEnc_HLimAlrm to "DTL-030:EMR-GT-001:HLim-Alrm";
+monitor T3_M1_LinEnc_HLimAlrm;
+int T3_M2_LinEnc_HLimAlrm;
+assign T3_M2_LinEnc_HLimAlrm to "DTL-030:EMR-GT-002:HLim-Alrm";
+monitor T3_M2_LinEnc_HLimAlrm;
+int T3_M3_LinEnc_HLimAlrm;
+assign T3_M3_LinEnc_HLimAlrm to "DTL-030:EMR-GT-003:HLim-Alrm";
+monitor T3_M3_LinEnc_HLimAlrm;
+int T4_M1_LinEnc_HLimAlrm;
+assign T4_M1_LinEnc_HLimAlrm to "DTL-040:EMR-GT-001:HLim-Alrm";
+monitor T4_M1_LinEnc_HLimAlrm;
+int T4_M2_LinEnc_HLimAlrm;
+assign T4_M2_LinEnc_HLimAlrm to "DTL-040:EMR-GT-002:HLim-Alrm";
+monitor T4_M2_LinEnc_HLimAlrm;
+int T4_M3_LinEnc_HLimAlrm;
+assign T4_M3_LinEnc_HLimAlrm to "DTL-040:EMR-GT-003:HLim-Alrm";
+monitor T4_M3_LinEnc_HLimAlrm;
+int T5_M1_LinEnc_HLimAlrm;
+assign T5_M1_LinEnc_HLimAlrm to "DTL-050:EMR-GT-001:HLim-Alrm";
+monitor T5_M1_LinEnc_HLimAlrm;
+int T5_M2_LinEnc_HLimAlrm;
+assign T5_M2_LinEnc_HLimAlrm to "DTL-050:EMR-GT-002:HLim-Alrm";
+monitor T5_M2_LinEnc_HLimAlrm;
+int T5_M3_LinEnc_HLimAlrm;
+assign T5_M3_LinEnc_HLimAlrm to "DTL-050:EMR-GT-003:HLim-Alrm";
+monitor T5_M3_LinEnc_HLimAlrm;
 
 /* Linear Encoders - Online Status  */
 int T1_M1_LinEnc_Online;
@@ -2164,14 +2164,14 @@ ss tuners_statemachine {
     } state failure
 
     /* Error in linear encoders: low limit alarm */
-		when ( (T1_M1_LinEnc_LLim-Alrm == 1) || (T1_M2_LinEnc_LLim-Alrm == 1) || (T1_M3_LinEnc_LLim-Alrm == 1) || (T2_M1_LinEnc_LLim-Alrm == 1) || (T2_M2_LinEnc_LLim-Alrm == 1) || (T2_M3_LinEnc_LLim-Alrm == 1) || (T3_M1_LinEnc_LLim-Alrm == 1) || (T3_M2_LinEnc_LLim-Alrm == 1) || (T3_M3_LinEnc_LLim-Alrm == 1) || (T4_M1_LinEnc_LLim-Alrm == 1) || (T4_M2_LinEnc_LLim-Alrm == 1) || (T4_M3_LinEnc_LLim-Alrm == 1) || (T5_M1_LinEnc_LLim-Alrm == 1) || (T5_M2_LinEnc_LLim-Alrm == 1) || (T5_M3_LinEnc_LLim-Alrm == 1) ) {
+		when ( (T1_M1_LinEnc_LLimAlrm == 1) || (T1_M2_LinEnc_LLimAlrm == 1) || (T1_M3_LinEnc_LLimAlrm == 1) || (T2_M1_LinEnc_LLimAlrm == 1) || (T2_M2_LinEnc_LLimAlrm == 1) || (T2_M3_LinEnc_LLimAlrm == 1) || (T3_M1_LinEnc_LLimAlrm == 1) || (T3_M2_LinEnc_LLimAlrm == 1) || (T3_M3_LinEnc_LLimAlrm == 1) || (T4_M1_LinEnc_LLimAlrm == 1) || (T4_M2_LinEnc_LLimAlrm == 1) || (T4_M3_LinEnc_LLimAlrm == 1) || (T5_M1_LinEnc_LLimAlrm == 1) || (T5_M2_LinEnc_LLimAlrm == 1) || (T5_M3_LinEnc_LLimAlrm == 1) ) {
       printf("[SEQ TUNERS] Error in linear encoders: one or more lines are below HW low limit \n");
       printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
 
     } state failure
 
     /* Error in linear encoders: high limit alarm */
-		when ( (T1_M1_LinEnc_HLim-Alrm == 1) || (T1_M2_LinEnc_HLim-Alrm == 1) || (T1_M3_LinEnc_HLim-Alrm == 1) || (T2_M1_LinEnc_HLim-Alrm == 1) || (T2_M2_LinEnc_HLim-Alrm == 1) || (T2_M3_LinEnc_HLim-Alrm == 1) || (T3_M1_LinEnc_HLim-Alrm == 1) || (T3_M2_LinEnc_HLim-Alrm == 1) || (T3_M3_LinEnc_HLim-Alrm == 1) || (T4_M1_LinEnc_HLim-Alrm == 1) || (T4_M2_LinEnc_HLim-Alrm == 1) || (T4_M3_LinEnc_HLim-Alrm == 1) || (T5_M1_LinEnc_HLim-Alrm == 1) || (T5_M2_LinEnc_HLim-Alrm == 1) || (T5_M3_LinEnc_HLim-Alrm == 1) ) {
+		when ( (T1_M1_LinEnc_HLimAlrm == 1) || (T1_M2_LinEnc_HLimAlrm == 1) || (T1_M3_LinEnc_HLimAlrm == 1) || (T2_M1_LinEnc_HLimAlrm == 1) || (T2_M2_LinEnc_HLimAlrm == 1) || (T2_M3_LinEnc_HLimAlrm == 1) || (T3_M1_LinEnc_HLimAlrm == 1) || (T3_M2_LinEnc_HLimAlrm == 1) || (T3_M3_LinEnc_HLimAlrm == 1) || (T4_M1_LinEnc_HLimAlrm == 1) || (T4_M2_LinEnc_HLimAlrm == 1) || (T4_M3_LinEnc_HLimAlrm == 1) || (T5_M1_LinEnc_HLimAlrm == 1) || (T5_M2_LinEnc_HLimAlrm == 1) || (T5_M3_LinEnc_HLimAlrm == 1) ) {
       printf("[SEQ TUNERS] Error in linear encoders: one or more lines are above HW high limit \n");
       printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
 
@@ -2414,14 +2414,14 @@ state start_up {
   } state failure
 
   /* Error in linear encoders: low limit alarm */
-  when ( (T1_M1_LinEnc_LLim-Alrm == 1) || (T1_M2_LinEnc_LLim-Alrm == 1) || (T1_M3_LinEnc_LLim-Alrm == 1) || (T2_M1_LinEnc_LLim-Alrm == 1) || (T2_M2_LinEnc_LLim-Alrm == 1) || (T2_M3_LinEnc_LLim-Alrm == 1) || (T3_M1_LinEnc_LLim-Alrm == 1) || (T3_M2_LinEnc_LLim-Alrm == 1) || (T3_M3_LinEnc_LLim-Alrm == 1) || (T4_M1_LinEnc_LLim-Alrm == 1) || (T4_M2_LinEnc_LLim-Alrm == 1) || (T4_M3_LinEnc_LLim-Alrm == 1) || (T5_M1_LinEnc_LLim-Alrm == 1) || (T5_M2_LinEnc_LLim-Alrm == 1) || (T5_M3_LinEnc_LLim-Alrm == 1) ) {
+  when ( (T1_M1_LinEnc_LLimAlrm == 1) || (T1_M2_LinEnc_LLimAlrm == 1) || (T1_M3_LinEnc_LLimAlrm == 1) || (T2_M1_LinEnc_LLimAlrm == 1) || (T2_M2_LinEnc_LLimAlrm == 1) || (T2_M3_LinEnc_LLimAlrm == 1) || (T3_M1_LinEnc_LLimAlrm == 1) || (T3_M2_LinEnc_LLimAlrm == 1) || (T3_M3_LinEnc_LLimAlrm == 1) || (T4_M1_LinEnc_LLimAlrm == 1) || (T4_M2_LinEnc_LLimAlrm == 1) || (T4_M3_LinEnc_LLimAlrm == 1) || (T5_M1_LinEnc_LLimAlrm == 1) || (T5_M2_LinEnc_LLimAlrm == 1) || (T5_M3_LinEnc_LLimAlrm == 1) ) {
     printf("[SEQ TUNERS] Error in linear encoders: one or more lines are below HW low limit \n");
     printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
 
   /* Error in linear encoders: high limit alarm */
-  when ( (T1_M1_LinEnc_HLim-Alrm == 1) || (T1_M2_LinEnc_HLim-Alrm == 1) || (T1_M3_LinEnc_HLim-Alrm == 1) || (T2_M1_LinEnc_HLim-Alrm == 1) || (T2_M2_LinEnc_HLim-Alrm == 1) || (T2_M3_LinEnc_HLim-Alrm == 1) || (T3_M1_LinEnc_HLim-Alrm == 1) || (T3_M2_LinEnc_HLim-Alrm == 1) || (T3_M3_LinEnc_HLim-Alrm == 1) || (T4_M1_LinEnc_HLim-Alrm == 1) || (T4_M2_LinEnc_HLim-Alrm == 1) || (T4_M3_LinEnc_HLim-Alrm == 1) || (T5_M1_LinEnc_HLim-Alrm == 1) || (T5_M2_LinEnc_HLim-Alrm == 1) || (T5_M3_LinEnc_HLim-Alrm == 1) ) {
+  when ( (T1_M1_LinEnc_HLimAlrm == 1) || (T1_M2_LinEnc_HLimAlrm == 1) || (T1_M3_LinEnc_HLimAlrm == 1) || (T2_M1_LinEnc_HLimAlrm == 1) || (T2_M2_LinEnc_HLimAlrm == 1) || (T2_M3_LinEnc_HLimAlrm == 1) || (T3_M1_LinEnc_HLimAlrm == 1) || (T3_M2_LinEnc_HLimAlrm == 1) || (T3_M3_LinEnc_HLimAlrm == 1) || (T4_M1_LinEnc_HLimAlrm == 1) || (T4_M2_LinEnc_HLimAlrm == 1) || (T4_M3_LinEnc_HLimAlrm == 1) || (T5_M1_LinEnc_HLimAlrm == 1) || (T5_M2_LinEnc_HLimAlrm == 1) || (T5_M3_LinEnc_HLimAlrm == 1) ) {
     printf("[SEQ TUNERS] Error in linear encoders: one or more lines are above HW high limit \n");
     printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
