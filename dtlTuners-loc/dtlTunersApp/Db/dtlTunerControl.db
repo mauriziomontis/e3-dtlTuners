@@ -4,14 +4,13 @@
 # developed by Maurizio Montis | INFN-LNL
 
 
-record(mbbo, "DTL:MC-MCU:AutoCmd") {
+record(bo, "DTL:MC-MCU:AutoCmd") {
 	field(DESC, "Tuner System automatic control ")
 	field(OMSL, "supervisory")
 	field(PINI, "YES")
 	field(VAL, 0)
-	field(ZRST, "MANUAL")
-	field(ONST, "AUTO")
-	field(TWST, "TEST")
+	field(ZNAM, "MANUAL")
+	field(ONAM, "AUTO")
 }
 
 record(bo, "DTL:MC-MCU:AutoCmd-RB") {
