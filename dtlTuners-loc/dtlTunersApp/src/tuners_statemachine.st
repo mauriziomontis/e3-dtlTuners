@@ -1975,6 +1975,10 @@ ss tuners_statemachine {
 			printf("[SEQ TUNERS] All PVs connected\n");
 			printf("[SEQ TUNERS] Starting Self Check Process\n");
 
+      /* Actual man|auto control initialization */
+      AutoControl_ActualStatus = AutoControlCmd;
+      pvPut(AutoControl_ActualStatus);
+
 			/* System pre-configuration */
 			T1_M1_LimSwitch_IN_OnCmd=1;
 			pvPut(T1_M1_LimSwitch_IN_OnCmd);
