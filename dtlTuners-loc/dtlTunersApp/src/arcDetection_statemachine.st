@@ -1252,6 +1252,10 @@ state failure {
 		printf("[SEQ ARC DETECTION] Failure Stage reset by Operator. \n");
 		printf("[SEQ ARC DETECTION] Reset conditions satisfied.\n");
 
+		/* Reset FaultReset command */
+		FaultReset=0;
+		pvPut(FaultReset);
+
 	} state maintenance
 
 }
@@ -1269,6 +1273,10 @@ state maintenance {
 	when ( (MaintenanceReset == 1) && (T1_Arc_Power_Status == 1) && (T2_Arc_Power_Status == 1) && (T3_Arc_Power_Status == 1) && (T4_Arc_Power_Status == 1) && (T5_Arc_Power_Status == 1) && (T1_Arc_Global_Status == 1) && (T2_Arc_Global_Status == 1) && (T3_Arc_Global_Status == 1) && (T4_Arc_Global_Status == 1) && (T5_Arc_Global_Status == 1) && (T1_Arc_Test_Internal_Cmd_Check_01 == 1) && (T1_Arc_Test_Internal_Cmd_Check_02 == 1) && (T1_Arc_Test_Internal_Cmd_Check_03 == 1) && (T1_Arc_Test_Internal_Cmd_Check_04 == 1) && (T2_Arc_Test_Internal_Cmd_Check_01 == 1) && (T2_Arc_Test_Internal_Cmd_Check_02 == 1) && (T2_Arc_Test_Internal_Cmd_Check_03 == 1) && (T2_Arc_Test_Internal_Cmd_Check_04 == 1) && (T3_Arc_Test_Internal_Cmd_Check_01 == 1) && (T3_Arc_Test_Internal_Cmd_Check_02 == 1) && (T3_Arc_Test_Internal_Cmd_Check_03 == 1) && (T3_Arc_Test_Internal_Cmd_Check_04 == 1) && (T4_Arc_Test_Internal_Cmd_Check_01 == 1) && (T4_Arc_Test_Internal_Cmd_Check_02 == 1) && (T4_Arc_Test_Internal_Cmd_Check_03 == 1) && (T4_Arc_Test_Internal_Cmd_Check_04 == 1) && (T5_Arc_Test_Internal_Cmd_Check_01 == 1) && (T5_Arc_Test_Internal_Cmd_Check_02 == 1) && (T5_Arc_Test_Internal_Cmd_Check_03 == 1) && (T5_Arc_Test_Internal_Cmd_Check_04 == 1) && (T1_Arc_Test_External_Cmd_Check_01 == 1) && (T1_Arc_Test_External_Cmd_Check_02 == 1) && (T1_Arc_Test_External_Cmd_Check_03 == 1) && (T1_Arc_Test_External_Cmd_Check_04 == 1) && (T2_Arc_Test_External_Cmd_Check_01 == 1) && (T2_Arc_Test_External_Cmd_Check_02 == 1) && (T2_Arc_Test_External_Cmd_Check_03 == 1) && (T2_Arc_Test_External_Cmd_Check_04 == 1) && (T3_Arc_Test_External_Cmd_Check_01 == 1) && (T3_Arc_Test_External_Cmd_Check_02 == 1) && (T3_Arc_Test_External_Cmd_Check_03 == 1) && (T3_Arc_Test_External_Cmd_Check_04 == 1) && (T4_Arc_Test_External_Cmd_Check_01 == 1) && (T4_Arc_Test_External_Cmd_Check_02 == 1) && (T4_Arc_Test_External_Cmd_Check_03 == 1) && (T4_Arc_Test_External_Cmd_Check_04 == 1) && (T5_Arc_Test_External_Cmd_Check_01 == 1) && (T5_Arc_Test_External_Cmd_Check_02 == 1) && (T5_Arc_Test_External_Cmd_Check_03 == 1) && (T5_Arc_Test_External_Cmd_Check_04 == 1) && (T1_Arc_Test_Internal_Status_01 == 1) && (T1_Arc_Test_Internal_Status_02 == 1) && (T1_Arc_Test_Internal_Status_03 == 1) && (T1_Arc_Test_Internal_Status_04 == 1) && (T2_Arc_Test_Internal_Status_01 == 1) && (T2_Arc_Test_Internal_Status_02 == 1) && (T2_Arc_Test_Internal_Status_03 == 1) && (T2_Arc_Test_Internal_Status_04 == 1) && (T3_Arc_Test_Internal_Status_01 == 1) && (T3_Arc_Test_Internal_Status_02 == 1) && (T3_Arc_Test_Internal_Status_03 == 1) && (T3_Arc_Test_Internal_Status_04 == 1) && (T4_Arc_Test_Internal_Status_01 == 1) && (T4_Arc_Test_Internal_Status_02 == 1) && (T4_Arc_Test_Internal_Status_03 == 1) && (T4_Arc_Test_Internal_Status_04 == 1) && (T5_Arc_Test_Internal_Status_01 == 1) && (T5_Arc_Test_Internal_Status_02 == 1) && (T5_Arc_Test_Internal_Status_03 == 1) && (T5_Arc_Test_Internal_Status_04 == 1)  ) {
 		printf("[SEQ ARC DETECTION] Maintenance Stage reset by Operator. \n");
 		printf("[SEQ ARC DETECTION] Reset conditions satisfied.\n");
+
+		/* Reset MaintenanceReset command */
+		MaintenanceReset=0;
+		pvPut(MaintenanceReset);
 
 	} state initialization
 

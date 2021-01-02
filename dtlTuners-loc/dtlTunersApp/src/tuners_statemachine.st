@@ -2891,6 +2891,10 @@ state failure {
     printf("[SEQ TUNERS] Failure Stage reset by Operator. \n");
     printf("[SEQ TUNERS]  Reset conditions satisfied.\n");
 
+    /* Reset FaultReset command */
+    FaultReset=0;
+    pvPut(FaultReset);
+
   } state maintenance
 
 }
@@ -2911,6 +2915,10 @@ state maintenance {
 
     /* reset Error_Missing_Counter */
     Error_Missing_Counter=0;
+
+    /* Reset MaintenanceReset command */
+    MaintenanceReset=0;
+    pvPut(MaintenanceReset);
 
   } state initialization
 
