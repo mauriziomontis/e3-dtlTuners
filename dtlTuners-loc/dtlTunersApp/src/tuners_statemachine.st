@@ -38,68 +38,68 @@ program tuners_statemachine
 */
 
 
-/* Ok Status - tuners */
+/* Ok Status - tuners (cmds) */
 int T1_M1_OkStat;
-assign T1_M1_OkStat to "DTL-010:MC-MCU-001:OkStat-RB";
+assign T1_M1_OkStat to "DTL-010:MC-MCU-001:OkStat";
 monitor T1_M1_OkStat;
 int T1_M2_OkStat;
-assign T1_M2_OkStat to "DTL-010:MC-MCU-002:OkStat-RB";
+assign T1_M2_OkStat to "DTL-010:MC-MCU-002:OkStat";
 monitor T1_M2_OkStat;
 int T1_M3_OkStat;
-assign T1_M3_OkStat to "DTL-010:MC-MCU-003:OkStat-RB";
+assign T1_M3_OkStat to "DTL-010:MC-MCU-003:OkStat";
 monitor T1_M3_OkStat;
 int T2_M1_OkStat;
-assign T2_M1_OkStat to "DTL-020:MC-MCU-001:OkStat-RB";
+assign T2_M1_OkStat to "DTL-020:MC-MCU-001:OkStat";
 monitor T2_M1_OkStat;
 int T2_M2_OkStat;
-assign T2_M2_OkStat to "DTL-020:MC-MCU-002:OkStat-RB";
+assign T2_M2_OkStat to "DTL-020:MC-MCU-002:OkStat";
 monitor T2_M2_OkStat;
 int T2_M3_OkStat;
-assign T2_M3_OkStat to "DTL-020:MC-MCU-003:OkStat-RB";
+assign T2_M3_OkStat to "DTL-020:MC-MCU-003:OkStat";
 monitor T2_M3_OkStat;
 int T3_M1_OkStat;
-assign T3_M1_OkStat to "DTL-030:MC-MCU-001:OkStat-RB";
+assign T3_M1_OkStat to "DTL-030:MC-MCU-001:OkStat";
 monitor T3_M1_OkStat;
 int T3_M2_OkStat;
-assign T3_M2_OkStat to "DTL-030:MC-MCU-002:OkStat-RB";
+assign T3_M2_OkStat to "DTL-030:MC-MCU-002:OkStat";
 monitor T3_M2_OkStat;
 int T3_M3_OkStat;
-assign T3_M3_OkStat to "DTL-030:MC-MCU-003:OkStat-RB";
+assign T3_M3_OkStat to "DTL-030:MC-MCU-003:OkStat";
 monitor T3_M3_OkStat;
 int T4_M1_OkStat;
-assign T4_M1_OkStat to "DTL-040:MC-MCU-001:OkStat-RB";
+assign T4_M1_OkStat to "DTL-040:MC-MCU-001:OkStat";
 monitor T4_M1_OkStat;
 int T4_M2_OkStat;
-assign T4_M2_OkStat to "DTL-040:MC-MCU-002:OkStat-RB";
+assign T4_M2_OkStat to "DTL-040:MC-MCU-002:OkStat";
 monitor T4_M2_OkStat;
 int T4_M3_OkStat;
-assign T4_M3_OkStat to "DTL-040:MC-MCU-003:OkStat-RB";
+assign T4_M3_OkStat to "DTL-040:MC-MCU-003:OkStat";
 monitor T4_M3_OkStat;
 int T5_M1_OkStat;
-assign T5_M1_OkStat to "DTL-050:MC-MCU-001:OkStat-RB";
+assign T5_M1_OkStat to "DTL-050:MC-MCU-001:OkStat";
 monitor T5_M1_OkStat;
 int T5_M2_OkStat;
-assign T5_M2_OkStat to "DTL-050:MC-MCU-002:OkStat-RB";
+assign T5_M2_OkStat to "DTL-050:MC-MCU-002:OkStat";
 monitor T5_M2_OkStat;
 int T5_M3_OkStat;
-assign T5_M3_OkStat to "DTL-050:MC-MCU-003:OkStat-RB";
+assign T5_M3_OkStat to "DTL-050:MC-MCU-003:OkStat";
 monitor T5_M3_OkStat;
 
-/* Ok Status - Tanks */
+/* Ok Status - Tanks (cmds)*/
 int T1_OkStat;
-assign T1_OkStat to "DTL-010:MC-MCU:OkStat-RB";
+assign T1_OkStat to "DTL-010:MC-MCU:OkStat";
 monitor T1_OkStat;
 int T2_OkStat;
-assign T2_OkStat to "DTL-020:MC-MCU:OkStat-RB";
+assign T2_OkStat to "DTL-020:MC-MCU:OkStat";
 monitor T2_OkStat;
 int T3_OkStat;
-assign T3_OkStat to "DTL-030:MC-MCU:OkStat-RB";
+assign T3_OkStat to "DTL-030:MC-MCU:OkStat";
 monitor T3_OkStat;
 int T4_OkStat;
-assign T4_OkStat to "DTL-040:MC-MCU:OkStat-RB";
+assign T4_OkStat to "DTL-040:MC-MCU:OkStat";
 monitor T4_OkStat;
 int T5_OkStat;
-assign T5_OkStat to "DTL-050:MC-MCU:OkStat-RB";
+assign T5_OkStat to "DTL-050:MC-MCU:OkStat";
 monitor T5_OkStat;
 
 /* Ok Status - 24V */
@@ -1233,6 +1233,54 @@ int T5_M3_LinEnc_Online;
 assign T5_M3_LinEnc_Online to "DTL-050:EMR-GT-003:ConnStat";
 monitor T5_M3_LinEnc_Online;
 
+/* Motor - PID control enable command */
+int T1_M1_PID_Enable;
+assing T1_M1_PID_Enable to "DTL-010:EMR-SM-001:CtrlPID-En";
+monitor T1_M1_PID_Enable;
+int T1_M2_PID_Enable;
+assing T1_M2_PID_Enable to "DTL-010:EMR-SM-002:CtrlPID-En";
+monitor T1_M2_PID_Enable;
+int T1_M3_PID_Enable;
+assing T1_M3_PID_Enable to "DTL-010:EMR-SM-002:CtrlPID-En";
+monitor T1_M3_PID_Enable;
+int T2_M1_PID_Enable;
+assing T2_M1_PID_Enable to "DTL-010:EMR-SM-001:CtrlPID-En";
+monitor T2_M1_PID_Enable;
+int T2_M2_PID_Enable;
+assing T2_M2_PID_Enable to "DTL-010:EMR-SM-002:CtrlPID-En";
+monitor T2_M2_PID_Enable;
+int T2_M3_PID_Enable;
+assing T2_M3_PID_Enable to "DTL-010:EMR-SM-002:CtrlPID-En";
+monitor T2_M3_PID_Enable;
+int T3_M1_PID_Enable;
+assing T3_M1_PID_Enable to "DTL-010:EMR-SM-001:CtrlPID-En";
+monitor T3_M1_PID_Enable;
+int T3_M2_PID_Enable;
+assing T3_M2_PID_Enable to "DTL-010:EMR-SM-002:CtrlPID-En";
+monitor T3_M2_PID_Enable;
+int T3_M3_PID_Enable;
+assing T3_M3_PID_Enable to "DTL-010:EMR-SM-002:CtrlPID-En";
+monitor T3_M3_PID_Enable;
+int T4_M1_PID_Enable;
+assing T4_M1_PID_Enable to "DTL-010:EMR-SM-001:CtrlPID-En";
+monitor T4_M1_PID_Enable;
+int T4_M2_PID_Enable;
+assing T4_M2_PID_Enable to "DTL-010:EMR-SM-002:CtrlPID-En";
+monitor T4_M2_PID_Enable;
+int T4_M3_PID_Enable;
+assing T4_M3_PID_Enable to "DTL-010:EMR-SM-002:CtrlPID-En";
+monitor T4_M3_PID_Enable;
+int T5_M1_PID_Enable;
+assing T5_M1_PID_Enable to "DTL-010:EMR-SM-001:CtrlPID-En";
+monitor T5_M1_PID_Enable;
+int T5_M2_PID_Enable;
+assing T5_M2_PID_Enable to "DTL-010:EMR-SM-002:CtrlPID-En";
+monitor T5_M2_PID_Enable;
+int T5_M3_PID_Enable;
+assing T5_M3_PID_Enable to "DTL-010:EMR-SM-002:CtrlPID-En";
+monitor T5_M3_PID_Enable;
+
+
 /* Motor - Position */
 double T1_M1_Axis_Position;
 assign T1_M1_Axis_Position to "DTL-010:EMR-SM-001.VAL";
@@ -2228,6 +2276,50 @@ ss tuners_statemachine {
     when ( (T1_M1_LimSwitch_IN_TemperatureAlarm == 0 ) && (T1_M2_LimSwitch_IN_TemperatureAlarm == 0 ) && (T1_M3_LimSwitch_IN_TemperatureAlarm == 0 ) && (T2_M1_LimSwitch_IN_TemperatureAlarm == 0 ) && (T2_M2_LimSwitch_IN_TemperatureAlarm == 0 ) && (T2_M3_LimSwitch_IN_TemperatureAlarm == 0 ) && (T3_M1_LimSwitch_IN_TemperatureAlarm == 0 ) && (T3_M2_LimSwitch_IN_TemperatureAlarm == 0 ) && (T3_M3_LimSwitch_IN_TemperatureAlarm == 0 ) && (T4_M1_LimSwitch_IN_TemperatureAlarm == 0 ) && (T4_M2_LimSwitch_IN_TemperatureAlarm == 0 ) && (T4_M3_LimSwitch_IN_TemperatureAlarm == 0 ) && (T5_M1_LimSwitch_IN_TemperatureAlarm == 0 ) && (T5_M2_LimSwitch_IN_TemperatureAlarm == 0 ) && (T5_M3_LimSwitch_IN_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T1_M2_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T1_M3_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T2_M1_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T2_M2_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T2_M3_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T3_M1_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T3_M2_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T3_M3_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T4_M1_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T4_M2_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T4_M3_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T5_M1_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T5_M2_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T5_M3_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M2_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M3_LimSwitch_IN_LoadAlarm == 0 ) && (T2_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T2_M2_LimSwitch_IN_LoadAlarm == 0 ) && (T2_M3_LimSwitch_IN_LoadAlarm == 0 ) && (T3_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T3_M2_LimSwitch_IN_LoadAlarm == 0 ) && (T3_M3_LimSwitch_IN_LoadAlarm == 0 ) && (T4_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T4_M2_LimSwitch_IN_LoadAlarm == 0 ) && (T4_M3_LimSwitch_IN_LoadAlarm == 0 ) && (T5_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T5_M2_LimSwitch_IN_LoadAlarm == 0 ) && (T5_M3_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M1_LimSwitch_OUT_LoadAlarm == 0 ) && (T1_M2_LimSwitch_OUT_LoadAlarm == 0 ) && (T1_M3_LimSwitch_OUT_LoadAlarm == 0 ) && (T2_M1_LimSwitch_OUT_LoadAlarm == 0 ) && (T2_M2_LimSwitch_OUT_LoadAlarm == 0 ) && (T2_M3_LimSwitch_OUT_LoadAlarm == 0 ) && (T3_M1_LimSwitch_OUT_LoadAlarm == 0 ) && (T3_M2_LimSwitch_OUT_LoadAlarm == 0 ) && (T3_M3_LimSwitch_OUT_LoadAlarm == 0 ) && (T4_M1_LimSwitch_OUT_LoadAlarm == 0 ) && (T4_M2_LimSwitch_OUT_LoadAlarm == 0 ) && (T4_M3_LimSwitch_OUT_LoadAlarm == 0 ) && (T5_M1_LimSwitch_OUT_LoadAlarm == 0 ) && (T5_M2_LimSwitch_OUT_LoadAlarm == 0 ) && (T5_M3_LimSwitch_OUT_LoadAlarm == 0 ) && (T1_M1_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T1_M2_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T1_M3_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T2_M1_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T2_M2_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T2_M3_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T3_M1_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T3_M2_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T3_M3_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T4_M1_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T4_M2_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T4_M3_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T5_M1_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T5_M2_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T5_M3_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T1_M2_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T1_M3_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T2_M1_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T2_M2_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T2_M3_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T3_M1_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T3_M2_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T3_M3_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T4_M1_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T4_M2_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T4_M3_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T5_M1_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T5_M2_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T5_M3_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_IN_ShortCircAlarm == 0 ) && (T1_M2_LimSwitch_IN_ShortCircAlarm == 0 ) && (T1_M3_LimSwitch_IN_ShortCircAlarm == 0 ) && (T2_M1_LimSwitch_IN_ShortCircAlarm == 0 ) && (T2_M2_LimSwitch_IN_ShortCircAlarm == 0 ) && (T2_M3_LimSwitch_IN_ShortCircAlarm == 0 ) && (T3_M1_LimSwitch_IN_ShortCircAlarm == 0 ) && (T3_M2_LimSwitch_IN_ShortCircAlarm == 0 ) && (T3_M3_LimSwitch_IN_ShortCircAlarm == 0 ) && (T4_M1_LimSwitch_IN_ShortCircAlarm == 0 ) && (T4_M2_LimSwitch_IN_ShortCircAlarm == 0 ) && (T4_M3_LimSwitch_IN_ShortCircAlarm == 0 ) && (T5_M1_LimSwitch_IN_ShortCircAlarm == 0 ) && (T5_M2_LimSwitch_IN_ShortCircAlarm == 0 ) && (T5_M3_LimSwitch_IN_ShortCircAlarm == 0 ) && (T1_M1_LimSwitch_OUT_ShortCircAlarm == 0 ) && (T1_M2_LimSwitch_OUT_ShortCircAlarm == 0 ) && (T1_M3_LimSwitch_OUT_ShortCircAlarm == 0 ) && (T2_M1_LimSwitch_OUT_ShortCircAlarm == 0 ) && (T2_M2_LimSwitch_OUT_ShortCircAlarm == 0 ) && (T2_M3_LimSwitch_OUT_ShortCircAlarm == 0 ) && (T3_M1_LimSwitch_OUT_ShortCircAlarm == 0 ) && (T3_M2_LimSwitch_OUT_ShortCircAlarm == 0 ) && (T3_M3_LimSwitch_OUT_ShortCircAlarm == 0 ) && (T4_M1_LimSwitch_OUT_ShortCircAlarm == 0 ) && (T4_M2_LimSwitch_OUT_ShortCircAlarm == 0 ) && (T4_M3_LimSwitch_OUT_ShortCircAlarm == 0 ) && (T5_M1_LimSwitch_OUT_ShortCircAlarm == 0 ) && (T5_M2_LimSwitch_OUT_ShortCircAlarm == 0 ) && (T5_M3_LimSwitch_OUT_ShortCircAlarm == 0 ) && ( (T1_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M1_LimSwitch_IN_NO_LimStat == 1 ) ) &&  ( (T1_M2_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M2_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T1_M3_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M3_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T2_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T2_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T2_M2_LimSwitch_IN_NC_LimStat == 1 ) || (T2_M2_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T2_M3_LimSwitch_IN_NC_LimStat == 1 ) || (T2_M3_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T3_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T3_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T3_M2_LimSwitch_IN_NC_LimStat == 1 ) || (T3_M2_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T3_M3_LimSwitch_IN_NC_LimStat == 1 ) || (T3_M3_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T4_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T4_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T4_M2_LimSwitch_IN_NC_LimStat == 1 ) || (T4_M2_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T4_M3_LimSwitch_IN_NC_LimStat == 1 ) || (T4_M3_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T5_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T5_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T5_M2_LimSwitch_IN_NC_LimStat == 1 ) || (T5_M2_LimSwitch_IN_NO_LimStat == 1 ) ) && ( (T5_M3_LimSwitch_IN_NC_LimStat == 1 ) || (T5_M3_LimSwitch_IN_NO_LimStat == 1 ) ) && (T1_M1_LinEnc_ErrorAlrm == 0) && (T1_M2_LinEnc_ErrorAlrm == 0) && (T1_M3_LinEnc_ErrorAlrm == 0) && (T2_M1_LinEnc_ErrorAlrm == 0) && (T2_M2_LinEnc_ErrorAlrm == 0) && (T2_M3_LinEnc_ErrorAlrm == 0) && (T3_M1_LinEnc_ErrorAlrm == 0) && (T3_M2_LinEnc_ErrorAlrm == 0) && (T3_M3_LinEnc_ErrorAlrm == 0) && (T4_M1_LinEnc_ErrorAlrm == 0) && (T4_M2_LinEnc_ErrorAlrm == 0) && (T4_M3_LinEnc_ErrorAlrm == 0) && (T5_M1_LinEnc_ErrorAlrm == 0) && (T5_M2_LinEnc_ErrorAlrm == 0) && (T5_M3_LinEnc_ErrorAlrm == 0) && (T1_M1_Axis_Error == 0) && (T1_M2_Axis_Error == 0) && (T1_M3_Axis_Error == 0) && (T2_M1_Axis_Error == 0) && (T2_M2_Axis_Error == 0) && (T2_M3_Axis_Error == 0) && (T3_M1_Axis_Error == 0) && (T3_M2_Axis_Error == 0) && (T3_M3_Axis_Error == 0) && (T4_M1_Axis_Error == 0) && (T4_M2_Axis_Error == 0) && (T4_M3_Axis_Error == 0) && (T5_M1_Axis_Error == 0) && (T5_M2_Axis_Error == 0) && (T5_M3_Axis_Error == 0) && (T1_M1_Driver_WarningAlrm == 0) && (T1_M2_Driver_WarningAlrm == 0) && (T1_M3_Driver_WarningAlrm == 0) && (T2_M1_Driver_WarningAlrm == 0) && (T2_M2_Driver_WarningAlrm == 0) && (T2_M3_Driver_WarningAlrm == 0) && (T3_M1_Driver_WarningAlrm == 0) && (T3_M2_Driver_WarningAlrm == 0) && (T3_M3_Driver_WarningAlrm == 0) && (T4_M1_Driver_WarningAlrm == 0) && (T4_M2_Driver_WarningAlrm == 0) && (T4_M3_Driver_WarningAlrm == 0) && (T5_M1_Driver_WarningAlrm == 0) && (T5_M2_Driver_WarningAlrm == 0) && (T5_M3_Driver_WarningAlrm == 0) && (T1_M1_Driver_ErrorAlrm == 0) && (T1_M2_Driver_ErrorAlrm == 0) && (T1_M3_Driver_ErrorAlrm == 0) && (T2_M1_Driver_ErrorAlrm == 0) && (T2_M2_Driver_ErrorAlrm == 0) && (T2_M3_Driver_ErrorAlrm == 0) && (T3_M1_Driver_ErrorAlrm == 0) && (T3_M2_Driver_ErrorAlrm == 0) && (T3_M3_Driver_ErrorAlrm == 0) && (T4_M1_Driver_ErrorAlrm == 0) && (T4_M2_Driver_ErrorAlrm == 0) && (T4_M3_Driver_ErrorAlrm == 0) && (T5_M1_Driver_ErrorAlrm == 0) && (T5_M2_Driver_ErrorAlrm == 0) && (T5_M3_Driver_ErrorAlrm == 0) && (T1_M1_Driver_StallAlrm == 0) && (T1_M2_Driver_StallAlrm == 0) && (T1_M3_Driver_StallAlrm == 0) && (T2_M1_Driver_StallAlrm == 0) && (T2_M2_Driver_StallAlrm == 0) && (T2_M3_Driver_StallAlrm == 0) && (T3_M1_Driver_StallAlrm == 0) && (T3_M2_Driver_StallAlrm == 0) && (T3_M3_Driver_StallAlrm == 0) && (T4_M1_Driver_StallAlrm == 0) && (T4_M2_Driver_StallAlrm == 0) && (T4_M3_Driver_StallAlrm == 0) && (T5_M1_Driver_StallAlrm == 0) && (T5_M2_Driver_StallAlrm == 0) && (T5_M3_Driver_StallAlrm == 0) && (T1_M1_Driver_SyncAlrm == 0) && (T1_M2_Driver_SyncAlrm == 0) && (T1_M3_Driver_SyncAlrm == 0) && (T2_M1_Driver_SyncAlrm == 0) && (T2_M2_Driver_SyncAlrm == 0) && (T2_M3_Driver_SyncAlrm == 0) && (T3_M1_Driver_SyncAlrm == 0) && (T3_M2_Driver_SyncAlrm == 0) && (T3_M3_Driver_SyncAlrm == 0) && (T4_M1_Driver_SyncAlrm == 0) && (T4_M2_Driver_SyncAlrm == 0) && (T4_M3_Driver_SyncAlrm == 0) && (T5_M1_Driver_SyncAlrm == 0) && (T5_M2_Driver_SyncAlrm == 0) && (T5_M3_Driver_SyncAlrm == 0)  ) {
 
       printf("[SEQ TUNERS] Self Check Passed. \n");
+
+      /* Enable Tuners OK Status */
+      T1_M1_OkStat=1;
+      pvPut(T1_M1_OkStat);
+      T1_M2_OkStat=1;
+      pvPut(T1_M2_OkStat);
+      T1_M3_OkStat=1;
+      pvPut(T1_M3_OkStat);
+      T2_M1_OkStat=1;
+      pvPut(T2_M1_OkStat);
+      T2_M2_OkStat=1;
+      pvPut(T2_M2_OkStat);
+      T2_M3_OkStat=1;
+      pvPut(T2_M3_OkStat);
+      T3_M1_OkStat=1;
+      pvPut(T3_M1_OkStat);
+      T3_M2_OkStat=1;
+      pvPut(T3_M2_OkStat);
+      T3_M3_OkStat=1;
+      pvPut(T3_M3_OkStat);
+      T4_M1_OkStat=1;
+      pvPut(T4_M1_OkStat);
+      T4_M2_OkStat=1;
+      pvPut(T4_M2_OkStat);
+      T4_M3_OkStat=1;
+      pvPut(T4_M3_OkStat);
+      T5_M1_OkStat=1;
+      pvPut(T5_M1_OkStat);
+      T5_M2_OkStat=1;
+      pvPut(T5_M2_OkStat);
+      T5_M3_OkStat=1;
+      pvPut(T5_M3_OkStat);
+
+      /* Enable Tank OK Status */
+      T1_OkStat=1;
+      pvPut(T1_OkStat);
+      T2_OkStat=1;
+      pvPut(T2_OkStat);
+      T3_OkStat=1;
+      pvPut(T3_OkStat);
+      T4_OkStat=1;
+      pvPut(T4_OkStat);
+      T5_OkStat=1;
+      pvPut(T5_OkStat);
       printf("[SEQ TUNERS] System set homing position (tuners extracted) \n");
       /* Enable tuners drivers */
 			T1_M1_Axis_Enable=1;
@@ -2334,6 +2426,38 @@ state start_up {
     pvPut(T5_M2_Axis_SetOffset);
     T5_M3_Axis_SetOffset=1;
     pvPut(T5_M3_Axis_SetOffset);
+
+    /* Disable tuners PID control */
+    T1_M1_PID_Enable=0;
+    pvPut(T1_M1_PID_Enable);
+    T1_M2_PID_Enable=0;
+    pvPut(T1_M2_PID_Enable);
+    T1_M3_PID_Enable=0;
+    pvPut(T1_M3_PID_Enable);
+    T2_M1_PID_Enable=0;
+    pvPut(T2_M1_PID_Enable);
+    T2_M2_PID_Enable=0;
+    pvPut(T2_M2_PID_Enable);
+    T2_M3_PID_Enable=0;
+    pvPut(T2_M3_PID_Enable);
+    T3_M1_PID_Enable=0;
+    pvPut(T3_M1_PID_Enable);
+    T3_M2_PID_Enable=0;
+    pvPut(T3_M2_PID_Enable);
+    T3_M3_PID_Enable=0;
+    pvPut(T3_M3_PID_Enable);
+    T4_M1_PID_Enable=0;
+    pvPut(T4_M1_PID_Enable);
+    T4_M2_PID_Enable=0;
+    pvPut(T4_M2_PID_Enable);
+    T4_M3_PID_Enable=0;
+    pvPut(T4_M3_PID_Enable);
+    T5_M1_PID_Enable=0;
+    pvPut(T5_M1_PID_Enable);
+    T5_M2_PID_Enable=0;
+    pvPut(T5_M2_PID_Enable);
+    T5_M3_PID_Enable=0;
+    pvPut(T5_M3_PID_Enable);
 
     /* Tuners in home position (0 mm) */
     T1_M1_Axis_Position=0;
@@ -2618,6 +2742,9 @@ state idle {
     printf("\n[SEQ TUNERS] Enter in IDLE status\n");
     StateMachineCode=20;
     pvPut(StateMachineCode);
+    /* Reset Stop Operation Command */
+    StopOperationCmd=0;
+    pvPut(StopOperationCmd);
   }
 
   /* Error in limit switches: Temperature */
@@ -2844,6 +2971,8 @@ state ready_for_operation {
   /* Stop Operation (for every mode of operation) */
   when ( StopOperationCmd == 1 ) {
       printf("[SEQ TUNERS] Stop Control Operations. System goes back to Idle Status.\n");
+      StartOperationCmd=0;
+      pvPut(StartOperationCmd);
   } state idle
 
   /* Possibility to modify [MAN|AUTO] control during operations without changing state*/
@@ -2874,6 +3003,8 @@ state ready_for_operation {
    - Fixed Frequency
    - Frequency detuning in range [-D_f, +D_f]
   */
+
+  /* Configurations done in DTL Orchestration State Machine  */
 }
 
 
@@ -2884,6 +3015,50 @@ state failure {
 			printf("\n[SEQ TUNERS] Enter in FAILURE status\n");
 			StateMachineCode=50;
 			pvPut(StateMachineCode);
+
+      /* Reset Tuners OK Status */
+      T1_M1_OkStat=0;
+      pvPut(T1_M1_OkStat);
+      T1_M2_OkStat=0;
+      pvPut(T1_M2_OkStat);
+      T1_M3_OkStat=0;
+      pvPut(T1_M3_OkStat);
+      T2_M1_OkStat=0;
+      pvPut(T2_M1_OkStat);
+      T2_M2_OkStat=0;
+      pvPut(T2_M2_OkStat);
+      T2_M3_OkStat=0;
+      pvPut(T2_M3_OkStat);
+      T3_M1_OkStat=0;
+      pvPut(T3_M1_OkStat);
+      T3_M2_OkStat=0;
+      pvPut(T3_M2_OkStat);
+      T3_M3_OkStat=0;
+      pvPut(T3_M3_OkStat);
+      T4_M1_OkStat=0;
+      pvPut(T4_M1_OkStat);
+      T4_M2_OkStat=0;
+      pvPut(T4_M2_OkStat);
+      T4_M3_OkStat=0;
+      pvPut(T4_M3_OkStat);
+      T5_M1_OkStat=0;
+      pvPut(T5_M1_OkStat);
+      T5_M2_OkStat=0;
+      pvPut(T5_M2_OkStat);
+      T5_M3_OkStat=0;
+      pvPut(T5_M3_OkStat);
+
+      /* Reset Tank OK Status */
+      T1_OkStat=0;
+      pvPut(T1_OkStat);
+      T2_OkStat=0;
+      pvPut(T2_OkStat);
+      T3_OkStat=0;
+      pvPut(T3_OkStat);
+      T4_OkStat=0;
+      pvPut(T4_OkStat);
+      T5_OkStat=0;
+      pvPut(T5_OkStat);
 	}
 
   /* System should provide an healthy status to confirm failure reset */
