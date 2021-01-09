@@ -104,7 +104,7 @@ assign T5_Arc_Power_Reset to "";
 monitor T5_Arc_Power_Reset;
 
 /* Global Arc Status */ /* 0=NOK | 1=OK */
-/* PVs provided by dtlArcOkState.db*/
+/* PVs provided by dtlArcOkState.db (tuner IOC) */
 int T1_Arc_Global_Status;
 assign T1_Arc_Global_Status to "DTL-010:RFS-AD:OkStat-RB";
 monitor T1_Arc_Global_Status;
@@ -120,6 +120,34 @@ monitor T4_Arc_Global_Status;
 int T5_Arc_Global_Status;
 assign T5_Arc_Global_Status to "DTL-050:RFS-AD:OkStat-RB";
 monitor T5_Arc_Global_Status;
+
+/* Counts Limits for Global Arc Status */
+/* PVs provided by dtlArcOkState.db (tuner IOC) */
+double T1_Arc_Global_Counter_Limit;
+assign T1_Arc_Global_Counter_Limit to "DTL-010:RFS-AD:OkStat-RB.B";
+monitor T1_Arc_Global_Counter_Limit;
+double T2_Arc_Global_Counter_Limit;
+assign T2_Arc_Global_Counter_Limit to "DTL-020:RFS-AD:OkStat-RB.B";
+monitor T2_Arc_Global_Counter_Limit;
+double T3_Arc_Global_Counter_Limit;
+assign T3_Arc_Global_Counter_Limit to "DTL-030:RFS-AD:OkStat-RB.B";
+monitor T3_Arc_Global_Counter_Limit;
+double T4_Arc_Global_Counter_Limit;
+assign T4_Arc_Global_Counter_Limit to "DTL-040:RFS-AD:OkStat-RB.B";
+monitor T4_Arc_Global_Counter_Limit;
+double T5_Arc_Global_Counter_Limit;
+assign T5_Arc_Global_Counter_Limit to "DTL-050:RFS-AD:OkStat-RB.B";
+monitor T5_Arc_Global_Counter_Limit;
+
+/* Max Limits for ARc Counts */
+/* PVs provided by parametersArcDetection.db (orchestration IOC) */
+double DTL_RF_Conditioning_Max_Arcs_Limit;
+assign DTL_RF_Conditioning_Max_Arcs_Limit to "DTL:RFS-AD:RFCondArcLim";
+monitor DTL_RF_Conditioning_Max_Arcs_Limit;
+double DTL_RF_Beam_Operation_Max_Arcs_Limit;
+assign DTL_RF_Beam_Operation_Max_Arcs_Limit to "DTL:RFS-AD:RFBeamOpArcLim";
+monitor DTL_RF_Beam_Operation_Max_Arcs_Limit;
+
 
 /* RF Status */
 int T1_RF_Status;
@@ -814,7 +842,8 @@ int dtlOperationalCode;
 assign dtlOperationalCode to "DTL::StateMachine";
 monitor dtlOperationalCode;
 
-
+/* Internal Variables */
+int dtl_operation_code_prev=0;
 
 /* Debug Mode: */
 double DEBUG=1;
@@ -926,7 +955,7 @@ ss arcDetection_statemachine {
 state start_up {
   entry {
     printf("\n[SEQ ARC DETECTION] Enter in START UP status\n");
-    StateMachineCode=30;
+		StateMachineCode=30;
     pvPut(StateMachineCode);
 
   }
@@ -1171,6 +1200,27 @@ state ready_for_operation {
 		StateMachineCode=40;
 		pvPut(StateMachineCode);
 
+		/* Save last DTL Operation Stage */
+		dtl_operation_code_prev=dtlOperationalCode;
+
+		/* Set Max Arc Count Limits */
+		/* Operation state: RF Conditioning */
+		if (dtlOperationalCode == 202) {
+			T1_Arc_Global_Counter_Limit=DTL_RF_Conditioning_Max_Arcs_Limit;
+			T2_Arc_Global_Counter_Limit=DTL_RF_Conditioning_Max_Arcs_Limit;
+			T3_Arc_Global_Counter_Limit=DTL_RF_Conditioning_Max_Arcs_Limit;
+			T4_Arc_Global_Counter_Limit=DTL_RF_Conditioning_Max_Arcs_Limit;
+			T5_Arc_Global_Counter_Limit=DTL_RF_Conditioning_Max_Arcs_Limit;
+		}
+		/* Operation state: Beam Operation (worst case) */
+		else {
+			T1_Arc_Global_Counter_Limit=DTL_RF_Beam_Operation_Max_Arcs_Limit;
+			T2_Arc_Global_Counter_Limit=DTL_RF_Beam_Operation_Max_Arcs_Limit;
+			T3_Arc_Global_Counter_Limit=DTL_RF_Beam_Operation_Max_Arcs_Limit;
+			T4_Arc_Global_Counter_Limit=DTL_RF_Beam_Operation_Max_Arcs_Limit;
+			T5_Arc_Global_Counter_Limit=DTL_RF_Beam_Operation_Max_Arcs_Limit;
+		}
+
 	}
 
 	/* Error: ADM is OFF with  power_on_counter >= Max_power_on */
@@ -1212,9 +1262,23 @@ state ready_for_operation {
 
 		/* Stop operations for arc detection system */
 		printf("[SEQ ARC DETECTION] System stopped to operate by  user \n");
-		printf("[SEQ ARC DETECTION] System  passed self check: go to STARTUP \n");
+		printf("[SEQ ARC DETECTION] System  goes to STARTUP \n");
 
 	} state start_up
+
+
+	when ( (dtlOperationalCode == 202) && (dtlOperationalCode != dtl_operation_code_prev) ) {
+		printf("[SEQ ARC DETECTION] Main System operation changed to RF CONDITIONING. \n");
+		printf("[SEQ ARC DETECTION] System reload arc detection parameters  \n");
+
+	} state ready_for_operation
+
+	when ( (dtlOperationalCode == 303) && (dtlOperationalCode != dtl_operation_code_prev) ) {
+		printf("[SEQ ARC DETECTION] Main System operation changed to RF STARTUP. \n");
+		printf("[SEQ ARC DETECTION] System reload arc detection parameters  \n");
+
+	} state ready_for_operation
+
 
 	/* NOTES: */
   /* Case of Operation: RF Conditioning */
@@ -1230,6 +1294,8 @@ state ready_for_operation {
    - Frequency detuning in range [-D_f, +D_f]
 	 - No arcs permitted
   */
+
+	/* Conditions managed in Main DTL State Machine */
 
 }
 

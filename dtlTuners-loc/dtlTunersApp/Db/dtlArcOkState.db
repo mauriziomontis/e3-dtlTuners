@@ -11,6 +11,6 @@ record(calcout, "$(PREFIX):RFS-AD:OkStat-RB") {
 	field(VAL, 0)
 	field(INPA, "$(INPUT)")
 	field(INPB, "$(LIMIT)")
-	field(CALC, "A>$(LIMIT)?1:0")
+	field(CALC, "A>$(LIMIT)?0:1")
 	field(OUT, "$(OUTPUT)")
 }

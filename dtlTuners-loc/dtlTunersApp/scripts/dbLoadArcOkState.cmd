@@ -10,7 +10,7 @@
 #-d   \param SECTION_NAME Section name, i.e. DTL-010
 #-d   \param INPUT Input variable, i.e. DTL:RF:ArcCount
 #-d   \param OUTPUT Output variable, i.e. DTL-010:Exec
-#-d   \param MAX_ARC_NUM Max arcs counted ardmited for mainatin ok status, i.e. 2
+#-d   \param MAX_ARC_NUM Max arcs counted ardmited for maintain ok status, i.e. 2
 #-d   \note Example call:
 #-d   \code
 #-d    ${SCRIPTEXEC} "${dtlTuner_DIR}dbLoadArcOkState.cmd", "SECTION_NAME=DTL-010, INPUT=DTL:RF:ArcCount, OUTPUT=DTL-010:Exec, MAX_ARC_NUM=2"
@@ -18,5 +18,3 @@
 #-d */
 
 dbLoadRecords(dtlArcOkState.db, "PREFIX=${SECTION_NAME}, INPUT=${INPUT}, OUTPUT=${OUTPUT}, LIMIT=${MAX_ARC_NUM}" )
-
-
