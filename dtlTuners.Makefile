@@ -92,6 +92,7 @@ endif
 # SOURCES += $(APPSRC)/aCalcPerform.c
 
 
+SOURCES += $(APPSRC)/singleTuner_statemachine.st
 SOURCES += $(APPSRC)/tuners_statemachine.st
 SOURCES += $(APPSRC)/arcDetection_statemachine.st
 # SOURCES += $(APPSRC)/calcUtil.c

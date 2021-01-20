@@ -585,3 +585,10 @@ ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitLinearEncConfig.cmd", "SECTION_NAME=DTL
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitLinearEncConfig.cmd", "SECTION_NAME=DTL-050, DEVICE_POS=1"
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitLinearEncConfig.cmd", "SECTION_NAME=DTL-050, DEVICE_POS=2"
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitLinearEncConfig.cmd", "SECTION_NAME=DTL-050, DEVICE_POS=3"
+
+
+
+#
+# comment
+# enable singleTuner_statemachine
+# seq singleTuner_statemachine  "SECTION_NAME=DTL-010 POSITION=2"
