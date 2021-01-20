@@ -22,7 +22,7 @@
 # mail: maurizio.montis@lnl.infn.it
 */
 
-program tuners_statemachine
+program singleTuner_statemachine
 
 /*
 # Libraries
@@ -314,7 +314,7 @@ double DEBUG=1;
 # State Machine Definition
 */
 
-ss tuners_statemachine {
+ss singleTuner_statemachine {
 
 /* state INITIALIZATION	*/
 	state initialization {
