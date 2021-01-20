@@ -127,6 +127,10 @@ double T1_M1_LinEnc_Position;
 assign T1_M1_LinEnc_Position to "{SECTION_NAME}:EMR-GT-00{POSITION}:Pos";
 monitor T1_M1_LinEnc_Position;
 
+int T1_M1_LinEnc_HLimAlrm;
+assign T1_M1_LinEnc_HLimAlrm to "{SECTION_NAME}:EMR-GT-00{POSITION}:HLim-Alrm";
+monitor T1_M1_LinEnc_HLimAlrm;
+
 
 /* Linear Encoders - Status*/
 /*
@@ -401,7 +405,7 @@ ss tuners_statemachine {
     } state failure
 
     /* Error in linear encoders: error alarm */
-		when ( (T1_M1_LinEnc_ErrorAlrm == 1) || (T1_M2_LinEnc_ErrorAlrm == 1) ) {
+		when ( (T1_M1_LinEnc_ErrorAlrm == 1) ) {
       printf("[SEQ TUNERS] Error in linear encoders: one or more modules are in error \n");
       printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
 
@@ -465,7 +469,7 @@ ss tuners_statemachine {
 
 
     /* no error in any line */
-    when ( (T1_M1_LimSwitch_IN_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M2_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M1_LimSwitch_OUT_LoadAlarm == 0 ) && (T1_M1_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_OUT_ShortCircAlarm == 0 ) && ( (T1_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && (T1_M1_LinEnc_ErrorAlrm == 0) && (T1_M1_Axis_Error == 0) && (T1_M1_Driver_WarningAlrm == 0) && (T1_M1_Driver_ErrorAlrm == 0) && (T1_M1_Driver_StallAlrm == 0) && (T1_M1_Driver_SyncAlrm == 0) && (T1_M2_Driver_SyncAlrm == 0) ) {
+    when ( (T1_M1_LimSwitch_IN_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M1_LimSwitch_OUT_LoadAlarm == 0 ) && (T1_M1_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_OUT_ShortCircAlarm == 0 ) && ( (T1_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && (T1_M1_LinEnc_ErrorAlrm == 0) && (T1_M1_Axis_Error == 0) && (T1_M1_Driver_WarningAlrm == 0) && (T1_M1_Driver_ErrorAlrm == 0) && (T1_M1_Driver_StallAlrm == 0) && (T1_M1_Driver_SyncAlrm == 0) ) {
 
       printf("[SEQ TUNERS] Self Check Passed. \n");
 
@@ -663,7 +667,7 @@ state start_up {
 
 
   /* no error in any line */
-  when ( (T1_M1_LimSwitch_IN_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M1_LimSwitch_OUT_LoadAlarm == 0 ) && (T1_M1_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_OUT_ShortCircAlarm == 0 ) && ( (T1_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && (T1_M1_LinEnc_ErrorAlrm == 0) && (T1_M2_LinEnc_ErrorAlrm == 0) && (T1_M1_Axis_Error == 0) && (T1_M1_Driver_WarningAlrm == 0) && (T1_M1_Driver_ErrorAlrm == 0) && (T1_M1_Driver_StallAlrm == 0) && (T1_M2_Driver_StallAlrm == 0) && (T1_M1_Driver_SyncAlrm == 0) ) {
+  when ( (T1_M1_LimSwitch_IN_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M1_LimSwitch_OUT_LoadAlarm == 0 ) && (T1_M1_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_OUT_ShortCircAlarm == 0 ) && ( (T1_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && (T1_M1_LinEnc_ErrorAlrm == 0) && (T1_M1_Axis_Error == 0) && (T1_M1_Driver_WarningAlrm == 0) && (T1_M1_Driver_ErrorAlrm == 0) && (T1_M1_Driver_StallAlrm == 0) && (T1_M1_Driver_SyncAlrm == 0) ) {
     printf("[SEQ TUNERS] System enabled and ready for operation. \n");
     printf("[SEQ TUNERS] Go to idle status \n");
 
