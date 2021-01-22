@@ -121,7 +121,7 @@ monitor T1_M1_LimSwitch_OUT_NO_LimStat;
 
 
 /* Linear Encoders - Position*/
-double Lin_Enc_Position_Res = 1;  // [millimiters]
+double Lin_Enc_Position_Res = 6;  // [millimiters]  -- VALUE FOR TEST
 
 double T1_M1_LinEnc_Position;
 assign T1_M1_LinEnc_Position to "{SECTION_NAME}:EMR-GT-00{POSITION}:Pos";
@@ -197,7 +197,7 @@ monitor T1_M1_Axis_SetOffset;
 
 /* Motor - Miss position */
 int Error_Missing_Counter = 0;
-int Max_Missing_Counter = 10;
+int Max_Missing_Counter = 3;
 
 int T1_M1_Axis_Missing;
 assign T1_M1_Axis_Missing to "{SECTION_NAME}:EMR-SM-00{POSITION}.MISS";
@@ -261,6 +261,10 @@ int AutoControl_ActualStatus;
 assign AutoControl_ActualStatus to "DTL:MC-MCU:AutoCmd-RB";
 monitor AutoControl_ActualStatus;
 
+/* Enable Tuners - SDIS trigger */
+int Enable_Tuners;
+assign Enable_Tuners to "DTL:EMR-SM:EnCmd";
+monitor Enable_Tuners;
 
 /* Start and Stop Operations */
 int StartOperationCmd;
@@ -309,6 +313,7 @@ monitor dtlOperationalCode;
 /* Debug Mode: */
 double DEBUG=1;
 
+char buffer[200];
 
 /*
 # State Machine Definition
@@ -338,7 +343,7 @@ ss singleTuner_statemachine {
 
 			T1_M1_LimSwitch_OUT_OnCmd=1;
 			pvPut(T1_M1_LimSwitch_OUT_OnCmd);
-
+			sleep(5);
 
 			/* Reset Error Motor */
 			T1_M1_Axis_ErrorReset=1;
@@ -347,7 +352,7 @@ ss singleTuner_statemachine {
       /* Set Correct Motor Direction */
       T1_M1_Axis_Direction=0;
 			pvPut(T1_M1_Axis_Direction);
-
+			sleep(10);
 
 		} state self_check
 
@@ -440,11 +445,12 @@ ss singleTuner_statemachine {
     } state failure
 
     /* Error in motor driver: module warning alarm */
-		when ( (T1_M1_Driver_WarningAlrm == 1) ) {
+/* to remove		when ( (T1_M1_Driver_WarningAlrm == 1) ) {
       printf("[SEQ TUNERS] Error in motor drives: one or more drivers are in warning status \n");
       printf("[SEQ TUNERS] System not passed self check: go to FAILURE \n");
 
     } state failure
+*/
 
     /* Error in motor driver: module error alarm */
 		when ( (T1_M1_Driver_ErrorAlrm == 1) ) {
@@ -469,7 +475,7 @@ ss singleTuner_statemachine {
 
 
     /* no error in any line */
-    when ( (T1_M1_LimSwitch_IN_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M1_LimSwitch_OUT_LoadAlarm == 0 ) && (T1_M1_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_OUT_ShortCircAlarm == 0 ) && ( (T1_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && (T1_M1_LinEnc_ErrorAlrm == 0) && (T1_M1_Axis_Error == 0) && (T1_M1_Driver_WarningAlrm == 0) && (T1_M1_Driver_ErrorAlrm == 0) && (T1_M1_Driver_StallAlrm == 0) && (T1_M1_Driver_SyncAlrm == 0) ) {
+    when ( (T1_M1_LimSwitch_IN_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M1_LimSwitch_OUT_LoadAlarm == 0 ) && (T1_M1_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_OUT_ShortCircAlarm == 0 ) && ( (T1_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && (T1_M1_LinEnc_ErrorAlrm == 0) && (T1_M1_Axis_Error == 0) && (T1_M1_Driver_ErrorAlrm == 0) && (T1_M1_Driver_StallAlrm == 0) && (T1_M1_Driver_SyncAlrm == 0) ) {
 
       printf("[SEQ TUNERS] Self Check Passed. \n");
 
@@ -505,7 +511,10 @@ state start_up {
 
     T1_M1_Axis_SetOffset=1;
     pvPut(T1_M1_Axis_SetOffset);
-
+    sleep(10);
+    T1_M1_Axis_SetOffset=0;
+    pvPut(T1_M1_Axis_SetOffset);
+    
     /* Disable tuners PID control */
     T1_M1_PID_Enable=0;
     pvPut(T1_M1_PID_Enable);
@@ -594,11 +603,12 @@ state start_up {
   } state failure
 
   /* Error in motor driver: module warning alarm */
-  when ( (T1_M1_Driver_WarningAlrm == 1) ) {
+/*  when ( (T1_M1_Driver_WarningAlrm == 1) ) {
     printf("[SEQ TUNERS] Error in motor drives: one or more drivers are in warning status \n");
     printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
+*/
 
   /* Error in motor driver: module error alarm */
   when ( (T1_M1_Driver_ErrorAlrm == 1) ) {
@@ -622,27 +632,34 @@ state start_up {
   } state failure
 
   /* Error in motor axis: devices have MISS error with number of times > Max number accepted*/
-  when ( (T1_M1_Axis_Missing=1) && (Error_Missing_Counter>Max_Missing_Counter) ) {
+  when ( (T1_M1_Axis_Missing == 1) && (Error_Missing_Counter>Max_Missing_Counter) ) {
     printf("[SEQ TUNERS] Error in motor drives: one or more drivers are in missing error status \n");
     printf("[SEQ TUNERS] System not ok for many times: go to FAILURE \n");
+
+    /* reset missing counter */
+    Error_Missing_Counter=0;
 
   } state failure
 
   /* Error in motor axis: devices have MISS error with number of times <= Max number accepted*/
-  when ( (T1_M1_Axis_Missing=1) && (Error_Missing_Counter<=Max_Missing_Counter) ) {
+  when ( (T1_M1_Axis_Missing == 1) && (Error_Missing_Counter<=Max_Missing_Counter) ) {
     printf("[SEQ TUNERS] Error in motor drives: one or more drivers are in missing error status \n");
     printf("[SEQ TUNERS] System not ok: Try to reset axis and restart procedure \n");
+    printf("[SEQ TUNERS] MISS field has value %d\n ", T1_M1_Axis_Missing);
+    //printf("%s", buffer);
     /* Reset Error Motors */
     printf("[SEQ TUNERS] - Reset Errors \n");
     T1_M1_Axis_ErrorReset=1;
     pvPut(T1_M1_Axis_ErrorReset);
+    /* Wait 4 seconds before next operation */
+    sleep(4);
 
     /* Stop Motors */
     printf("[SEQ TUNERS] - Stop Motors \n");
     T1_M1_Axis_Stop=1;
     pvPut(T1_M1_Axis_Stop);
-    /* Wait 2 seconds before next operation */
-    sleep(2);
+    /* Wait 4 seconds before next operation */
+    sleep(4);
     /* Enable Axis */
     printf("[SEQ TUNERS] - Re-enable Motors \n");
     T1_M1_Axis_Enable=1;
@@ -667,7 +684,7 @@ state start_up {
 
 
   /* no error in any line */
-  when ( (T1_M1_LimSwitch_IN_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M1_LimSwitch_OUT_LoadAlarm == 0 ) && (T1_M1_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_OUT_ShortCircAlarm == 0 ) && ( (T1_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && (T1_M1_LinEnc_ErrorAlrm == 0) && (T1_M1_Axis_Error == 0) && (T1_M1_Driver_WarningAlrm == 0) && (T1_M1_Driver_ErrorAlrm == 0) && (T1_M1_Driver_StallAlrm == 0) && (T1_M1_Driver_SyncAlrm == 0) ) {
+  when ( (T1_M1_LimSwitch_IN_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_OUT_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M1_LimSwitch_OUT_LoadAlarm == 0 ) && (T1_M1_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_OUT_ShortCircAlarm == 0 ) && ( (T1_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && (T1_M1_LinEnc_ErrorAlrm == 0) && (T1_M1_Axis_Error == 0) && (T1_M1_Driver_ErrorAlrm == 0) && (T1_M1_Driver_StallAlrm == 0) && (T1_M1_Driver_SyncAlrm == 0) ) {
     printf("[SEQ TUNERS] System enabled and ready for operation. \n");
     printf("[SEQ TUNERS] Go to idle status \n");
 
@@ -752,11 +769,12 @@ state idle {
   } state failure
 
   /* Error in motor driver: module warning alarm */
-  when ( (T1_M1_Driver_WarningAlrm == 1) ) {
+/*  when ( (T1_M1_Driver_WarningAlrm == 1) ) {
       printf("[SEQ TUNERS] Error in motor drives: one or more drivers are in warning status \n");
       printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
+*/
 
   /* Error in motor driver: module error alarm */
   when ( (T1_M1_Driver_ErrorAlrm == 1) ) {
@@ -881,11 +899,12 @@ state ready_for_operation {
     } state failure
 
     /* Error in motor driver: module warning alarm */
-    when ( (T1_M1_Driver_WarningAlrm == 1) ) {
+/*    when ( (T1_M1_Driver_WarningAlrm == 1) ) {
         printf("[SEQ TUNERS] Error in motor drives: one or more drivers are in warning status \n");
         printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
     } state failure
+*/
 
     /* Error in motor driver: module error alarm */
     when ( (T1_M1_Driver_ErrorAlrm == 1) ) {
@@ -968,7 +987,7 @@ state failure {
 	}
 
   /* System should provide an healthy status to confirm failure reset */
-  when ( (FaultReset == 1) && (T1_M1_LimSwitch_IN_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M1_LimSwitch_OUT_LoadAlarm == 0 ) && (T1_M1_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_IN_ShortCircAlarm == 0 ) && (T1_M1_LimSwitch_OUT_ShortCircAlarm == 0 ) && ( (T1_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && (T1_M1_LinEnc_ErrorAlrm == 0) && (T1_M1_Axis_Error == 0) && (T1_M1_Driver_WarningAlrm == 0) && (T1_M1_Driver_ErrorAlrm == 0) && (T1_M1_Driver_StallAlrm == 0) && (T1_M1_Driver_SyncAlrm == 0) ) {
+  when ( (FaultReset == 1) && (T1_M1_LimSwitch_IN_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M1_LimSwitch_OUT_LoadAlarm == 0 ) && (T1_M1_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_IN_ShortCircAlarm == 0 ) && (T1_M1_LimSwitch_OUT_ShortCircAlarm == 0 ) && ( (T1_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && (T1_M1_LinEnc_ErrorAlrm == 0) && (T1_M1_Axis_Error == 0)  && (T1_M1_Driver_ErrorAlrm == 0) && (T1_M1_Driver_StallAlrm == 0) && (T1_M1_Driver_SyncAlrm == 0) ) {
     printf("[SEQ TUNERS] Failure Stage reset by Operator. \n");
     printf("[SEQ TUNERS]  Reset conditions satisfied.\n");
 

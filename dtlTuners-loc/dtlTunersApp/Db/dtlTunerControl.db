@@ -36,3 +36,12 @@ record(bo, "DTL:MC-MCU:OpStop") {
 	field(ZNAM, "NOT STOP")
 	field(ONAM, "STOP")
 }
+
+record(bo, "DTL:EMR-SM:EnCmd") {
+        field(DESC, "Enable Tuner System")
+        field(VAL, "1")
+        field(PINI, "YES")
+        field(ZNAM, "Disabled")
+        field(ONAM, "Enabled")
+}
+
