@@ -170,6 +170,10 @@ double T1_M1_Axis_Position;
 assign T1_M1_Axis_Position to "{SECTION_NAME}:EMR-SM-00{POSITION}.VAL";
 monitor T1_M1_Axis_Position;
 
+/* Motor - Desired Position */
+double T1_M1_Axis_DesiredPosition;
+assign T1_M1_Axis_DesiredPosition to "{SECTION_NAME}:EMR-SM-00{POSITION}.DVAL";
+monitor T1_M1_Axis_DesiredPosition;
 
 /* Motor - Enable */
 int T1_M1_Axis_Enable;
@@ -193,7 +197,10 @@ int T1_M1_Axis_SetOffset;
 assign T1_M1_Axis_SetOffset to "{SECTION_NAME}:EMR-SM-00{POSITION}.SET";
 monitor T1_M1_Axis_SetOffset;
 
-
+/* Motor - Moving Status */
+int T1_M1_Moving;
+assign T1_M1_Moving to "{SECTION_NAME}:EMR-SM-00{POSITION}.MOVN";
+monitor T1_M1_Moving;
 
 /* Motor - Miss position */
 int Error_Missing_Counter = 0;
@@ -520,7 +527,7 @@ state start_up {
     pvPut(T1_M1_PID_Enable);
 
     /* Tuners in home position (0 mm) */
-    T1_M1_Axis_Position=0;
+    T1_M1_Axis_Position=1;  // 1 mm for tests
     pvPut(T1_M1_Axis_Position);
 
   }
@@ -713,11 +720,13 @@ state idle {
   } state failure
 
   /* Error in limit switches: Load */
-  when ( (T1_M1_LimSwitch_IN_LoadAlarm == 1 ) || (T1_M1_LimSwitch_OUT_LoadAlarm == 1 ) ) {
+/*  when ( (T1_M1_LimSwitch_IN_LoadAlarm == 1 ) || (T1_M1_LimSwitch_OUT_LoadAlarm == 1 ) ) {
       printf("[SEQ TUNERS] Error in limit switches: load problem in one or more lines \n");
       printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
+TB CLEAN
+*/
 
   /* Error in limit switches: Over Current */
   when ( (T1_M1_LimSwitch_IN_OverCurrentAlarm == 1 ) || (T1_M1_LimSwitch_OUT_OverCurrentAlarm == 1 ) ) {
@@ -796,6 +805,30 @@ state idle {
       printf("[SEQ TUNERS] System not ok: go to FAILURE \n");
 
   } state failure
+
+  /* possibility: motor driver continues to provide power even when setpoint is reached  */ 
+/*  when ( delay(2) && ( (T1_M1_LinEnc_Position - T1_M1_Axis_Position) <= Lin_Enc_Position_Res )  && (T1_M1_Moving !=0) ) {
+	printf("[SEQ TUNERS] Warning: axis reached position but motor driver stillproviding power \n");
+      printf("[SEQ TUNERS] Reset modotr driver enable command");
+	T1_M1_Axis_Enable=0;
+	pvPut(T1_M1_Axis_Enable);
+	sleep(4);
+	T1_M1_Axis_Enable=1;
+	pvPut(T1_M1_Axis_Enable);
+  } state idle
+*/
+
+  /* Possibility to modify [MAN|AUTO] control during operations without changing state*/
+  when ( AutoControl_ActualStatus != AutoControlCmd ) {
+      AutoControl_ActualStatus = AutoControlCmd;
+      pvPut(AutoControl_ActualStatus);
+      if ( AutoControl_ActualStatus == 0 ) {
+        printf("[SEQ TUNERS] Control Configuration changed to MANUAL .\n");
+      }
+      else if ( AutoControl_ActualStatus == 1 ) {
+        printf("[SEQ TUNERS] Control Configuration changed to AUTOMATIC.\n");
+      }
+  } state idle
 
   /* Execute chosen configuration [man|auto] */
   when ( (StartOperationCmd == 1) ) {
@@ -928,6 +961,18 @@ state ready_for_operation {
     } state failure
 
 
+	/* possibility: motor driver continues to provide power even when setpoint is reached  */
+/*  when ( delay(2) && ( abs(T1_M1_Axis_DesiredPosition - T1_M1_Axis_Position) <= Lin_Enc_Position_Res )  && (T1_M1_Moving !=0) ) {
+        printf("[SEQ TUNERS] Warning: axis reached position but motor driver stillproviding power \n");
+      printf("[SEQ TUNERS] Reset modotr driver enable command");
+        T1_M1_Axis_Enable=0;
+        pvPut(T1_M1_Axis_Enable);
+        sleep(4);
+        T1_M1_Axis_Enable=1;
+        pvPut(T1_M1_Axis_Enable);
+  } state idle
+*/
+
   /* Stop Operation (for every mode of operation) */
   when ( StopOperationCmd == 1 ) {
       printf("[SEQ TUNERS] Stop Control Operations. System goes back to Idle Status.\n");
@@ -984,6 +1029,12 @@ state failure {
       T1_OkStat=0;
       pvPut(T1_OkStat);
 
+      /* Reset Start and Stop Commands */
+      StartOperationCmd=0;
+      pvPut(StartOperationCmd);
+      StopOperationCmd=0;
+      pvPut(StopOperationCmd);   
+
 	}
 
   /* System should provide an healthy status to confirm failure reset */
@@ -1009,7 +1060,10 @@ state maintenance {
 	}
 
   /* System should provide an healthy status to confirm maintenance reset */
-  when ( (MaintenanceReset == 1) && (T1_M1_LimSwitch_IN_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M1_LimSwitch_OUT_LoadAlarm == 0 ) && (T1_M1_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_IN_ShortCircAlarm == 0 ) && (T1_M1_LimSwitch_OUT_ShortCircAlarm == 0 ) && ( (T1_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && (T1_M1_LinEnc_ErrorAlrm == 0) && (T1_M1_Axis_Error == 0) && (T1_M1_Driver_WarningAlrm == 0) && (T1_M1_Driver_ErrorAlrm == 0) && (T1_M1_Driver_StallAlrm == 0) && (T1_M1_Driver_SyncAlrm == 0) ) {
+/*  when ( (MaintenanceReset == 1) && (T1_M1_LimSwitch_IN_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M1_LimSwitch_OUT_LoadAlarm == 0 ) && (T1_M1_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_IN_ShortCircAlarm == 0 ) && (T1_M1_LimSwitch_OUT_ShortCircAlarm == 0 ) && ( (T1_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && (T1_M1_LinEnc_ErrorAlrm == 0) && (T1_M1_Axis_Error == 0) && (T1_M1_Driver_WarningAlrm == 0) && (T1_M1_Driver_ErrorAlrm == 0) && (T1_M1_Driver_StallAlrm == 0) && (T1_M1_Driver_SyncAlrm == 0) ) {*/
+
+when ( (MaintenanceReset == 1) && (T1_M1_LimSwitch_IN_TemperatureAlarm == 0 ) && (T1_M1_LimSwitch_IN_LoadAlarm == 0 ) && (T1_M1_LimSwitch_OUT_LoadAlarm == 0 ) && (T1_M1_LimSwitch_IN_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_OUT_OverCurrentAlarm == 0 ) && (T1_M1_LimSwitch_IN_ShortCircAlarm == 0 ) && (T1_M1_LimSwitch_OUT_ShortCircAlarm == 0 ) && ( (T1_M1_LimSwitch_IN_NC_LimStat == 1 ) || (T1_M1_LimSwitch_IN_NO_LimStat == 1 ) ) && (T1_M1_LinEnc_ErrorAlrm == 0) && (T1_M1_Axis_Error == 0)  && (T1_M1_Driver_ErrorAlrm == 0) && (T1_M1_Driver_StallAlrm == 0) && (T1_M1_Driver_SyncAlrm == 0) ) {
+
     printf("[SEQ TUNERS] Maintenance Stage reset by Operator. \n");
     printf("[SEQ TUNERS]  Reset conditions satisfied.\n");
 
