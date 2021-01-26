@@ -1,0 +1,11 @@
+
+record(calcout, "${PREFIX}:EMR-SM:CalcOkStat") {
+	field(DESC, "verify Tank OK status")
+	field(SCAN, ".2 second")
+	field(INPA, "${PREFIX}:MC-MCU-001:OkStat-RB")
+	field(INPB, "${PREFIX}:MC-MCU-002:OkStat-RB")
+	field(INPC, "${PREFIX}:MC-MCU-003:OkStat-RB")
+	field(CALC, "A&&B&&C")
+	field(DOPT, "Use CALC")
+	field(OUT, "${PREFIX}:MC-MCU:OkStat PP MS")
+}
