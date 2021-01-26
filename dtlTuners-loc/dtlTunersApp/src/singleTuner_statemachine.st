@@ -45,9 +45,9 @@ monitor T1_M1_OkStat;
 
 
 /* Ok Status - Tanks (cmds)*/
-int T1_OkStat;
-assign T1_OkStat to "{SECTION_NAME}:MC-MCU:OkStat";
-monitor T1_OkStat;
+//#int T1_OkStat;
+//#assign T1_OkStat to "{SECTION_NAME}:MC-MCU:OkStat";
+//#monitor T1_OkStat;
 
 
 /* Ok Status - 24V */
@@ -491,8 +491,8 @@ ss singleTuner_statemachine {
       pvPut(T1_M1_OkStat);
 
       /* Enable Tank OK Status */
-      T1_OkStat=1;
-      pvPut(T1_OkStat);
+      //#T1_OkStat=1;
+      //#pvPut(T1_OkStat);
 
       printf("[SEQ TUNERS] System set homing position (tuners extracted) \n");
       /* Enable tuners drivers */
@@ -1025,9 +1025,9 @@ state failure {
       T1_M1_OkStat=0;
       pvPut(T1_M1_OkStat);
 
-      /* Reset Tank OK Status */
-      T1_OkStat=0;
-      pvPut(T1_OkStat);
+      #/* Reset Tank OK Status */
+      //#T1_OkStat=0;
+      //#pvPut(T1_OkStat);
 
       /* Reset Start and Stop Commands */
       StartOperationCmd=0;

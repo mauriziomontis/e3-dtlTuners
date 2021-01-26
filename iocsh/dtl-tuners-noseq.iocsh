@@ -549,6 +549,13 @@ ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbLoadArcOkState.cmd", "SECTION_NAME=DTL-030, I
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbLoadArcOkState.cmd", "SECTION_NAME=DTL-040, INPUT=iocuser:calc1, OUTPUT=, MAX_ARC_NUM=1"
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbLoadArcOkState.cmd", "SECTION_NAME=DTL-050, INPUT=iocuser:calc1, OUTPUT=, MAX_ARC_NUM=1"
 
+# Tuners Tanks Ok Status
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadTunerTankOkStatus.cmd", "SECTION_NAME=DTL-010"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadTunerTankOkStatus.cmd", "SECTION_NAME=DTL-020"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadTunerTankOkStatus.cmd", "SECTION_NAME=DTL-030"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadTunerTankOkStatus.cmd", "SECTION_NAME=DTL-040"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadTunerTankOkStatus.cmd", "SECTION_NAME=DTL-050"
+
 
 # Tuner System - Maintenance Reset
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadTunerResetMaintenance.cmd"
