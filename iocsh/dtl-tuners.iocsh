@@ -597,7 +597,12 @@ ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitLinearEncConfig.cmd", "SECTION_NAME=DTL
 ## SQL State Machines
 ##
 # Tuners
-${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunersStateMachine.cmd"
+# - old - ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunersStateMachine.cmd"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunerTankStateMachineCode.cmd", "SECTION_NAME=DTL-010"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunerTankStateMachineCode.cmd", "SECTION_NAME=DTL-020"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunerTankStateMachineCode.cmd", "SECTION_NAME=DTL-030"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunerTankStateMachineCode.cmd", "SECTION_NAME=DTL-040"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunerTankStateMachineCode.cmd", "SECTION_NAME=DTL-050"
 
 # Arc Detection
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitArcDetectionStateMachine.cmd"
