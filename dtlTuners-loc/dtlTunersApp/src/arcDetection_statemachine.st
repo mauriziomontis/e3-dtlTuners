@@ -1,5 +1,5 @@
 /* Arc Detection State Machine
-# State Machine devoted to control the Arc Detection sub-system realted to DTL apparatus:
+# State Machine devoted to control the Arc Detection sub-system related to DTL apparatus:
 #
 # Principal States:
 # - Initialization:
