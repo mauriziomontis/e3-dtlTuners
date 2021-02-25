@@ -561,7 +561,11 @@ ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadTunerTankOkStatus.cmd", "SECTION_NAME=DTL
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadTunerResetMaintenance.cmd"
 
 # Tuner System - State Machine code
-${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadTunerStateMachineCode.cmd"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadTunerStateMachineCode.cmd", "SECTION_NAME=DTL-010"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadTunerStateMachineCode.cmd", "SECTION_NAME=DTL-020"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadTunerStateMachineCode.cmd", "SECTION_NAME=DTL-030"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadTunerStateMachineCode.cmd", "SECTION_NAME=DTL-040"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadTunerStateMachineCode.cmd", "SECTION_NAME=DTL-050"
 
 
 # Arc Detection System - Maintenance Reset

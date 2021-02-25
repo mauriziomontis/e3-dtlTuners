@@ -536,7 +536,7 @@ monitor FaultReset;
 # 	60 -> MAINTENANCE
 */
 int StateMachineCode;
-assign StateMachineCode to "DTL:MC-MCU:StateMachine";
+assign StateMachineCode to "{SECTION_NAME}:MC-MCU:StateMachine";
 
 /*
 # DTL Operational State Machine Code:

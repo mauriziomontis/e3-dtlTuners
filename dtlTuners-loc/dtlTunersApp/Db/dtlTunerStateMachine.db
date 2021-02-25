@@ -14,7 +14,7 @@
 # Defined by Maurizio Montis | INFN-LNL
 # mail: maurizio.montis@lnl.infn.it
 
-record(ai, "DTL:MC-MCU:StateMachine") {
+record(ai, "${PREFIX}:MC-MCU:StateMachine") {
 	field(DESC, "Tuners State machine code")
 	field(VAL, "0")
 	field(PINI, "YES")
