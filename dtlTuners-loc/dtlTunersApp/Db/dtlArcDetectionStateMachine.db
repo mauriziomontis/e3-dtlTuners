@@ -14,7 +14,7 @@
 # Defined by Maurizio Montis | INFN-LNL
 # mail: maurizio.montis@lnl.infn.it
 
-record(ai, "${PREFIX}:RFS-AD:StateMachine") {
+record(ai, "{PREFIX}:RFS-AD:StateMachine") {
 	field(DESC, "Tuners State machine code")
 	field(VAL, "0")
 	field(PINI, "YES")

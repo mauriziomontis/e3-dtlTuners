@@ -572,8 +572,11 @@ ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadTunerStateMachineCode.cmd", "SECTION_NAME
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadArcDetectionResetMaintenance.cmd"
 
 # Arc Detection System - State Machine code
-${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadArcDetectionStateMachineCode.cmd"
-
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadArcDetectionStateMachineCode.cmd", "SECTION_NAME=DTL-010"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadArcDetectionStateMachineCode.cmd", "SECTION_NAME=DTL-020"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadArcDetectionStateMachineCode.cmd", "SECTION_NAME=DTL-030"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadArcDetectionStateMachineCode.cmd", "SECTION_NAME=DTL-040"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}dbloadArcDetectionStateMachineCode.cmd", "SECTION_NAME=DTL-050"
 
 
 ##############################################################################
@@ -602,11 +605,11 @@ ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitLinearEncConfig.cmd", "SECTION_NAME=DTL
 ##
 # Tuners
 # - old - ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunersStateMachine.cmd"
-${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunerTankStateMachineCode.cmd", "SECTION_NAME=DTL-010"
-${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunerTankStateMachineCode.cmd", "SECTION_NAME=DTL-020"
-${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunerTankStateMachineCode.cmd", "SECTION_NAME=DTL-030"
-${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunerTankStateMachineCode.cmd", "SECTION_NAME=DTL-040"
-${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunerTankStateMachineCode.cmd", "SECTION_NAME=DTL-050"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunerTankStateMachine.cmd", "SECTION_NAME=DTL-010, TANK=010"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunerTankStateMachine.cmd", "SECTION_NAME=DTL-020, TANK=020"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunerTankStateMachine.cmd", "SECTION_NAME=DTL-030, TANK=030"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunerTankStateMachine.cmd", "SECTION_NAME=DTL-040, TANK=040"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunerTankStateMachine.cmd", "SECTION_NAME=DTL-050, TANK=050"
 
 # Arc Detection
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitArcDetectionStateMachine.cmd"
