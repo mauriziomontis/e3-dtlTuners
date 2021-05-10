@@ -612,4 +612,8 @@ ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunerTankStateMachine.cmd", "SECTION_NA
 ${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitTunerTankStateMachine.cmd", "SECTION_NAME=DTL-050, TANK=050"
 
 # Arc Detection
-${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitArcDetectionStateMachine.cmd"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitArcDetectionStateMachineCode.cmd", "SECTION_NAME=DTL-010, TANK=010"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitArcDetectionStateMachineCode.cmd", "SECTION_NAME=DTL-020, TANK=020"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitArcDetectionStateMachineCode.cmd", "SECTION_NAME=DTL-030, TANK=030"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitArcDetectionStateMachineCode.cmd", "SECTION_NAME=DTL-040, TANK=040"
+${SCRIPTEXEC} "${DTL_TUNERS_ROOT}postInitArcDetectionStateMachineCode.cmd", "SECTION_NAME=DTL-050, TANK=050"

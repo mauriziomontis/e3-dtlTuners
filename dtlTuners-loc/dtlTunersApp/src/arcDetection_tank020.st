@@ -1,4 +1,4 @@
-/* Arc Detection State Machine - Tank 1
+/* Arc Detection State Machine - Tank 2
 # State Machine devoted to control the Arc Detection sub-system related to DTL apparatus:
 #
 # Principal States:
@@ -22,7 +22,7 @@
 # mail: maurizio.montis@lnl.infn.it
 */
 
-program arcDetection_tank010
+program arcDetection_tank020
 
 /*
 # Libraries
@@ -53,35 +53,35 @@ program arcDetection_tank010
 double power_on_counter = 0;
 double Max_power_on = 3;
 
-int T1_Arc_Power_Status;
-assign T1_Arc_Power_Status to "";
-monitor T1_Arc_Power_Status;
+int T2_Arc_Power_Status;
+assign T2_Arc_Power_Status to "";
+monitor T2_Arc_Power_Status;
 
 
 /* ARC4 Power Command */
-int T1_Arc_Power_Cmd;
-assign T1_Arc_Power_Cmd to "";
-monitor T1_Arc_Power_Cmd;
+int T2_Arc_Power_Cmd;
+assign T2_Arc_Power_Cmd to "";
+monitor T2_Arc_Power_Cmd;
 
 
 /* ARC4 Power Reset */
-int T1_Arc_Power_Reset;
-assign T1_Arc_Power_Reset to "";
-monitor T1_Arc_Power_Reset;
+int T2_Arc_Power_Reset;
+assign T2_Arc_Power_Reset to "";
+monitor T2_Arc_Power_Reset;
 
 
 /* Global Arc Status */ /* 0=NOK | 1=OK */
 /* PVs provided by dtlArcOkState.db (tuner IOC) */
-int T1_Arc_Global_Status;
-assign T1_Arc_Global_Status to "{SECTION_NAME}:RFS-AD:OkStat-RB";
-monitor T1_Arc_Global_Status;
+int T2_Arc_Global_Status;
+assign T2_Arc_Global_Status to "{SECTION_NAME}:RFS-AD:OkStat-RB";
+monitor T2_Arc_Global_Status;
 
 
 /* Counts Limits for Global Arc Status */
 /* PVs provided by dtlArcOkState.db (tuner IOC) */
-double T1_Arc_Global_Counter_Limit;
-assign T1_Arc_Global_Counter_Limit to "{SECTION_NAME}:RFS-AD:OkStat-RB.B";
-monitor T1_Arc_Global_Counter_Limit;
+double T2_Arc_Global_Counter_Limit;
+assign T2_Arc_Global_Counter_Limit to "{SECTION_NAME}:RFS-AD:OkStat-RB.B";
+monitor T2_Arc_Global_Counter_Limit;
 
 
 /* Max Limits for ARc Counts */
@@ -95,129 +95,129 @@ monitor DTL_RF_Beam_Operation_Max_Arcs_Limit;
 
 
 /* RF Status */
-int T1_RF_Status;
-assign T1_RF_Status to "";
-monitor T1_RF_Status;
+int T2_RF_Status;
+assign T2_RF_Status to "";
+monitor T2_RF_Status;
 
 
 /* Arc Counters */
-int T1_Arc_Counter_01;
-assign T1_Arc_Counter_01 to "";
-monitor T1_Arc_Counter_01;
-int T1_Arc_Counter_02;
-assign T1_Arc_Counter_02 to "";
-monitor T1_Arc_Counter_02;
-int T1_Arc_Counter_03;
-assign T1_Arc_Counter_03 to "";
-monitor T1_Arc_Counter_03;
-int T1_Arc_Counter_04;
-assign T1_Arc_Counter_04 to "";
-monitor T1_Arc_Counter_04;
+int T2_Arc_Counter_01;
+assign T2_Arc_Counter_01 to "";
+monitor T2_Arc_Counter_01;
+int T2_Arc_Counter_02;
+assign T2_Arc_Counter_02 to "";
+monitor T2_Arc_Counter_02;
+int T2_Arc_Counter_03;
+assign T2_Arc_Counter_03 to "";
+monitor T2_Arc_Counter_03;
+int T2_Arc_Counter_04;
+assign T2_Arc_Counter_04 to "";
+monitor T2_Arc_Counter_04;
 
 
 /* Arc Counters Reset */
-int T1_Arc_Counter_Reset_01;
-assign T1_Arc_Counter_Reset_01 to "";
-monitor T1_Arc_Counter_Reset_01;
-int T1_Arc_Counter_Reset_02;
-assign T1_Arc_Counter_Reset_02 to "";
-monitor T1_Arc_Counter_Reset_02;
-int T1_Arc_Counter_Reset_03;
-assign T1_Arc_Counter_Reset_03 to "";
-monitor T1_Arc_Counter_Reset_03;
-int T1_Arc_Counter_Reset_04;
-assign T1_Arc_Counter_Reset_04 to "";
-monitor T1_Arc_Counter_Reset_04;
+int T2_Arc_Counter_Reset_01;
+assign T2_Arc_Counter_Reset_01 to "";
+monitor T2_Arc_Counter_Reset_01;
+int T2_Arc_Counter_Reset_02;
+assign T2_Arc_Counter_Reset_02 to "";
+monitor T2_Arc_Counter_Reset_02;
+int T2_Arc_Counter_Reset_03;
+assign T2_Arc_Counter_Reset_03 to "";
+monitor T2_Arc_Counter_Reset_03;
+int T2_Arc_Counter_Reset_04;
+assign T2_Arc_Counter_Reset_04 to "";
+monitor T2_Arc_Counter_Reset_04;
 
 
 /* Last Arc Time Stamp */
-float T1_Arc_Last_Timestamp_01;
-assign T1_Arc_Last_Timestamp_01 to "";
-monitor T1_Arc_Last_Timestamp_01;
-float T1_Arc_Last_Timestamp_02;
-assign T1_Arc_Last_Timestamp_02 to "";
-monitor T1_Arc_Last_Timestamp_02;
-float T1_Arc_Last_Timestamp_03;
-assign T1_Arc_Last_Timestamp_03 to "";
-monitor T1_Arc_Last_Timestamp_03;
-float T1_Arc_Last_Timestamp_04;
-assign T1_Arc_Last_Timestamp_04 to "";
-monitor T1_Arc_Last_Timestamp_04;
+float T2_Arc_Last_Timestamp_01;
+assign T2_Arc_Last_Timestamp_01 to "";
+monitor T2_Arc_Last_Timestamp_01;
+float T2_Arc_Last_Timestamp_02;
+assign T2_Arc_Last_Timestamp_02 to "";
+monitor T2_Arc_Last_Timestamp_02;
+float T2_Arc_Last_Timestamp_03;
+assign T2_Arc_Last_Timestamp_03 to "";
+monitor T2_Arc_Last_Timestamp_03;
+float T2_Arc_Last_Timestamp_04;
+assign T2_Arc_Last_Timestamp_04 to "";
+monitor T2_Arc_Last_Timestamp_04;
 
 
 /* Arc Test Internal Command - Check */
-int T1_Arc_Test_Internal_Cmd_Check_01;
-assign T1_Arc_Test_Internal_Cmd_Check_01 to "";
-monitor T1_Arc_Test_Internal_Cmd_Check_01;
-int T1_Arc_Test_Internal_Cmd_Check_02;
-assign T1_Arc_Test_Internal_Cmd_Check_02 to "";
-monitor T1_Arc_Test_Internal_Cmd_Check_02;
-int T1_Arc_Test_Internal_Cmd_Check_03;
-assign T1_Arc_Test_Internal_Cmd_Check_03 to "";
-monitor T1_Arc_Test_Internal_Cmd_Check_03;
-int T1_Arc_Test_Internal_Cmd_Check_04;
-assign T1_Arc_Test_Internal_Cmd_Check_04 to "";
-monitor T1_Arc_Test_Internal_Cmd_Check_04;
+int T2_Arc_Test_Internal_Cmd_Check_01;
+assign T2_Arc_Test_Internal_Cmd_Check_01 to "";
+monitor T2_Arc_Test_Internal_Cmd_Check_01;
+int T2_Arc_Test_Internal_Cmd_Check_02;
+assign T2_Arc_Test_Internal_Cmd_Check_02 to "";
+monitor T2_Arc_Test_Internal_Cmd_Check_02;
+int T2_Arc_Test_Internal_Cmd_Check_03;
+assign T2_Arc_Test_Internal_Cmd_Check_03 to "";
+monitor T2_Arc_Test_Internal_Cmd_Check_03;
+int T2_Arc_Test_Internal_Cmd_Check_04;
+assign T2_Arc_Test_Internal_Cmd_Check_04 to "";
+monitor T2_Arc_Test_Internal_Cmd_Check_04;
 
 
 /* Arc Test External Command - Check */
-int T1_Arc_Test_External_Cmd_Check_01;
-assign T1_Arc_Test_External_Cmd_Check_01 to "";
-monitor T1_Arc_Test_External_Cmd_Check_01;
-int T1_Arc_Test_External_Cmd_Check_02;
-assign T1_Arc_Test_External_Cmd_Check_02 to "";
-monitor T1_Arc_Test_External_Cmd_Check_02;
-int T1_Arc_Test_External_Cmd_Check_03;
-assign T1_Arc_Test_External_Cmd_Check_03 to "";
-monitor T1_Arc_Test_External_Cmd_Check_03;
-int T1_Arc_Test_External_Cmd_Check_04;
-assign T1_Arc_Test_External_Cmd_Check_04 to "";
-monitor T1_Arc_Test_External_Cmd_Check_04;
+int T2_Arc_Test_External_Cmd_Check_01;
+assign T2_Arc_Test_External_Cmd_Check_01 to "";
+monitor T2_Arc_Test_External_Cmd_Check_01;
+int T2_Arc_Test_External_Cmd_Check_02;
+assign T2_Arc_Test_External_Cmd_Check_02 to "";
+monitor T2_Arc_Test_External_Cmd_Check_02;
+int T2_Arc_Test_External_Cmd_Check_03;
+assign T2_Arc_Test_External_Cmd_Check_03 to "";
+monitor T2_Arc_Test_External_Cmd_Check_03;
+int T2_Arc_Test_External_Cmd_Check_04;
+assign T2_Arc_Test_External_Cmd_Check_04 to "";
+monitor T2_Arc_Test_External_Cmd_Check_04;
 
 
 /* Arc Test External Command - ADTT */
-int T1_Arc_Test_External_Cmd_01;
-assign T1_Arc_Test_External_Cmd_01 to "";
-monitor T1_Arc_Test_External_Cmd_01;
-int T1_Arc_Test_External_Cmd_02;
-assign T1_Arc_Test_External_Cmd_02 to "";
-monitor T1_Arc_Test_External_Cmd_02;
-int T1_Arc_Test_External_Cmd_03;
-assign T1_Arc_Test_External_Cmd_03 to "";
-monitor T1_Arc_Test_External_Cmd_03;
-int T1_Arc_Test_External_Cmd_04;
-assign T1_Arc_Test_External_Cmd_04 to "";
-monitor T1_Arc_Test_External_Cmd_04;
+int T2_Arc_Test_External_Cmd_01;
+assign T2_Arc_Test_External_Cmd_01 to "";
+monitor T2_Arc_Test_External_Cmd_01;
+int T2_Arc_Test_External_Cmd_02;
+assign T2_Arc_Test_External_Cmd_02 to "";
+monitor T2_Arc_Test_External_Cmd_02;
+int T2_Arc_Test_External_Cmd_03;
+assign T2_Arc_Test_External_Cmd_03 to "";
+monitor T2_Arc_Test_External_Cmd_03;
+int T2_Arc_Test_External_Cmd_04;
+assign T2_Arc_Test_External_Cmd_04 to "";
+monitor T2_Arc_Test_External_Cmd_04;
 
 
 /* Test Internal Status */  /* 0=NOK | 1=OK */
-int T1_Arc_Test_Internal_Status_01;
-assign T1_Arc_Test_Internal_Status_01 to "";
-monitor T1_Arc_Test_Internal_Status_01;
-int T1_Arc_Test_Internal_Status_02;
-assign T1_Arc_Test_Internal_Status_02 to "";
-monitor T1_Arc_Test_Internal_Status_02;
-int T1_Arc_Test_Internal_Status_03;
-assign T1_Arc_Test_Internal_Status_03 to "";
-monitor T1_Arc_Test_Internal_Status_03;
-int T1_Arc_Test_Internal_Status_04;
-assign T1_Arc_Test_Internal_Status_04 to "";
-monitor T1_Arc_Test_Internal_Status_04;
+int T2_Arc_Test_Internal_Status_01;
+assign T2_Arc_Test_Internal_Status_01 to "";
+monitor T2_Arc_Test_Internal_Status_01;
+int T2_Arc_Test_Internal_Status_02;
+assign T2_Arc_Test_Internal_Status_02 to "";
+monitor T2_Arc_Test_Internal_Status_02;
+int T2_Arc_Test_Internal_Status_03;
+assign T2_Arc_Test_Internal_Status_03 to "";
+monitor T2_Arc_Test_Internal_Status_03;
+int T2_Arc_Test_Internal_Status_04;
+assign T2_Arc_Test_Internal_Status_04 to "";
+monitor T2_Arc_Test_Internal_Status_04;
 
 
 /* Test External Status */  /* 0=NOK | 1=OK */
-int T1_Arc_Test_External_Status_01;
-assign T1_Arc_Test_External_Status_01 to "";
-monitor T1_Arc_Test_External_Status_01;
-int T1_Arc_Test_External_Status_02;
-assign T1_Arc_Test_External_Status_02 to "";
-monitor T1_Arc_Test_External_Status_02;
-int T1_Arc_Test_External_Status_03;
-assign T1_Arc_Test_External_Status_03 to "";
-monitor T1_Arc_Test_External_Status_03;
-int T1_Arc_Test_External_Status_04;
-assign T1_Arc_Test_External_Status_04 to "";
-monitor T1_Arc_Test_External_Status_04;
+int T2_Arc_Test_External_Status_01;
+assign T2_Arc_Test_External_Status_01 to "";
+monitor T2_Arc_Test_External_Status_01;
+int T2_Arc_Test_External_Status_02;
+assign T2_Arc_Test_External_Status_02 to "";
+monitor T2_Arc_Test_External_Status_02;
+int T2_Arc_Test_External_Status_03;
+assign T2_Arc_Test_External_Status_03 to "";
+monitor T2_Arc_Test_External_Status_03;
+int T2_Arc_Test_External_Status_04;
+assign T2_Arc_Test_External_Status_04 to "";
+monitor T2_Arc_Test_External_Status_04;
 
 
 /* Last Execution Time Stamp - Internal */
@@ -349,47 +349,47 @@ ss arcDetection_statemachine {
 		}
 
     /* Error: ADM is OFF with  power_on_counter < Max_power_on */
-		when ( (T1_Arc_Power_Status == 0) && (power_on_counter < Max_power_on)  ) {
+		when ( (T2_Arc_Power_Status == 0) && (power_on_counter < Max_power_on)  ) {
       printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more devices are OFF \n");
       printf("[SEQ ARC DETECTION - TANK 2] Try to power on devices \n");
 
 			/* Power on devices */
-			T1_Arc_Power_Cmd=1;
-			pvPut(T1_Arc_Power_Cmd);
+			T2_Arc_Power_Cmd=1;
+			pvPut(T2_Arc_Power_Cmd, SYNC);
 			++power_on_counter;
 
 		} state self_check
 
 		/* Error: ADM is OFF with  power_on_counter >= Max_power_on */
-		when ( (T1_Arc_Power_Status == 0) && (power_on_counter >= Max_power_on) ) {
+		when ( (T2_Arc_Power_Status == 0) && (power_on_counter >= Max_power_on) ) {
       printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more devices are OFF \n");
       printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
 		} state failure
 
 		/* Error: Global Status is NOK */
-		when ( (T1_Arc_Global_Status == 0) ) {
+		when ( (T2_Arc_Global_Status == 0) ) {
       printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more Global Status are NOK \n");
       printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
 		} state failure
 
 		/* Error: Internal Command Check is NOK */
-		when ( (T1_Arc_Test_Internal_Cmd_Check_01 == 0) || (T1_Arc_Test_Internal_Cmd_Check_02 == 0) || (T1_Arc_Test_Internal_Cmd_Check_03 == 0) || (T1_Arc_Test_Internal_Cmd_Check_04 == 0) ) {
+		when ( (T2_Arc_Test_Internal_Cmd_Check_01 == 0) || (T2_Arc_Test_Internal_Cmd_Check_02 == 0) || (T2_Arc_Test_Internal_Cmd_Check_03 == 0) || (T2_Arc_Test_Internal_Cmd_Check_04 == 0) ) {
 			printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more Internal Command Checks are NOK \n");
 			printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
 		} state failure
 
 		/* Error: External Command Check is NOK */
-		when ( (T1_Arc_Test_External_Cmd_Check_01 == 0) || (T1_Arc_Test_External_Cmd_Check_02 == 0) || (T1_Arc_Test_External_Cmd_Check_03 == 0) || (T1_Arc_Test_External_Cmd_Check_04 == 0) ) {
+		when ( (T2_Arc_Test_External_Cmd_Check_01 == 0) || (T2_Arc_Test_External_Cmd_Check_02 == 0) || (T2_Arc_Test_External_Cmd_Check_03 == 0) || (T2_Arc_Test_External_Cmd_Check_04 == 0) ) {
 			printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more External Command Checks are NOK \n");
 			printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
 		} state failure
 
 		/* Error: External Status is NOK */
-		when ( (T1_Arc_Test_External_Status_01 == 0) || (T1_Arc_Test_External_Status_02 == 0) || (T1_Arc_Test_External_Status_03 == 0) || (T1_Arc_Test_External_Status_04 == 0) ) {
+		when ( (T2_Arc_Test_External_Status_01 == 0) || (T2_Arc_Test_External_Status_02 == 0) || (T2_Arc_Test_External_Status_03 == 0) || (T2_Arc_Test_External_Status_04 == 0) ) {
 			printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more External Status are NOK \n");
 			printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
@@ -397,7 +397,7 @@ ss arcDetection_statemachine {
 
 
     /* no error in any line */
-    when ( (T1_Arc_Power_Status == 1) && (T1_Arc_Global_Status == 1) && (T1_Arc_Test_Internal_Cmd_Check_01 == 1) && (T1_Arc_Test_Internal_Cmd_Check_02 == 1) && (T1_Arc_Test_Internal_Cmd_Check_03 == 1) && (T1_Arc_Test_Internal_Cmd_Check_04 == 1) && (T1_Arc_Test_External_Cmd_Check_01 == 1) && (T1_Arc_Test_External_Cmd_Check_02 == 1) && (T1_Arc_Test_External_Cmd_Check_03 == 1) && (T1_Arc_Test_External_Cmd_Check_04 == 1) && (T1_Arc_Test_Internal_Status_01 == 1) && (T1_Arc_Test_Internal_Status_02 == 1) && (T1_Arc_Test_Internal_Status_03 == 1) && (T1_Arc_Test_Internal_Status_04 == 1) ) {
+    when ( (T2_Arc_Power_Status == 1) && (T2_Arc_Global_Status == 1) && (T2_Arc_Test_Internal_Cmd_Check_01 == 1) && (T2_Arc_Test_Internal_Cmd_Check_02 == 1) && (T2_Arc_Test_Internal_Cmd_Check_03 == 1) && (T2_Arc_Test_Internal_Cmd_Check_04 == 1) && (T2_Arc_Test_External_Cmd_Check_01 == 1) && (T2_Arc_Test_External_Cmd_Check_02 == 1) && (T2_Arc_Test_External_Cmd_Check_03 == 1) && (T2_Arc_Test_External_Cmd_Check_04 == 1) && (T2_Arc_Test_Internal_Status_01 == 1) && (T2_Arc_Test_Internal_Status_02 == 1) && (T2_Arc_Test_Internal_Status_03 == 1) && (T2_Arc_Test_Internal_Status_04 == 1) ) {
 
       printf("[SEQ ARC DETECTION - TANK 2] Self Check Passed. \n");
 
@@ -416,35 +416,35 @@ state start_up {
   }
 
 	/* Error: ADM is OFF with  power_on_counter >= Max_power_on */
-	when ( (T1_Arc_Power_Status == 0) && (power_on_counter >= Max_power_on)  ) {
+	when ( (T2_Arc_Power_Status == 0) && (power_on_counter >= Max_power_on)  ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more devices are OFF \n");
 		printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
 	} state failure
 
 	/* Error: Global Status is NOK */
-	when ( (T1_Arc_Global_Status == 0) ) {
+	when ( (T2_Arc_Global_Status == 0) ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more Global Status are NOK \n");
 		printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
 	} state failure
 
 	/* Error: Internal Command Check is NOK */
-	when ( (T1_Arc_Test_Internal_Cmd_Check_01 == 0) || (T1_Arc_Test_Internal_Cmd_Check_02 == 0) || (T1_Arc_Test_Internal_Cmd_Check_03 == 0) || (T1_Arc_Test_Internal_Cmd_Check_04 == 0) ) {
+	when ( (T2_Arc_Test_Internal_Cmd_Check_01 == 0) || (T2_Arc_Test_Internal_Cmd_Check_02 == 0) || (T2_Arc_Test_Internal_Cmd_Check_03 == 0) || (T2_Arc_Test_Internal_Cmd_Check_04 == 0) ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more Internal Command Checks are NOK \n");
 		printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
 	} state failure
 
 	/* Error: External Command Check is NOK */
-	when ( (T1_Arc_Test_External_Cmd_Check_01 == 0) || (T1_Arc_Test_External_Cmd_Check_02 == 0) || (T1_Arc_Test_External_Cmd_Check_03 == 0) || (T1_Arc_Test_External_Cmd_Check_04 == 0) ) {
+	when ( (T2_Arc_Test_External_Cmd_Check_01 == 0) || (T2_Arc_Test_External_Cmd_Check_02 == 0) || (T2_Arc_Test_External_Cmd_Check_03 == 0) || (T2_Arc_Test_External_Cmd_Check_04 == 0) ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more External Command Checks are NOK \n");
 		printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
 	} state failure
 
 	/* Error: External Status is NOK */
-	when ( (T1_Arc_Test_External_Status_01 == 0) || (T1_Arc_Test_External_Status_02 == 0) || (T1_Arc_Test_External_Status_03 == 0) || (T1_Arc_Test_External_Status_04 == 0) ) {
+	when ( (T2_Arc_Test_External_Status_01 == 0) || (T2_Arc_Test_External_Status_02 == 0) || (T2_Arc_Test_External_Status_03 == 0) || (T2_Arc_Test_External_Status_04 == 0) ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more External Status are NOK \n");
 		printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
@@ -494,35 +494,35 @@ state test_check {
 	}
 
 	/* Error: ADM is OFF with  power_on_counter >= Max_power_on */
-	when ( (T1_Arc_Power_Status == 0) && (power_on_counter >= Max_power_on)  ) {
+	when ( (T2_Arc_Power_Status == 0) && (power_on_counter >= Max_power_on)  ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more devices are OFF \n");
 		printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
 	} state failure
 
 	/* Error: Global Status is NOK */
-	when ( (T1_Arc_Global_Status == 0) ) {
+	when ( (T2_Arc_Global_Status == 0) ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more Global Status are NOK \n");
 		printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
 	} state failure
 
 	/* Error: Internal Command Check is NOK */
-	when ( (T1_Arc_Test_Internal_Cmd_Check_01 == 0) || (T1_Arc_Test_Internal_Cmd_Check_02 == 0) || (T1_Arc_Test_Internal_Cmd_Check_03 == 0) || (T1_Arc_Test_Internal_Cmd_Check_04 == 0) ) {
+	when ( (T2_Arc_Test_Internal_Cmd_Check_01 == 0) || (T2_Arc_Test_Internal_Cmd_Check_02 == 0) || (T2_Arc_Test_Internal_Cmd_Check_03 == 0) || (T2_Arc_Test_Internal_Cmd_Check_04 == 0) ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more Internal Command Checks are NOK \n");
 		printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
 	} state failure
 
 	/* Error: External Command Check is NOK */
-	when ( (T1_Arc_Test_External_Cmd_Check_01 == 0) || (T1_Arc_Test_External_Cmd_Check_02 == 0) || (T1_Arc_Test_External_Cmd_Check_03 == 0) || (T1_Arc_Test_External_Cmd_Check_04 == 0) ) {
+	when ( (T2_Arc_Test_External_Cmd_Check_01 == 0) || (T2_Arc_Test_External_Cmd_Check_02 == 0) || (T2_Arc_Test_External_Cmd_Check_03 == 0) || (T2_Arc_Test_External_Cmd_Check_04 == 0) ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more External Command Checks are NOK \n");
 		printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
 	} state failure
 
 	/* Error: External Status is NOK */
-	when ( (T1_Arc_Test_External_Status_01 == 0) || (T1_Arc_Test_External_Status_02 == 0) || (T1_Arc_Test_External_Status_03 == 0) || (T1_Arc_Test_External_Status_04 == 0) ) {
+	when ( (T2_Arc_Test_External_Status_01 == 0) || (T2_Arc_Test_External_Status_02 == 0) || (T2_Arc_Test_External_Status_03 == 0) || (T2_Arc_Test_External_Status_04 == 0) ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more External Status are NOK \n");
 		printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
@@ -537,24 +537,24 @@ state test_check {
 	/* Test procedure in automatic mode */
 	when ( AutoControl_ActualStatus == 1 ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Starting Automatic Test Procedure \n");
-		T1_Arc_Test_External_Cmd_01=1;
-		pvPut(T1_Arc_Test_External_Cmd_01);
-		T1_Arc_Test_External_Cmd_02=1;
-		pvPut(T1_Arc_Test_External_Cmd_02);
-		T1_Arc_Test_External_Cmd_03=1;
-		pvPut(T1_Arc_Test_External_Cmd_03);
-		T1_Arc_Test_External_Cmd_04=1;
-		pvPut(T1_Arc_Test_External_Cmd_04);
+		T2_Arc_Test_External_Cmd_01=1;
+		pvPut(T2_Arc_Test_External_Cmd_01);
+		T2_Arc_Test_External_Cmd_02=1;
+		pvPut(T2_Arc_Test_External_Cmd_02);
+		T2_Arc_Test_External_Cmd_03=1;
+		pvPut(T2_Arc_Test_External_Cmd_03);
+		T2_Arc_Test_External_Cmd_04=1;
+		pvPut(T2_Arc_Test_External_Cmd_04);
 
 		/* Reset test button */
-		T1_Arc_Test_External_Cmd_01=0;
-		pvPut(T1_Arc_Test_External_Cmd_01);
-		T1_Arc_Test_External_Cmd_02=0;
-		pvPut(T1_Arc_Test_External_Cmd_02);
-		T1_Arc_Test_External_Cmd_03=0;
-		pvPut(T1_Arc_Test_External_Cmd_03);
-		T1_Arc_Test_External_Cmd_04=0;
-		pvPut(T1_Arc_Test_External_Cmd_04);
+		T2_Arc_Test_External_Cmd_01=0;
+		pvPut(T2_Arc_Test_External_Cmd_01);
+		T2_Arc_Test_External_Cmd_02=0;
+		pvPut(T2_Arc_Test_External_Cmd_02);
+		T2_Arc_Test_External_Cmd_03=0;
+		pvPut(T2_Arc_Test_External_Cmd_03);
+		T2_Arc_Test_External_Cmd_04=0;
+		pvPut(T2_Arc_Test_External_Cmd_04);
 
 	} state test_results
 
@@ -567,13 +567,13 @@ state test_results {
 
 	}
 
-	when ( (T1_Arc_Test_Internal_Status_01 == 0) || (T1_Arc_Test_Internal_Status_02 == 0) || (T1_Arc_Test_Internal_Status_03 == 0) || (T1_Arc_Test_Internal_Status_04 == 0) ) {
+	when ( (T2_Arc_Test_Internal_Status_01 == 0) || (T2_Arc_Test_Internal_Status_02 == 0) || (T2_Arc_Test_Internal_Status_03 == 0) || (T2_Arc_Test_Internal_Status_04 == 0) ) {
 	printf("[SEQ ARC DETECTION - TANK 2] Error System Status: one or more channel are NOT OK Status \n");
 	printf("[SEQ ARC DETECTION - TANK 2] Test Procedure not passed: go to FAILURE \n");
 
 	} state failure
 
-	when ( (T1_Arc_Test_Internal_Status_01 == 1) && (T1_Arc_Test_Internal_Status_02 == 1) && (T1_Arc_Test_Internal_Status_03 == 1) && (T1_Arc_Test_Internal_Status_04 == 1) ) {
+	when ( (T2_Arc_Test_Internal_Status_01 == 1) && (T2_Arc_Test_Internal_Status_02 == 1) && (T2_Arc_Test_Internal_Status_03 == 1) && (T2_Arc_Test_Internal_Status_04 == 1) ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Test Procedure passed: go to READY FOR OPERATION \n");
 
 	} state ready_for_operation
@@ -598,45 +598,45 @@ state ready_for_operation {
 		/* Set Max Arc Count Limits */
 		/* Operation state: RF Conditioning */
 		if (dtlOperationalCode == 202) {
-			T1_Arc_Global_Counter_Limit=DTL_RF_Conditioning_Max_Arcs_Limit;
+			T2_Arc_Global_Counter_Limit=DTL_RF_Conditioning_Max_Arcs_Limit;
 		}
 		/* Operation state: Beam Operation (worst case) */
 		else {
-			T1_Arc_Global_Counter_Limit=DTL_RF_Beam_Operation_Max_Arcs_Limit;
+			T2_Arc_Global_Counter_Limit=DTL_RF_Beam_Operation_Max_Arcs_Limit;
 		}
 
 	}
 
 	/* Error: ADM is OFF with  power_on_counter >= Max_power_on */
-	when ( (T1_Arc_Power_Status == 0) && (power_on_counter >= Max_power_on)  ) {
+	when ( (T2_Arc_Power_Status == 0) && (power_on_counter >= Max_power_on)  ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more devices are OFF \n");
 		printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
 	} state failure
 
 	/* Error: Global Status is NOK */
-	when ( (T1_Arc_Global_Status == 0) ) {
+	when ( (T2_Arc_Global_Status == 0) ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more Global Status are NOK \n");
 		printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
 	} state failure
 
 	/* Error: Internal Command Check is NOK */
-	when ( (T1_Arc_Test_Internal_Cmd_Check_01 == 0) || (T1_Arc_Test_Internal_Cmd_Check_02 == 0) || (T1_Arc_Test_Internal_Cmd_Check_03 == 0) || (T1_Arc_Test_Internal_Cmd_Check_04 == 0) ) {
+	when ( (T2_Arc_Test_Internal_Cmd_Check_01 == 0) || (T2_Arc_Test_Internal_Cmd_Check_02 == 0) || (T2_Arc_Test_Internal_Cmd_Check_03 == 0) || (T2_Arc_Test_Internal_Cmd_Check_04 == 0) ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more Internal Command Checks are NOK \n");
 		printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
 	} state failure
 
 	/* Error: External Command Check is NOK */
-	when ( (T1_Arc_Test_External_Cmd_Check_01 == 0) || (T1_Arc_Test_External_Cmd_Check_02 == 0) || (T1_Arc_Test_External_Cmd_Check_03 == 0) || (T1_Arc_Test_External_Cmd_Check_04 == 0) || (T2_Arc_Test_External_Cmd_Check_01 == 0) || (T2_Arc_Test_External_Cmd_Check_02 == 0) || (T2_Arc_Test_External_Cmd_Check_03 == 0) || (T2_Arc_Test_External_Cmd_Check_04 == 0) || (T3_Arc_Test_External_Cmd_Check_01 == 0) || (T3_Arc_Test_External_Cmd_Check_02 == 0) || (T3_Arc_Test_External_Cmd_Check_03 == 0) || (T3_Arc_Test_External_Cmd_Check_04 == 0) || (T4_Arc_Test_External_Cmd_Check_01 == 0) || (T4_Arc_Test_External_Cmd_Check_02 == 0) || (T4_Arc_Test_External_Cmd_Check_03 == 0) || (T4_Arc_Test_External_Cmd_Check_04 == 0) || (T5_Arc_Test_External_Cmd_Check_01 == 0) || (T5_Arc_Test_External_Cmd_Check_02 == 0) || (T5_Arc_Test_External_Cmd_Check_03 == 0) || (T5_Arc_Test_External_Cmd_Check_04 == 0) ) {
+	when ( (T2_Arc_Test_External_Cmd_Check_01 == 0) || (T2_Arc_Test_External_Cmd_Check_02 == 0) || (T2_Arc_Test_External_Cmd_Check_03 == 0) || (T2_Arc_Test_External_Cmd_Check_04 == 0) ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more External Command Checks are NOK \n");
 		printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
 	} state failure
 
 	/* Error: External Status is NOK */
-	when ( (T1_Arc_Test_External_Status_01 == 0) || (T1_Arc_Test_External_Status_02 == 0) || (T1_Arc_Test_External_Status_03 == 0) || (T1_Arc_Test_External_Status_04 == 0) || (T2_Arc_Test_External_Status_01 == 0) || (T2_Arc_Test_External_Status_02 == 0) || (T2_Arc_Test_External_Status_03 == 0) || (T2_Arc_Test_External_Status_04 == 0) || (T3_Arc_Test_External_Status_01 == 0) || (T3_Arc_Test_External_Status_02 == 0) || (T3_Arc_Test_External_Status_03 == 0) || (T3_Arc_Test_External_Status_04 == 0) || (T4_Arc_Test_External_Status_01 == 0) || (T4_Arc_Test_External_Status_02 == 0) || (T4_Arc_Test_External_Status_03 == 0) || (T4_Arc_Test_External_Status_04 == 0) || (T5_Arc_Test_External_Status_01 == 0) || (T5_Arc_Test_External_Status_02 == 0) || (T5_Arc_Test_External_Status_03 == 0) || (T5_Arc_Test_External_Status_04 == 0) ) {
+	when ( (T2_Arc_Test_External_Status_01 == 0) || (T2_Arc_Test_External_Status_02 == 0) || (T2_Arc_Test_External_Status_03 == 0) || (T2_Arc_Test_External_Status_04 == 0) ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Error ADM systems: one or more External Status are NOK \n");
 		printf("[SEQ ARC DETECTION - TANK 2] System not passed self check: go to FAILURE \n");
 
@@ -698,7 +698,7 @@ state failure {
 	}
 
 	/* System should provide an healthy status to confirm failure reset */
-	when ( (FaultReset == 1) && (T1_Arc_Power_Status == 1) && (T2_Arc_Power_Status == 1) && (T3_Arc_Power_Status == 1) && (T4_Arc_Power_Status == 1) && (T5_Arc_Power_Status == 1) && (T1_Arc_Global_Status == 1) && (T2_Arc_Global_Status == 1) && (T3_Arc_Global_Status == 1) && (T4_Arc_Global_Status == 1) && (T5_Arc_Global_Status == 1) && (T1_Arc_Test_Internal_Cmd_Check_01 == 1) && (T1_Arc_Test_Internal_Cmd_Check_02 == 1) && (T1_Arc_Test_Internal_Cmd_Check_03 == 1) && (T1_Arc_Test_Internal_Cmd_Check_04 == 1) && (T2_Arc_Test_Internal_Cmd_Check_01 == 1) && (T2_Arc_Test_Internal_Cmd_Check_02 == 1) && (T2_Arc_Test_Internal_Cmd_Check_03 == 1) && (T2_Arc_Test_Internal_Cmd_Check_04 == 1) && (T3_Arc_Test_Internal_Cmd_Check_01 == 1) && (T3_Arc_Test_Internal_Cmd_Check_02 == 1) && (T3_Arc_Test_Internal_Cmd_Check_03 == 1) && (T3_Arc_Test_Internal_Cmd_Check_04 == 1) && (T4_Arc_Test_Internal_Cmd_Check_01 == 1) && (T4_Arc_Test_Internal_Cmd_Check_02 == 1) && (T4_Arc_Test_Internal_Cmd_Check_03 == 1) && (T4_Arc_Test_Internal_Cmd_Check_04 == 1) && (T5_Arc_Test_Internal_Cmd_Check_01 == 1) && (T5_Arc_Test_Internal_Cmd_Check_02 == 1) && (T5_Arc_Test_Internal_Cmd_Check_03 == 1) && (T5_Arc_Test_Internal_Cmd_Check_04 == 1) && (T1_Arc_Test_External_Cmd_Check_01 == 1) && (T1_Arc_Test_External_Cmd_Check_02 == 1) && (T1_Arc_Test_External_Cmd_Check_03 == 1) && (T1_Arc_Test_External_Cmd_Check_04 == 1) && (T2_Arc_Test_External_Cmd_Check_01 == 1) && (T2_Arc_Test_External_Cmd_Check_02 == 1) && (T2_Arc_Test_External_Cmd_Check_03 == 1) && (T2_Arc_Test_External_Cmd_Check_04 == 1) && (T3_Arc_Test_External_Cmd_Check_01 == 1) && (T3_Arc_Test_External_Cmd_Check_02 == 1) && (T3_Arc_Test_External_Cmd_Check_03 == 1) && (T3_Arc_Test_External_Cmd_Check_04 == 1) && (T4_Arc_Test_External_Cmd_Check_01 == 1) && (T4_Arc_Test_External_Cmd_Check_02 == 1) && (T4_Arc_Test_External_Cmd_Check_03 == 1) && (T4_Arc_Test_External_Cmd_Check_04 == 1) && (T5_Arc_Test_External_Cmd_Check_01 == 1) && (T5_Arc_Test_External_Cmd_Check_02 == 1) && (T5_Arc_Test_External_Cmd_Check_03 == 1) && (T5_Arc_Test_External_Cmd_Check_04 == 1) && (T1_Arc_Test_Internal_Status_01 == 1) && (T1_Arc_Test_Internal_Status_02 == 1) && (T1_Arc_Test_Internal_Status_03 == 1) && (T1_Arc_Test_Internal_Status_04 == 1) && (T2_Arc_Test_Internal_Status_01 == 1) && (T2_Arc_Test_Internal_Status_02 == 1) && (T2_Arc_Test_Internal_Status_03 == 1) && (T2_Arc_Test_Internal_Status_04 == 1) && (T3_Arc_Test_Internal_Status_01 == 1) && (T3_Arc_Test_Internal_Status_02 == 1) && (T3_Arc_Test_Internal_Status_03 == 1) && (T3_Arc_Test_Internal_Status_04 == 1) && (T4_Arc_Test_Internal_Status_01 == 1) && (T4_Arc_Test_Internal_Status_02 == 1) && (T4_Arc_Test_Internal_Status_03 == 1) && (T4_Arc_Test_Internal_Status_04 == 1) && (T5_Arc_Test_Internal_Status_01 == 1) && (T5_Arc_Test_Internal_Status_02 == 1) && (T5_Arc_Test_Internal_Status_03 == 1) && (T5_Arc_Test_Internal_Status_04 == 1) ) {
+when ( (FaultReset == 1) && (T2_Arc_Power_Status == 1) && (T2_Arc_Global_Status == 1) && (T2_Arc_Test_Internal_Cmd_Check_01 == 1) && (T2_Arc_Test_Internal_Cmd_Check_02 == 1) && (T2_Arc_Test_Internal_Cmd_Check_03 == 1) && (T2_Arc_Test_Internal_Cmd_Check_04 == 1) && (T2_Arc_Test_External_Cmd_Check_01 == 1) && (T2_Arc_Test_External_Cmd_Check_02 == 1) && (T2_Arc_Test_External_Cmd_Check_03 == 1) && (T2_Arc_Test_External_Cmd_Check_04 == 1) && (T2_Arc_Test_Internal_Status_01 == 1) && (T2_Arc_Test_Internal_Status_02 == 1) && (T2_Arc_Test_Internal_Status_03 == 1) && (T2_Arc_Test_Internal_Status_04 == 1) ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Failure Stage reset by Operator. \n");
 		printf("[SEQ ARC DETECTION - TANK 2] Reset conditions satisfied.\n");
 
@@ -720,7 +720,7 @@ state maintenance {
 	}
 
 	/* System should provide an healthy status to confirm maintenance reset */
-	when ( (MaintenanceReset == 1) && (T1_Arc_Power_Status == 1) && (T2_Arc_Power_Status == 1) && (T3_Arc_Power_Status == 1) && (T4_Arc_Power_Status == 1) && (T5_Arc_Power_Status == 1) && (T1_Arc_Global_Status == 1) && (T2_Arc_Global_Status == 1) && (T3_Arc_Global_Status == 1) && (T4_Arc_Global_Status == 1) && (T5_Arc_Global_Status == 1) && (T1_Arc_Test_Internal_Cmd_Check_01 == 1) && (T1_Arc_Test_Internal_Cmd_Check_02 == 1) && (T1_Arc_Test_Internal_Cmd_Check_03 == 1) && (T1_Arc_Test_Internal_Cmd_Check_04 == 1) && (T2_Arc_Test_Internal_Cmd_Check_01 == 1) && (T2_Arc_Test_Internal_Cmd_Check_02 == 1) && (T2_Arc_Test_Internal_Cmd_Check_03 == 1) && (T2_Arc_Test_Internal_Cmd_Check_04 == 1) && (T3_Arc_Test_Internal_Cmd_Check_01 == 1) && (T3_Arc_Test_Internal_Cmd_Check_02 == 1) && (T3_Arc_Test_Internal_Cmd_Check_03 == 1) && (T3_Arc_Test_Internal_Cmd_Check_04 == 1) && (T4_Arc_Test_Internal_Cmd_Check_01 == 1) && (T4_Arc_Test_Internal_Cmd_Check_02 == 1) && (T4_Arc_Test_Internal_Cmd_Check_03 == 1) && (T4_Arc_Test_Internal_Cmd_Check_04 == 1) && (T5_Arc_Test_Internal_Cmd_Check_01 == 1) && (T5_Arc_Test_Internal_Cmd_Check_02 == 1) && (T5_Arc_Test_Internal_Cmd_Check_03 == 1) && (T5_Arc_Test_Internal_Cmd_Check_04 == 1) && (T1_Arc_Test_External_Cmd_Check_01 == 1) && (T1_Arc_Test_External_Cmd_Check_02 == 1) && (T1_Arc_Test_External_Cmd_Check_03 == 1) && (T1_Arc_Test_External_Cmd_Check_04 == 1) && (T2_Arc_Test_External_Cmd_Check_01 == 1) && (T2_Arc_Test_External_Cmd_Check_02 == 1) && (T2_Arc_Test_External_Cmd_Check_03 == 1) && (T2_Arc_Test_External_Cmd_Check_04 == 1) && (T3_Arc_Test_External_Cmd_Check_01 == 1) && (T3_Arc_Test_External_Cmd_Check_02 == 1) && (T3_Arc_Test_External_Cmd_Check_03 == 1) && (T3_Arc_Test_External_Cmd_Check_04 == 1) && (T4_Arc_Test_External_Cmd_Check_01 == 1) && (T4_Arc_Test_External_Cmd_Check_02 == 1) && (T4_Arc_Test_External_Cmd_Check_03 == 1) && (T4_Arc_Test_External_Cmd_Check_04 == 1) && (T5_Arc_Test_External_Cmd_Check_01 == 1) && (T5_Arc_Test_External_Cmd_Check_02 == 1) && (T5_Arc_Test_External_Cmd_Check_03 == 1) && (T5_Arc_Test_External_Cmd_Check_04 == 1) && (T1_Arc_Test_Internal_Status_01 == 1) && (T1_Arc_Test_Internal_Status_02 == 1) && (T1_Arc_Test_Internal_Status_03 == 1) && (T1_Arc_Test_Internal_Status_04 == 1) && (T2_Arc_Test_Internal_Status_01 == 1) && (T2_Arc_Test_Internal_Status_02 == 1) && (T2_Arc_Test_Internal_Status_03 == 1) && (T2_Arc_Test_Internal_Status_04 == 1) && (T3_Arc_Test_Internal_Status_01 == 1) && (T3_Arc_Test_Internal_Status_02 == 1) && (T3_Arc_Test_Internal_Status_03 == 1) && (T3_Arc_Test_Internal_Status_04 == 1) && (T4_Arc_Test_Internal_Status_01 == 1) && (T4_Arc_Test_Internal_Status_02 == 1) && (T4_Arc_Test_Internal_Status_03 == 1) && (T4_Arc_Test_Internal_Status_04 == 1) && (T5_Arc_Test_Internal_Status_01 == 1) && (T5_Arc_Test_Internal_Status_02 == 1) && (T5_Arc_Test_Internal_Status_03 == 1) && (T5_Arc_Test_Internal_Status_04 == 1)  ) {
+	when ( (MaintenanceReset == 1) && (T2_Arc_Power_Status == 1) && (T2_Arc_Global_Status == 1) && (T2_Arc_Test_Internal_Cmd_Check_01 == 1) && (T2_Arc_Test_Internal_Cmd_Check_02 == 1) && (T2_Arc_Test_Internal_Cmd_Check_03 == 1) && (T2_Arc_Test_Internal_Cmd_Check_04 == 1)  && (T2_Arc_Test_External_Cmd_Check_01 == 1) && (T2_Arc_Test_External_Cmd_Check_02 == 1) && (T2_Arc_Test_External_Cmd_Check_03 == 1) && (T2_Arc_Test_External_Cmd_Check_04 == 1)  && (T2_Arc_Test_Internal_Status_01 == 1) && (T2_Arc_Test_Internal_Status_02 == 1) && (T2_Arc_Test_Internal_Status_03 == 1) && (T2_Arc_Test_Internal_Status_04 == 1) ) {
 		printf("[SEQ ARC DETECTION - TANK 2] Maintenance Stage reset by Operator. \n");
 		printf("[SEQ ARC DETECTION - TANK 2] Reset conditions satisfied.\n");
 
