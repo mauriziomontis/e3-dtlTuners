@@ -12,7 +12,7 @@ record(seq, "${PREFIX}:MC-MCU-${DEVICE_POS}:Drv-Rst") {
     field(LNK1, "${PREFIX}:MC-MCU-${DEVICE_POS}:Drv-Cmd")
     field(DLY1, "2")
     field(DO2, "1")
-    field(LNK2, "${PREFIX}:MC-MCU-${DEVICE_POS}:Err-Rst")
+    field(LNK2, "${PREFIX}:EMR-SM-${DEVICE_POS}:Err-Rst")
     field(DLY2, "3")
 }
 
