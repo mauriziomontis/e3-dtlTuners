@@ -1,3 +1,8 @@
+# Control Records for Tuner System
+# set of records required to reset to reset to Zero the enable tuner
+#
+# developed by Maurizio Montis | INFN-LNL
+
 
 record(seq, "${PREFIX}:EMR-SM-${INDEX}:EnRst") {
 	field(DESC, "Reset to Zero Enable Tuner")

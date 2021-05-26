@@ -1,3 +1,8 @@
+# Control Records for Tuner System
+# set of records required to evaluate the Tank OK status
+#
+# developed by Maurizio Montis | INFN-LNL
+
 
 record(calcout, "${PREFIX}:EMR-SM:CalcOkStat") {
 	field(DESC, "verify Tank OK status")

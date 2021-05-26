@@ -1,6 +1,6 @@
 #==============================================================================
 # dbLoadTunerEnableReset.cmd
-#- Arguments: SECTION_NAME, POS_INDEX, INPUT, OUTPUT, LOW_OP_RANGE, HIGH_OP_RANGE, LOW_DRIVER, HIGH_DRIVER, PRECISION, PROP_FACTOR, INT_FACTOR, DER_FACTOR, SCAN_TIME
+#- Arguments: SECTION_NAME, POS_INDEX
 
 #-d /**
 #-d   \brief Load EPICS Database for Enable System 

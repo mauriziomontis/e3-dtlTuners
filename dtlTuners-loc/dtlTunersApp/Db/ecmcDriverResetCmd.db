@@ -1,0 +1,17 @@
+# Control Records for Tuner System
+# set of records required to proper reset ecmc motor driver
+#
+# developed by Maurizio Montis | INFN-LNL
+
+
+record(seq, "${PREFIX}:MC-MCU-${DEVICE_POS}:Drv-Rst") {
+    field(DESC, "Force driver reset")
+    field(DO0, "2")
+    field(LNK0, "${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-Drv-Cmd")
+    field(DO1, "0")
+    field(LNK1, "${SM_PREFIX}ec${MASTER_ID}-s${SLAVE_ID}-${HW_DESC}-Drv-Cmd")
+    field(DLY1, "2")
+    #field(DO2, "1")
+    #field(LNK2, "${PREFIX}:MC-MCU-${DEVICE_POS}:Err-Rst")
+    #field(DLY2, "3")
+}
