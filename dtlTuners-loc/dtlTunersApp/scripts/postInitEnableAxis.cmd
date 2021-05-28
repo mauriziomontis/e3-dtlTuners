@@ -17,7 +17,7 @@
 #-d */
 
 
-afterInit(dbpf "${SECTION_NAME}:EMR-SM-00${DEVICE_POS}.SDIS" "DTL:EMR-SM:EnCmd")
+afterInit(dbpf "${SECTION_NAME}:EMR-SM-00${DEVICE_POS}.SDIS" "${SECTION_NAME}:EMR-SM-00${DEVICE_POS}:EnCond")
 afterInit(dbpf "${SECTION_NAME}:EMR-SM-00${DEVICE_POS}.DISV" "${ENABLE_COND}")
 
 

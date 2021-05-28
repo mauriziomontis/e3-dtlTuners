@@ -1,0 +1,17 @@
+# Control Records for Tuner System
+# set of records required to disable axis (via SDIS field) when a condition is verified
+#
+# Conditions:
+# 1. Global Enable PV (DTL:EMR-SM:EnCmd) is OFF (0)
+# 2. Potentiometer Beckhoff module is in ERROR --> ${PREFIX}:EMR-GT-${INDEX}:Err-Alrm == ERROR (1)
+#
+# developed by Maurizio Montis | INFN-LNL
+
+
+record(calc, "${PREFIX}:EMR-SM-${INDEX}:EnCond") {
+	field(DESC, "condition for disable axis")
+	field(SCAN, ".5 second")
+	field(INPA, "DTL:EMR-SM:EnCmd NPP")
+	field(INPB, "${PREFIX}:EMR-GT-${INDEX}:Err-Alrm")
+	field(CALC, "(A=0)||(B=1)?0:1")
+}

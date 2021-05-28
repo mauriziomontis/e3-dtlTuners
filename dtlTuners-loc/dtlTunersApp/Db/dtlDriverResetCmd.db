@@ -7,12 +7,12 @@
 record(seq, "${PREFIX}:MC-MCU-${DEVICE_POS}:Drv-Rst") {
     field(DESC, "Force driver reset")
     field(DO0, "2")
-    field(LNK0, "${PREFIX}:MC-MCU-${DEVICE_POS}:Drv-Cmd")
+    field(LNK0, "${PREFIX}:MC-MCU-${DEVICE_POS}:Drv-Cmd PP")
     field(DO1, "0")
-    field(LNK1, "${PREFIX}:MC-MCU-${DEVICE_POS}:Drv-Cmd")
+    field(LNK1, "${PREFIX}:MC-MCU-${DEVICE_POS}:Drv-Cmd PP")
     field(DLY1, "2")
     field(DO2, "1")
-    field(LNK2, "${PREFIX}:EMR-SM-${DEVICE_POS}:Err-Rst")
+    field(LNK2, "${PREFIX}:EMR-SM-${DEVICE_POS}:Err-Rst PP")
     field(DLY2, "3")
 }
 
